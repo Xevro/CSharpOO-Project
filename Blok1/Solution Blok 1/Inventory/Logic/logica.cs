@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace InventoryMain.DataLayer
+namespace InventoryMain.Logic
 {
-    class DataHandler
+    class logica
     {
-        
     }
 }

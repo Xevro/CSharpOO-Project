@@ -6,9 +6,4 @@
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Globals\" />
-    <Folder Include="resources\" />
-  </ItemGroup>
-
 </Project>
