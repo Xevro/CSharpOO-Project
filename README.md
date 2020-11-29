@@ -6,3 +6,9 @@
 - Controleren van input voor het toevoegen aan lijst
 - Exporteren van data naar .csv bestand
 - Kunnen wijzigen van gegevens in lijst
+- Filteren van gegevens in nieuw frame
+- Zoekfunctie in console en frame
+
+
+## Review
+
