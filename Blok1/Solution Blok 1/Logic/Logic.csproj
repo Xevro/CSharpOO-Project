@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Datalayer\Datalayer.csproj" />
+    <ProjectReference Include="..\Globals\Globals.csproj" />
+  </ItemGroup>
+
 </Project>
