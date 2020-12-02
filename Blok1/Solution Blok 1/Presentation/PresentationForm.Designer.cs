@@ -142,12 +142,12 @@ namespace Presentation
             // btnAdd
             // 
             this.btnAdd.Location = new System.Drawing.Point(247, 412);
-            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Name = "BtnAdd";
             this.btnAdd.Size = new System.Drawing.Size(200, 46);
             this.btnAdd.TabIndex = 13;
             this.btnAdd.Text = "Add product";
             this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
             // lblMessage
             // 

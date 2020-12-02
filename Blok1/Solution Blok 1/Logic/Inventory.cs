@@ -1,11 +1,10 @@
-﻿using System;
-using Globals;
+﻿using Globals;
 
 namespace Logic
 {
     public class Inventory
     {
-        public Status Status { get; }
-        public Item item { get; private set; }
+        public Status status { get; set; }
+        //public Item Item { get; private set; }
     }
 }

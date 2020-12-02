@@ -1,7 +1,7 @@
-﻿using Logic;
+﻿using Globals;
+using Logic;
 using System;
 using System.Windows.Forms;
-using Globals;
 
 namespace Presentation
 {
@@ -20,14 +20,11 @@ namespace Presentation
             }
         }
 
-
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void BtnAdd_Click(object sender, EventArgs e)
         {
+            var test = new Item(txtCode.Text, txtName.Text, int.Parse(txtQuantity.Text), cbxStatus.Text);
 
-            var test = new Globals.Item(txtCode.Text, txtName.Text, Int32.Parse(txtQuantity.Text), cbxStatus.Text);
-
-            this.dataGrid.Rows.Insert(0, test.ProductCode, test.ProductName, test.Quantity, test.Status);
+            this.dataGrid.Rows.Insert(0, test, test.ProductName, test.ProductQuantity, test.ProductStatus);
         }
-
     }
 }
