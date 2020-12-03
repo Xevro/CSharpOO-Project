@@ -70,7 +70,7 @@ namespace Presentation
             this.Name,
             this.Quantity,
             this.Status});
-            this.dataGrid.Location = new System.Drawing.Point(559, 82);
+            this.dataGrid.Location = new System.Drawing.Point(547, 82);
             this.dataGrid.Name = "dataGrid";
             this.dataGrid.RowHeadersWidth = 82;
             this.dataGrid.RowTemplate.Height = 41;

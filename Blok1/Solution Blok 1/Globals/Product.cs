@@ -1,9 +1,8 @@
 ﻿using System;
-using System.ComponentModel;
 
 namespace Globals
 {
-    public class Item
+    public class Product
     {
         public string ProductCode { get; set; }
         public string ProductName { get; set; }
@@ -18,19 +17,9 @@ namespace Globals
                 else throw new ArgumentOutOfRangeException($"{nameof(value)} must be a number");
             }
         }
+        public Status ProductStatus { get; set; }
 
-        private string productStatus;
-        public string ProductStatus
-        {
-            get { return productStatus; }
-            set
-            {
-                if (Enum.IsDefined(typeof(Status), value)) productStatus = value;
-                else throw new InvalidEnumArgumentException($"{nameof(value)} must be a selected choice");
-            }
-        }
-
-        public Item(string code, string name, int quantity, string status)
+        public Product(string code, string name, int quantity, Status status)
         {
             ProductCode = code;
             ProductName = name;

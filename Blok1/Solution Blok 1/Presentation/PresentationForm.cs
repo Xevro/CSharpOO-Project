@@ -8,7 +8,6 @@ namespace Presentation
     public partial class Presentation : Form
     {
         Inventory inv = new Inventory();
-
         public Presentation()
         {
             InitializeComponent();
@@ -21,13 +20,19 @@ namespace Presentation
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            var test = new Item(txtCode.Text, txtName.Text, int.Parse(txtQuantity.Text), cbxStatus.Text);
-            this.dataGrid.Rows.Insert(0, test.ProductCode, test.ProductName, test.ProductQuantity, test.ProductStatus);
+            this.dataGrid.Rows.Clear();
+            var item = new Product(txtCode.Text, txtName.Text, int.Parse(txtQuantity.Text), (Status) Enum.Parse(typeof(Status), cbxStatus.Text));
+            inv.addProduct(item);
+            foreach (var product in inv.Products)
+            {
+                this.dataGrid.Rows.Insert(0, product.ProductCode, product.ProductName, product.ProductQuantity, product.ProductStatus);
+            }
+            
         }
 
         private void BtnImport_Click(object sender, EventArgs e)
         {
-
+            
         }
     }
 }
