@@ -31,6 +31,10 @@ namespace Presentation
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dataGrid = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblproductcode = new System.Windows.Forms.Label();
             this.txtCode = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,10 +45,9 @@ namespace Presentation
             this.cbxStatus = new System.Windows.Forms.ComboBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.lblMessage = new System.Windows.Forms.Label();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BtnImport = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.BtnExport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,7 +56,7 @@ namespace Presentation
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1662, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(2464, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -67,21 +70,49 @@ namespace Presentation
             this.Name,
             this.Quantity,
             this.Status});
-            this.dataGrid.Location = new System.Drawing.Point(571, 143);
+            this.dataGrid.Location = new System.Drawing.Point(559, 82);
             this.dataGrid.Name = "dataGrid";
             this.dataGrid.RowHeadersWidth = 82;
             this.dataGrid.RowTemplate.Height = 41;
-            this.dataGrid.Size = new System.Drawing.Size(1054, 622);
+            this.dataGrid.Size = new System.Drawing.Size(1184, 376);
             this.dataGrid.TabIndex = 4;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Product ID";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 250;
+            // 
+            // Name
+            // 
+            this.Name.HeaderText = "Name";
+            this.Name.MinimumWidth = 10;
+            this.Name.Name = "Name";
+            this.Name.Width = 350;
+            // 
+            // Quantity
+            // 
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.MinimumWidth = 10;
+            this.Quantity.Name = "Quantity";
+            this.Quantity.Width = 250;
+            // 
+            // Status
+            // 
+            this.Status.HeaderText = "Status";
+            this.Status.MinimumWidth = 10;
+            this.Status.Name = "Status";
+            this.Status.Width = 250;
             // 
             // lblproductcode
             // 
             this.lblproductcode.AutoSize = true;
             this.lblproductcode.Location = new System.Drawing.Point(57, 82);
             this.lblproductcode.Name = "lblproductcode";
-            this.lblproductcode.Size = new System.Drawing.Size(155, 32);
+            this.lblproductcode.Size = new System.Drawing.Size(126, 32);
             this.lblproductcode.TabIndex = 5;
-            this.lblproductcode.Text = "Product code";
+            this.lblproductcode.Text = "Product ID";
             // 
             // txtCode
             // 
@@ -142,7 +173,7 @@ namespace Presentation
             // btnAdd
             // 
             this.btnAdd.Location = new System.Drawing.Point(247, 412);
-            this.btnAdd.Name = "BtnAdd";
+            this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(200, 46);
             this.btnAdd.TabIndex = 13;
             this.btnAdd.Text = "Add product";
@@ -151,46 +182,47 @@ namespace Presentation
             // 
             // lblMessage
             // 
-            this.lblMessage.AutoSize = true;
-            this.lblMessage.Location = new System.Drawing.Point(57, 496);
+            this.lblMessage.Location = new System.Drawing.Point(0, 0);
             this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(78, 32);
-            this.lblMessage.TabIndex = 14;
-            this.lblMessage.Text = "label4";
+            this.lblMessage.Size = new System.Drawing.Size(100, 23);
+            this.lblMessage.TabIndex = 0;
             // 
-            // dataGridViewTextBoxColumn1
+            // BtnImport
             // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Product ID";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 10;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 200;
+            this.BtnImport.Location = new System.Drawing.Point(49, 646);
+            this.BtnImport.Name = "BtnImport";
+            this.BtnImport.Size = new System.Drawing.Size(200, 46);
+            this.BtnImport.TabIndex = 14;
+            this.BtnImport.Text = "Import";
+            this.BtnImport.UseVisualStyleBackColor = true;
+            this.BtnImport.Click += new System.EventHandler(this.BtnImport_Click);
             // 
-            // Name
+            // label4
             // 
-            this.Name.HeaderText = "Name";
-            this.Name.MinimumWidth = 10;
-            this.Name.Name = "Name";
-            this.Name.Width = 200;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(37, 572);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(92, 32);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Actions";
             // 
-            // Quantity
+            // BtnExport
             // 
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.MinimumWidth = 10;
-            this.Quantity.Name = "Quantity";
-            this.Quantity.Width = 200;
-            // 
-            // Status
-            // 
-            this.Status.HeaderText = "Status";
-            this.Status.MinimumWidth = 10;
-            this.Status.Name = "Status";
-            this.Status.Width = 200;
+            this.BtnExport.Location = new System.Drawing.Point(285, 646);
+            this.BtnExport.Name = "BtnExport";
+            this.BtnExport.Size = new System.Drawing.Size(200, 46);
+            this.BtnExport.TabIndex = 16;
+            this.BtnExport.Text = "Export";
+            this.BtnExport.UseVisualStyleBackColor = true;
             // 
             // Presentation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1662, 822);
+            this.ClientSize = new System.Drawing.Size(2464, 1084);
+            this.Controls.Add(this.BtnExport);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.BtnImport);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.cbxStatus);
@@ -204,7 +236,6 @@ namespace Presentation
             this.Controls.Add(this.dataGrid);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            //this.Name = "Presentation";
             this.Text = "PresentationForm";
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();
             this.ResumeLayout(false);
@@ -225,6 +256,9 @@ namespace Presentation
         private System.Windows.Forms.ComboBox cbxStatus;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label lblMessage;
+        private System.Windows.Forms.Button BtnImport;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button BtnExport;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
