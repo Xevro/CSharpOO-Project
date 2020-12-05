@@ -6,9 +6,6 @@ namespace Datalayer
 {
     public class Data
     {
-        private static string filePath = Properties.Resources.SourcePath;
-
-        //public List<Product> products = new List<Product>();
 
         public void ExportToJSON(List<Product> products)
         {
@@ -30,6 +27,11 @@ namespace Datalayer
             }
             s.Close();
             f.Close();
+        }
+
+        public void ImportFromJSON()
+        {
+
         }
     }
 }

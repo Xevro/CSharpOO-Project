@@ -31,7 +31,7 @@ namespace Presentation
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dataGrid = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,6 +48,7 @@ namespace Presentation
             this.BtnImport = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.BtnExport = new System.Windows.Forms.Button();
+            this.txtMessage = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,23 +67,24 @@ namespace Presentation
             this.dataGrid.AllowUserToDeleteRows = false;
             this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
+            this.ProductID,
             this.Name,
             this.Quantity,
             this.Status});
-            this.dataGrid.Location = new System.Drawing.Point(547, 82);
+            this.dataGrid.Location = new System.Drawing.Point(525, 128);
             this.dataGrid.Name = "dataGrid";
             this.dataGrid.RowHeadersWidth = 82;
             this.dataGrid.RowTemplate.Height = 41;
-            this.dataGrid.Size = new System.Drawing.Size(1184, 376);
+            this.dataGrid.Size = new System.Drawing.Size(1184, 610);
             this.dataGrid.TabIndex = 4;
+            this.dataGrid.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGrid_CellMouseClick);
             // 
-            // dataGridViewTextBoxColumn1
+            // ProductID
             // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Product ID";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 10;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 250;
+            this.ProductID.HeaderText = "Product ID";
+            this.ProductID.MinimumWidth = 10;
+            this.ProductID.Name = "ProductID";
+            this.ProductID.Width = 250;
             // 
             // Name
             // 
@@ -108,7 +110,7 @@ namespace Presentation
             // lblproductcode
             // 
             this.lblproductcode.AutoSize = true;
-            this.lblproductcode.Location = new System.Drawing.Point(57, 82);
+            this.lblproductcode.Location = new System.Drawing.Point(86, 135);
             this.lblproductcode.Name = "lblproductcode";
             this.lblproductcode.Size = new System.Drawing.Size(126, 32);
             this.lblproductcode.TabIndex = 5;
@@ -116,7 +118,7 @@ namespace Presentation
             // 
             // txtCode
             // 
-            this.txtCode.Location = new System.Drawing.Point(247, 82);
+            this.txtCode.Location = new System.Drawing.Point(247, 128);
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(200, 39);
             this.txtCode.TabIndex = 6;
@@ -124,7 +126,7 @@ namespace Presentation
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(49, 160);
+            this.label1.Location = new System.Drawing.Point(49, 210);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(163, 32);
             this.label1.TabIndex = 7;
@@ -133,7 +135,7 @@ namespace Presentation
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(106, 243);
+            this.label2.Location = new System.Drawing.Point(106, 293);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(106, 32);
             this.label2.TabIndex = 8;
@@ -142,7 +144,7 @@ namespace Presentation
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(134, 316);
+            this.label3.Location = new System.Drawing.Point(134, 368);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(78, 32);
             this.label3.TabIndex = 9;
@@ -150,14 +152,14 @@ namespace Presentation
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(247, 160);
+            this.txtName.Location = new System.Drawing.Point(247, 203);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(200, 39);
             this.txtName.TabIndex = 10;
             // 
             // txtQuantity
             // 
-            this.txtQuantity.Location = new System.Drawing.Point(247, 240);
+            this.txtQuantity.Location = new System.Drawing.Point(247, 286);
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(200, 39);
             this.txtQuantity.TabIndex = 11;
@@ -165,14 +167,14 @@ namespace Presentation
             // cbxStatus
             // 
             this.cbxStatus.FormattingEnabled = true;
-            this.cbxStatus.Location = new System.Drawing.Point(247, 316);
+            this.cbxStatus.Location = new System.Drawing.Point(247, 360);
             this.cbxStatus.Name = "cbxStatus";
             this.cbxStatus.Size = new System.Drawing.Size(200, 40);
             this.cbxStatus.TabIndex = 12;
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(247, 412);
+            this.btnAdd.Location = new System.Drawing.Point(247, 446);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(200, 46);
             this.btnAdd.TabIndex = 13;
@@ -189,7 +191,7 @@ namespace Presentation
             // 
             // BtnImport
             // 
-            this.BtnImport.Location = new System.Drawing.Point(49, 646);
+            this.BtnImport.Location = new System.Drawing.Point(49, 606);
             this.BtnImport.Name = "BtnImport";
             this.BtnImport.Size = new System.Drawing.Size(200, 46);
             this.BtnImport.TabIndex = 14;
@@ -200,7 +202,7 @@ namespace Presentation
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(37, 572);
+            this.label4.Location = new System.Drawing.Point(37, 536);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(92, 32);
             this.label4.TabIndex = 15;
@@ -208,7 +210,7 @@ namespace Presentation
             // 
             // BtnExport
             // 
-            this.BtnExport.Location = new System.Drawing.Point(285, 646);
+            this.BtnExport.Location = new System.Drawing.Point(49, 686);
             this.BtnExport.Name = "BtnExport";
             this.BtnExport.Size = new System.Drawing.Size(200, 46);
             this.BtnExport.TabIndex = 16;
@@ -216,11 +218,21 @@ namespace Presentation
             this.BtnExport.UseVisualStyleBackColor = true;
             this.BtnExport.Click += new System.EventHandler(this.BtnExport_Click);
             // 
+            // txtMessage
+            // 
+            this.txtMessage.AutoSize = true;
+            this.txtMessage.Location = new System.Drawing.Point(51, 56);
+            this.txtMessage.Name = "txtMessage";
+            this.txtMessage.Size = new System.Drawing.Size(78, 32);
+            this.txtMessage.TabIndex = 17;
+            this.txtMessage.Text = "label5";
+            // 
             // Presentation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2464, 1084);
+            this.Controls.Add(this.txtMessage);
             this.Controls.Add(this.BtnExport);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.BtnImport);
@@ -260,10 +272,11 @@ namespace Presentation
         private System.Windows.Forms.Button BtnImport;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button BtnExport;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        private System.Windows.Forms.Label txtMessage;
     }
 }
 

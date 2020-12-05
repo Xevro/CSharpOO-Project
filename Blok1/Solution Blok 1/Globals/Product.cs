@@ -14,7 +14,7 @@ namespace Globals
             set
             {
                 if (value.GetType() == typeof(int)) productQuantity = value;
-                else throw new ArgumentOutOfRangeException($"{nameof(value)} must be a number");
+                else throw new FormatException($"{nameof(value)} must be a number");
             }
         }
         public Status ProductStatus { get; set; }
