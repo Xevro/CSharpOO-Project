@@ -214,6 +214,7 @@ namespace Presentation
             this.BtnExport.TabIndex = 16;
             this.BtnExport.Text = "Export";
             this.BtnExport.UseVisualStyleBackColor = true;
+            this.BtnExport.Click += new System.EventHandler(this.BtnExport_Click);
             // 
             // Presentation
             // 
