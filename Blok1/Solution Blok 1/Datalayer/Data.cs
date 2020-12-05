@@ -1,5 +1,7 @@
 ﻿using Globals;
+using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 
 namespace Datalayer
@@ -29,8 +31,19 @@ namespace Datalayer
             f.Close();
         }
 
-        public void ImportFromJSON()
+        public List<Product> ImportFromJSON()
         {
+            try
+            {
+                string json = File.ReadAllText(@"./ProductsData.json");
+                List<Product> productsFromFile = JsonConvert.DeserializeObject<List<Product>>(json);
+                return productsFromFile;
+            }
+            catch (System.Exception)
+            {
+                Debug.WriteLine("error reading");
+                throw;
+            }
 
         }
     }

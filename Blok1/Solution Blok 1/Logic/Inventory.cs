@@ -23,5 +23,11 @@ namespace Logic
         {
             data.ExportToJSON(Products);
         }
+
+        public List<Product> ImportData()
+        {
+            Products.AddRange(data.ImportFromJSON());
+            return Products;
+        }
     }
 }

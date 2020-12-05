@@ -36,9 +36,14 @@ namespace Presentation
 
         private void AddData(string code, string name, int quantity, Status status)
         {
-            this.dataGrid.Rows.Clear();
             var item = new Product(code, name, quantity, status);
             inv.AddProduct(item);
+            LoadData();
+        }
+
+        private void LoadData()
+        {
+            this.dataGrid.Rows.Clear();
             foreach (var product in inv.Products)
             {
                 this.dataGrid.Rows.Insert(0, product.ProductCode, product.ProductName, product.ProductQuantity, product.ProductStatus);
@@ -56,7 +61,8 @@ namespace Presentation
 
         private void BtnImport_Click(object sender, EventArgs e)
         {
-
+            inv.ImportData();
+            LoadData();
         }
 
         private void BtnExport_Click(object sender, EventArgs e)
