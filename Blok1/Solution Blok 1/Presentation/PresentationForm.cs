@@ -1,6 +1,7 @@
 ﻿using Globals;
 using Logic;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Presentation
@@ -64,7 +65,12 @@ namespace Presentation
             txtMessage.Text = "";
             try
             {
-                var quantity = int.Parse(TxtQuantity.Text);
+                int quantity = int.Parse(TxtQuantity.Text);
+                if (quantity <= 0)
+                {
+                    throw new ArgumentOutOfRangeException("Quantity is to small, must be 1 at least.");
+                }
+
                 ProductStatus status = (ProductStatus)Enum.Parse(typeof(ProductStatus), CbxStatus.Text);
                 AddData(Int32.Parse(TxtCode.Text), TxtName.Text, quantity, status);
             }

@@ -16,15 +16,27 @@ namespace Logic
 
         public void AddProduct(Product product)
         {
-            if (!Products.Any(a => a.ProductCode == product.ProductCode))
+            if (!Products.Any(a => a.ProductCode == product.ProductCode) || product.ProductQuantity > 1)
             {
                 Products.Add(product);
             }
             else
             {
-                throw new OperationCanceledException("Can't add the product, it already exists");
+                throw new OperationCanceledException("Can't add the product.");
+            }
+
+            if (product.ProductQuantity <= 0)
+            {
+                product.ProductStatus = ProductStatus.Outofstock;
+                //throw new 
             }
         }
+
+        public void RemoveProduct(Product product)
+        {
+            Products.RemoveAll(x => x.ProductCode == product.ProductCode);
+        }
+
         public void AddOrder(Order order, Product product)
         {
             if (!Orders.Any(a => a.OrderCode == order.OrderCode) || product.ProductStatus != ProductStatus.Outofstock)
@@ -33,7 +45,14 @@ namespace Logic
             }
             else
             {
-                throw new OperationCanceledException("Can't add the order, it already exists");
+                if (product.ProductStatus == ProductStatus.Outofstock)
+                {
+                    throw new OperationCanceledException("Product is out of stock");
+                }
+                else
+                {
+                    throw new OperationCanceledException("Can't add the order.");
+                }
             }
         }
 

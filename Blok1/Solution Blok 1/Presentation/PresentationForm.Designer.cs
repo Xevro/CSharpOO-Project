@@ -60,6 +60,7 @@ namespace Presentation
             this.label6 = new System.Windows.Forms.Label();
             this.NmrOrderQuantity = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProducts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NmrOrderQuantity)).BeginInit();
@@ -354,11 +355,21 @@ namespace Presentation
             this.label7.TabIndex = 24;
             this.label7.Text = "Quantity";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(297, 606);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(150, 46);
+            this.button1.TabIndex = 25;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Presentation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(3364, 1088);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.NmrOrderQuantity);
             this.Controls.Add(this.label6);
@@ -423,6 +434,7 @@ namespace Presentation
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.NumericUpDown NmrOrderQuantity;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button1;
     }
 }
 
