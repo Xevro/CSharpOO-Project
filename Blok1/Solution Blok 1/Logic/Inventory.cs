@@ -25,11 +25,10 @@ namespace Logic
                 throw new OperationCanceledException("Can't add the product, it already exists");
             }
         }
-        public void AddOrder(Order order, int quantity)
+        public void AddOrder(Order order, Product product)
         {
-            if (!Orders.Any(a => a.OrderCode == order.OrderCode))
+            if (!Orders.Any(a => a.OrderCode == order.OrderCode) || product.ProductStatus != ProductStatus.Outofstock)
             {
-                order.OrderQuantity = quantity;
                 Orders.Add(order);
             }
             else

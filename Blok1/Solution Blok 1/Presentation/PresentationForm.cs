@@ -121,8 +121,8 @@ namespace Presentation
                     if (product.ProductCode == (int)selectedRow.Cells[0].Value)
                     {
                         product.ProductQuantity = product.ProductQuantity - (int)NmrOrderQuantity.Value;
-                        Order item = new Order(product.ProductCode, product.ProductName, product.ProductQuantity, (OrderStatus)Enum.Parse(typeof(OrderStatus), CbxOrderStatus.Text));
-                        inv.AddOrder(item, (int)NmrOrderQuantity.Value);
+                        Order item = new Order(product.ProductCode, product.ProductName, (int)NmrOrderQuantity.Value, (OrderStatus)Enum.Parse(typeof(OrderStatus), CbxOrderStatus.Text));
+                        inv.AddOrder(item, product);
                         LoadOrdersDataToView();
                         LoadDataToView();
                     }
@@ -130,7 +130,7 @@ namespace Presentation
             }
             else
             {
-                System.Windows.Forms.MessageBox.Show("Please select an item and an order status!");
+                throw new Exception("Please select an item and an order status!");
             }
         }
     }
