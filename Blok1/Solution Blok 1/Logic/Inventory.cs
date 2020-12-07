@@ -24,12 +24,6 @@ namespace Logic
             {
                 throw new OperationCanceledException("Can't add the product.");
             }
-
-            if (product.ProductQuantity <= 0)
-            {
-                product.ProductStatus = ProductStatus.Outofstock;
-                //throw new 
-            }
         }
 
         public void RemoveProduct(Product product)
@@ -39,24 +33,21 @@ namespace Logic
 
         public void AddOrder(Order order, Product product)
         {
-            if (!Orders.Any(a => a.OrderCode == order.OrderCode) || product.ProductStatus != ProductStatus.Outofstock)
+            if (!Orders.Any(a => a.OrderCode == order.OrderCode) || !CheckStock(product) && product.ProductQuantity >= 1)
             {
                 Orders.Add(order);
                 if (product.ProductQuantity <= 8)
                 {
                     throw new Exception($"Stock is running low on {product.ProductName}");
                 }
-            }
-            else
-            {
-                if (product.ProductStatus == ProductStatus.Outofstock || product.ProductQuantity <= 0)
+                if (!CheckStock(product))
                 {
                     throw new OperationCanceledException("Product is out of stock");
                 }
-                else
-                {
-                    throw new OperationCanceledException("Can't add the order.");
-                }
+            }
+            else
+            {
+                throw new OperationCanceledException("Can't add the order.");
             }
         }
 
@@ -84,6 +75,7 @@ namespace Logic
         {
             fileData.DirectoryInfo();
         }
+
         public List<Product> GetProducts()
         {
             return Products;
@@ -93,5 +85,18 @@ namespace Logic
             return Orders;
         }
 
+        private bool CheckStock(Product product)
+        {
+            if (product.ProductQuantity <= 0)
+            {
+               // product.ProductStatus = ProductStatus.Outofstock;
+               // product.ProductQuantity = 0;
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }

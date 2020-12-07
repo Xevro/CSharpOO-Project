@@ -126,31 +126,39 @@ namespace Presentation
 
                 foreach (Product product in inv.GetProducts())
                 {
-                    if (product.ProductCode == (int)selectedRow.Cells[0].Value && CheckQuantity(product))
+                    if (product.ProductCode == (int)selectedRow.Cells[0].Value)
                     {
-                        product.ProductQuantity -= (int)NmrOrderQuantity.Value;
+                        int quantity = product.ProductQuantity - (int)NmrOrderQuantity.Value;
+                        if (quantity >= 0)
+                        {
+                            product.ProductQuantity = quantity;
+                        }
+                        if (product.ProductQuantity == 0)
+                        {
+                            product.ProductStatus = ProductStatus.Outofstock;
+                        }
                         Order item = new Order(product.ProductCode, product.ProductName, (int)NmrOrderQuantity.Value, (OrderStatus)Enum.Parse(typeof(OrderStatus), CbxOrderStatus.Text));
                         inv.AddOrder(item, product);
-                        LoadOrdersDataToView();
-                        LoadDataToView();
                     }
                 }
+                LoadOrdersDataToView();
+                LoadDataToView();
             }
             else
             {
-                throw new Exception("Please select an item and an order status!");
+                throw new Exception("Please select an item and/or an order status!");
             }
         }
 
         private bool CheckQuantity(Product product)
         {
-            if (!(product.ProductQuantity < 0))
+            if (!(product.ProductQuantity <= 0))
             {
                 return true;
             }
             else
             {
-                throw new Exception("Can't add order, There must be a quantity");
+                throw new Exception("Can't add order, There must be a quantity available");
             }
         }
     }
