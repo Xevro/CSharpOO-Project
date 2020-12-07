@@ -36,7 +36,7 @@ namespace Presentation
         private void LoadDataToView()
         {
             this.dataGridProducts.Rows.Clear();
-            foreach (Product product in inv.Products)
+            foreach (Product product in inv.GetProducts())
             {
                 this.dataGridProducts.Rows.Insert(0, product.ProductCode, product.ProductName, product.ProductQuantity, product.ProductStatus);
             }
@@ -48,7 +48,7 @@ namespace Presentation
         private void LoadOrdersDataToView()
         {
             this.dataGridOrders.Rows.Clear();
-            foreach (Order order in inv.Orders)
+            foreach (Order order in inv.GetOrders())
             {
                 this.dataGridOrders.Rows.Insert(0, order.OrderCode, order.OrderName, order.OrderQuantity, order.OrderStatus);
             }
@@ -122,11 +122,11 @@ namespace Presentation
                 int selectedrowindex = dataGridProducts.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = dataGridProducts.Rows[selectedrowindex];
 
-                foreach (Product product in inv.Products)
+                foreach (Product product in inv.GetProducts())
                 {
                     if (product.ProductCode == (int)selectedRow.Cells[0].Value)
                     {
-                        product.ProductQuantity = product.ProductQuantity - (int)NmrOrderQuantity.Value;
+                        product.ProductQuantity -= (int)NmrOrderQuantity.Value;
                         Order item = new Order(product.ProductCode, product.ProductName, (int)NmrOrderQuantity.Value, (OrderStatus)Enum.Parse(typeof(OrderStatus), CbxOrderStatus.Text));
                         inv.AddOrder(item, product);
                         LoadOrdersDataToView();

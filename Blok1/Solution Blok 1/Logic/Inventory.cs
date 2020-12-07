@@ -9,8 +9,8 @@ namespace Logic
     [Serializable]
     public class Inventory
     {
-        public List<Product> Products = new List<Product>();
-        public List<Order> Orders = new List<Order>();
+        private readonly List<Product> Products = new List<Product>();
+        private readonly List<Order> Orders = new List<Order>();
         private readonly Data data = new Data();
         private readonly FileDirectoryData fileData = new FileDirectoryData();
 
@@ -30,6 +30,16 @@ namespace Logic
                 product.ProductStatus = ProductStatus.Outofstock;
                 //throw new 
             }
+        }
+
+        public List<Product> GetProducts()
+        {
+            return Products;
+        }
+
+        public List<Order> GetOrders()
+        {
+            return Orders;
         }
 
         public void RemoveProduct(Product product)
