@@ -17,9 +17,9 @@ namespace Globals
                 else throw new FormatException($"{nameof(value)} must be a number");
             }
         }
-        public Status ProductStatus { get; set; }
+        public ProductStatus ProductStatus { get; set; }
 
-        public Product(string code, string name, int quantity, Status status)
+        public Product(string code, string name, int quantity, ProductStatus status)
         {
             ProductCode = code;
             ProductName = name;

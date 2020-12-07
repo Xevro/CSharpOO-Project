@@ -30,7 +30,7 @@ namespace Presentation
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.dataGrid = new System.Windows.Forms.DataGridView();
+            this.dataGridProducts = new System.Windows.Forms.DataGridView();
             this.ProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,7 +49,15 @@ namespace Presentation
             this.label4 = new System.Windows.Forms.Label();
             this.BtnExport = new System.Windows.Forms.Button();
             this.txtMessage = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
+            this.dataGridOrders = new System.Windows.Forms.DataGridView();
+            this.OrdersProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrdersName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrdersQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrdersStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridProducts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridOrders)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -57,27 +65,27 @@ namespace Presentation
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(2464, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(3206, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // dataGrid
+            // dataGridProducts
             // 
-            this.dataGrid.AllowUserToAddRows = false;
-            this.dataGrid.AllowUserToDeleteRows = false;
-            this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridProducts.AllowUserToAddRows = false;
+            this.dataGridProducts.AllowUserToDeleteRows = false;
+            this.dataGridProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ProductID,
             this.Name,
             this.Quantity,
             this.Status});
-            this.dataGrid.Location = new System.Drawing.Point(525, 128);
-            this.dataGrid.Name = "dataGrid";
-            this.dataGrid.RowHeadersWidth = 82;
-            this.dataGrid.RowTemplate.Height = 41;
-            this.dataGrid.Size = new System.Drawing.Size(1184, 610);
-            this.dataGrid.TabIndex = 4;
-            this.dataGrid.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGrid_CellMouseClick);
+            this.dataGridProducts.Location = new System.Drawing.Point(525, 128);
+            this.dataGridProducts.Name = "dataGridProducts";
+            this.dataGridProducts.RowHeadersWidth = 82;
+            this.dataGridProducts.RowTemplate.Height = 41;
+            this.dataGridProducts.Size = new System.Drawing.Size(1184, 610);
+            this.dataGridProducts.TabIndex = 4;
+            this.dataGridProducts.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGrid_CellMouseClick);
             // 
             // ProductID
             // 
@@ -195,7 +203,7 @@ namespace Presentation
             this.BtnImport.Name = "BtnImport";
             this.BtnImport.Size = new System.Drawing.Size(200, 46);
             this.BtnImport.TabIndex = 14;
-            this.BtnImport.Text = "Import";
+            this.BtnImport.Text = "Import Data";
             this.BtnImport.UseVisualStyleBackColor = true;
             this.BtnImport.Click += new System.EventHandler(this.BtnImport_Click);
             // 
@@ -214,24 +222,92 @@ namespace Presentation
             this.BtnExport.Name = "BtnExport";
             this.BtnExport.Size = new System.Drawing.Size(200, 46);
             this.BtnExport.TabIndex = 16;
-            this.BtnExport.Text = "Export";
+            this.BtnExport.Text = "Export Data";
             this.BtnExport.UseVisualStyleBackColor = true;
             this.BtnExport.Click += new System.EventHandler(this.BtnExport_Click);
             // 
             // txtMessage
             // 
             this.txtMessage.AutoSize = true;
-            this.txtMessage.Location = new System.Drawing.Point(51, 56);
+            this.txtMessage.Font = new System.Drawing.Font("Segoe UI", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtMessage.Location = new System.Drawing.Point(49, 46);
             this.txtMessage.Name = "txtMessage";
-            this.txtMessage.Size = new System.Drawing.Size(78, 32);
+            this.txtMessage.Size = new System.Drawing.Size(136, 59);
             this.txtMessage.TabIndex = 17;
-            this.txtMessage.Text = "label5";
+            this.txtMessage.Text = "Stock";
+            // 
+            // dataGridOrders
+            // 
+            this.dataGridOrders.AllowUserToAddRows = false;
+            this.dataGridOrders.AllowUserToDeleteRows = false;
+            this.dataGridOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridOrders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.OrdersProductID,
+            this.OrdersName,
+            this.OrdersQuantity,
+            this.OrdersStatus});
+            this.dataGridOrders.Location = new System.Drawing.Point(1943, 128);
+            this.dataGridOrders.Name = "dataGridOrders";
+            this.dataGridOrders.RowHeadersWidth = 82;
+            this.dataGridOrders.RowTemplate.Height = 41;
+            this.dataGridOrders.Size = new System.Drawing.Size(1184, 616);
+            this.dataGridOrders.TabIndex = 18;
+            // 
+            // OrdersProductID
+            // 
+            this.OrdersProductID.HeaderText = "Product ID";
+            this.OrdersProductID.MinimumWidth = 10;
+            this.OrdersProductID.Name = "OrdersProductID";
+            this.OrdersProductID.Width = 250;
+            // 
+            // OrdersName
+            // 
+            this.OrdersName.HeaderText = "Name";
+            this.OrdersName.MinimumWidth = 10;
+            this.OrdersName.Name = "OrdersName";
+            this.OrdersName.Width = 350;
+            // 
+            // OrdersQuantity
+            // 
+            this.OrdersQuantity.HeaderText = "Quantity";
+            this.OrdersQuantity.MinimumWidth = 10;
+            this.OrdersQuantity.Name = "OrdersQuantity";
+            this.OrdersQuantity.Width = 250;
+            // 
+            // OrdersStatus
+            // 
+            this.OrdersStatus.HeaderText = "Status";
+            this.OrdersStatus.MinimumWidth = 10;
+            this.OrdersStatus.Name = "OrdersStatus";
+            this.OrdersStatus.Width = 250;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(1943, 46);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(161, 59);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "Orders";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1757, 322);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(150, 46);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "Place order";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // Presentation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2464, 1084);
+            this.ClientSize = new System.Drawing.Size(3206, 1088);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.dataGridOrders);
             this.Controls.Add(this.txtMessage);
             this.Controls.Add(this.BtnExport);
             this.Controls.Add(this.label4);
@@ -246,11 +322,11 @@ namespace Presentation
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtCode);
             this.Controls.Add(this.lblproductcode);
-            this.Controls.Add(this.dataGrid);
+            this.Controls.Add(this.dataGridProducts);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Text = "PresentationForm";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridProducts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridOrders)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -258,7 +334,7 @@ namespace Presentation
 
         #endregion
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.DataGridView dataGrid;
+        private System.Windows.Forms.DataGridView dataGridProducts;
         private System.Windows.Forms.Label lblproductcode;
         private System.Windows.Forms.TextBox txtCode;
         private System.Windows.Forms.Label label1;
@@ -277,6 +353,13 @@ namespace Presentation
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private System.Windows.Forms.Label txtMessage;
+        private System.Windows.Forms.DataGridView dataGridOrders;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrdersProductID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrdersName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrdersQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrdersStatus;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button1;
     }
 }
 

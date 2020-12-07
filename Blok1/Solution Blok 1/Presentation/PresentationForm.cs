@@ -13,10 +13,12 @@ namespace Presentation
             InitializeComponent();
             txtMessage.Text = "";
 
-            foreach (var item in Enum.GetNames(typeof(Status)))
+            foreach (var item in Enum.GetNames(typeof(ProductStatus)))
             {
                 cbxStatus.Items.Add(item);
             }
+            inv.ImportData();
+            LoadData();
         }
 
         private void BtnAdd_Click(object sender, EventArgs e)
@@ -25,7 +27,7 @@ namespace Presentation
             try
             {
                 var quantity = int.Parse(txtQuantity.Text);
-                Status status = (Status)Enum.Parse(typeof(Status), cbxStatus.Text);
+                ProductStatus status = (ProductStatus)Enum.Parse(typeof(ProductStatus), cbxStatus.Text);
                 AddData(txtCode.Text, txtName.Text, quantity, status);
             }
             catch (Exception ex)
@@ -34,7 +36,7 @@ namespace Presentation
             }
         }
 
-        private void AddData(string code, string name, int quantity, Status status)
+        private void AddData(string code, string name, int quantity, ProductStatus status)
         {
             var item = new Product(code, name, quantity, status);
             inv.AddProduct(item);
@@ -43,10 +45,10 @@ namespace Presentation
 
         private void LoadData()
         {
-            this.dataGrid.Rows.Clear();
-            foreach (var product in inv.Products)
+            this.dataGridProducts.Rows.Clear();
+            foreach (Product product in inv.Products)
             {
-                this.dataGrid.Rows.Insert(0, product.ProductCode, product.ProductName, product.ProductQuantity, product.ProductStatus);
+                this.dataGridProducts.Rows.Insert(0, product.ProductCode, product.ProductName, product.ProductQuantity, product.ProductStatus);
             }
             txtCode.Text = "";
             txtName.Text = "";
@@ -56,7 +58,8 @@ namespace Presentation
 
         private void ShowError(Exception ex)
         {
-            txtMessage.Text = ex.Message;
+            
+            System.Windows.Forms.MessageBox.Show(ex.InnerException.Message);  //txtMessage.Tex
         }
 
         private void BtnImport_Click(object sender, EventArgs e)
@@ -74,12 +77,13 @@ namespace Presentation
         {
             if (e.RowIndex >= 0)
             {
-                DataGridViewRow row = this.dataGrid.Rows[e.RowIndex];
+                DataGridViewRow row = this.dataGridProducts.Rows[e.RowIndex];
                 txtCode.Text = row.Cells[0].Value.ToString();
                 txtName.Text = row.Cells[1].Value.ToString();
                 txtQuantity.Text = row.Cells[2].Value.ToString();
                 cbxStatus.SelectedItem = row.Cells[3].Value.ToString();
             }
         }
+
     }
 }
