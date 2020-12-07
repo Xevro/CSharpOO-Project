@@ -25,7 +25,7 @@ namespace Presentation
             LoadDataToView();
         }
 
-        private void AddData(string code, string name, int quantity, ProductStatus status)
+        private void AddData(int code, string name, int quantity, ProductStatus status)
         {
             Product item = new Product(code, name, quantity, status);
             inv.AddProduct(item);
@@ -66,7 +66,7 @@ namespace Presentation
             {
                 var quantity = int.Parse(TxtQuantity.Text);
                 ProductStatus status = (ProductStatus)Enum.Parse(typeof(ProductStatus), CbxStatus.Text);
-                AddData(TxtCode.Text, TxtName.Text, quantity, status);
+                AddData(Int32.Parse(TxtCode.Text), TxtName.Text, quantity, status);
             }
             catch (Exception ex)
             {
@@ -99,6 +99,18 @@ namespace Presentation
 
         private void BtnPlaceOrder_Click(object sender, EventArgs e)
         {
+            try
+            {
+                PlaceOrder();
+            }
+            catch (Exception ex)
+            {
+                ShowError(ex);
+            }
+        }
+
+        private void PlaceOrder()
+        {
             if (dataGridProducts.SelectedCells.Count > 0 && CbxOrderStatus.SelectedItem != null)
             {
                 int selectedrowindex = dataGridProducts.SelectedCells[0].RowIndex;
@@ -106,10 +118,9 @@ namespace Presentation
 
                 foreach (Product product in inv.Products)
                 {
-                    if (product.ProductCode == Convert.ToString(selectedRow.Cells[0].Value))
+                    if (product.ProductCode == (int)selectedRow.Cells[0].Value)
                     {
                         product.ProductQuantity = product.ProductQuantity - (int)NmrOrderQuantity.Value;
-
                         Order item = new Order(product.ProductCode, product.ProductName, product.ProductQuantity, (OrderStatus)Enum.Parse(typeof(OrderStatus), CbxOrderStatus.Text));
                         inv.AddOrder(item, (int)NmrOrderQuantity.Value);
                         LoadOrdersDataToView();

@@ -2,6 +2,7 @@
 using Globals;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Logic
 {
@@ -15,22 +16,32 @@ namespace Logic
 
         public void AddProduct(Product product)
         {
-            if (!Products.Contains(product))
+            if (!Products.Any(a => a.ProductCode == product.ProductCode))
             {
                 Products.Add(product);
+            }
+            else
+            {
+                throw new OperationCanceledException("Can't add the product, it already exists");
             }
         }
         public void AddOrder(Order order, int quantity)
         {
-            if (!Orders.Contains(order))
+            if (!Orders.Any(a => a.OrderCode == order.OrderCode))
             {
                 order.OrderQuantity = quantity;
                 Orders.Add(order);
             }
             else
             {
-                throw new OperationCanceledException("Can't add an order.");
+                throw new OperationCanceledException("Can't add the order, it already exists");
             }
+        }
+
+        public bool Equals(Product other)
+        {
+            if (other == null) return false;
+            return (this.Products.Equals(other.ProductCode));
         }
 
         public void ExportData()

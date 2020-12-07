@@ -4,7 +4,7 @@ namespace Globals
 {
     public class Order
     {
-        public string OrderCode { get; set; }
+        public int OrderCode { get; set; }
         public string OrderName { get; set; }
 
         private int orderQuantity;
@@ -19,7 +19,7 @@ namespace Globals
         }
         public OrderStatus OrderStatus { get; set; }
 
-        public Order(string code, string name, int quantity, OrderStatus status)
+        public Order(int code, string name, int quantity, OrderStatus status)
         {
             OrderCode = code;
             OrderName = name;

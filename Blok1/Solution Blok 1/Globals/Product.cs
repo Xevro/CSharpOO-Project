@@ -4,7 +4,7 @@ namespace Globals
 {
     public class Product : IComparable<Product>
     {
-        public string ProductCode { get; set; }
+        public int ProductCode { get; set; }
         public string ProductName { get; set; }
 
         private int productQuantity;
@@ -19,7 +19,7 @@ namespace Globals
         }
         public ProductStatus ProductStatus { get; set; }
 
-        public Product(string code, string name, int quantity, ProductStatus status)
+        public Product(int code, string name, int quantity, ProductStatus status)
         {
             ProductCode = code;
             ProductName = name;
