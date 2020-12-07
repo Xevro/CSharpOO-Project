@@ -11,6 +11,7 @@ namespace Logic
         public List<Product> Products = new List<Product>();
         public List<Order> Orders = new List<Order>();
         private readonly Data data = new Data();
+        private readonly FileDirectoryData fileData = new FileDirectoryData();
 
         public void AddProduct(Product product)
         {
@@ -19,11 +20,16 @@ namespace Logic
                 Products.Add(product);
             }
         }
-        public void AddOrder(Order order)
+        public void AddOrder(Order order, int quantity)
         {
             if (!Orders.Contains(order))
             {
+                order.OrderQuantity = quantity;
                 Orders.Add(order);
+            }
+            else
+            {
+                throw new OperationCanceledException("Can't add an order.");
             }
         }
 
@@ -35,6 +41,15 @@ namespace Logic
         public void ImportData()
         {
             Products.AddRange(data.ImportFromJSON());
+        }
+
+        public void ShowFileInfo()
+        {
+            fileData.FileInfo();
+        }
+        public void ShowDirectoryInfo()
+        {
+            fileData.DirectoryInfo();
         }
     }
 }

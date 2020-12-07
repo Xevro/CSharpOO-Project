@@ -1,12 +1,14 @@
 ﻿using System;
+using Logic;
 
 namespace ConsoleInventory
 {
     public class UserInterface
     {
+        private readonly Inventory inv = new Inventory();
 
         public UserInterface()
-        {
+        {   
         }
 
         public void Run()
@@ -18,17 +20,10 @@ namespace ConsoleInventory
         {
             Console.WriteLine("Console Inventory Application");
             Console.WriteLine("-----------------------------\n");
+            Console.WriteLine("File & Directory information");
+            inv.ShowFileInfo();
+            inv.ShowDirectoryInfo();
 
-            Double AmountEuro, AmountUsd;
-            const Double Wisselkoers = 1.2231;
-
-            Console.WriteLine("Enter your amount that you want to convert in Euro: ");
-            AmountEuro = Convert.ToDouble(Console.ReadLine());
-
-            AmountUsd = AmountEuro * Wisselkoers;
-
-            Console.WriteLine($"Your €{AmountEuro.ToString()} is equal to ${AmountUsd.ToString()}");
-            Console.ReadLine();
         }
     }
 }

@@ -99,21 +99,27 @@ namespace Presentation
 
         private void BtnPlaceOrder_Click(object sender, EventArgs e)
         {
-            if (dataGridProducts.SelectedCells.Count > 0)
+            if (dataGridProducts.SelectedCells.Count > 0 && CbxOrderStatus.SelectedItem != null)
             {
                 int selectedrowindex = dataGridProducts.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = dataGridProducts.Rows[selectedrowindex];
 
                 foreach (Product product in inv.Products)
                 {
-                    if (product.ProductName == Convert.ToString(selectedRow.Cells["Name"].Value))
+                    if (product.ProductCode == Convert.ToString(selectedRow.Cells[0].Value))
                     {
-                        //- (int) NmrOrderQuantity.Value
+                        product.ProductQuantity = product.ProductQuantity - (int)NmrOrderQuantity.Value;
+
                         Order item = new Order(product.ProductCode, product.ProductName, product.ProductQuantity, (OrderStatus)Enum.Parse(typeof(OrderStatus), CbxOrderStatus.Text));
-                        inv.AddOrder(item);
+                        inv.AddOrder(item, (int)NmrOrderQuantity.Value);
                         LoadOrdersDataToView();
+                        LoadDataToView();
                     }
                 }
+            }
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("Please select an item and an order status!");
             }
         }
     }

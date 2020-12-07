@@ -2,7 +2,7 @@
 
 namespace Globals
 {
-    public class Product
+    public class Product : IComparable<Product>
     {
         public string ProductCode { get; set; }
         public string ProductName { get; set; }
@@ -25,6 +25,16 @@ namespace Globals
             ProductName = name;
             ProductQuantity = quantity;
             ProductStatus = status;
+        }
+
+        public override string ToString()
+        {
+            return $"Prduct code: {ProductCode}, Product name: {ProductName}, Quantity: {ProductQuantity}.";
+        }
+
+        public int CompareTo(Product other)
+        {
+            return this.ProductCode.CompareTo(other.ProductCode);
         }
     }
 }
