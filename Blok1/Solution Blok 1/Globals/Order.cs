@@ -2,7 +2,7 @@
 
 namespace Globals
 {
-    class Order
+    public class Order
     {
         public string OrderCode { get; set; }
         public string OrderName { get; set; }

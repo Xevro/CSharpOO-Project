@@ -9,6 +9,7 @@ namespace Logic
     public class Inventory
     {
         public List<Product> Products = new List<Product>();
+        public List<Order> Orders = new List<Order>();
         private readonly Data data = new Data();
 
         public void AddProduct(Product product)
@@ -18,16 +19,22 @@ namespace Logic
                 Products.Add(product);
             }
         }
+        public void AddOrder(Order order)
+        {
+            if (!Orders.Contains(order))
+            {
+                Orders.Add(order);
+            }
+        }
 
         public void ExportData()
         {
             data.ExportToJSON(Products);
         }
 
-        public List<Product> ImportData()
+        public void ImportData()
         {
             Products.AddRange(data.ImportFromJSON());
-            return Products;
         }
     }
 }

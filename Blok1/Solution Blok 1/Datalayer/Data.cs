@@ -8,7 +8,6 @@ namespace Datalayer
 {
     public class Data
     {
-
         public void ExportToJSON(List<Product> products)
         {
             var formatter = new Newtonsoft.Json.JsonSerializer();

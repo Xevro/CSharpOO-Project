@@ -13,12 +13,50 @@ namespace Presentation
             InitializeComponent();
             txtMessage.Text = "";
 
-            foreach (var item in Enum.GetNames(typeof(ProductStatus)))
+            foreach (var productStatus in Enum.GetNames(typeof(ProductStatus)))
             {
-                cbxStatus.Items.Add(item);
+                CbxStatus.Items.Add(productStatus);
+            }
+            foreach (var orderStatus in Enum.GetNames(typeof(OrderStatus)))
+            {
+                CbxOrderStatus.Items.Add(orderStatus);
             }
             inv.ImportData();
-            LoadData();
+            LoadDataToView();
+        }
+
+        private void AddData(string code, string name, int quantity, ProductStatus status)
+        {
+            Product item = new Product(code, name, quantity, status);
+            inv.AddProduct(item);
+            LoadDataToView();
+        }
+
+        private void LoadDataToView()
+        {
+            this.dataGridProducts.Rows.Clear();
+            foreach (Product product in inv.Products)
+            {
+                this.dataGridProducts.Rows.Insert(0, product.ProductCode, product.ProductName, product.ProductQuantity, product.ProductStatus);
+            }
+            TxtCode.Text = "";
+            TxtName.Text = "";
+            TxtQuantity.Text = "";
+            CbxStatus.SelectedIndex = 0;
+        }
+        private void LoadOrdersDataToView()
+        {
+            this.dataGridOrders.Rows.Clear();
+            foreach (Order order in inv.Orders)
+            {
+                this.dataGridOrders.Rows.Insert(0, order.OrderCode, order.OrderName, order.OrderQuantity, order.OrderStatus);
+            }
+        }
+
+        private void ShowError(Exception ex)
+        {
+            System.Windows.Forms.MessageBox.Show(ex.Message);
+            //txtMessage.Text
         }
 
         private void BtnAdd_Click(object sender, EventArgs e)
@@ -26,9 +64,9 @@ namespace Presentation
             txtMessage.Text = "";
             try
             {
-                var quantity = int.Parse(txtQuantity.Text);
-                ProductStatus status = (ProductStatus)Enum.Parse(typeof(ProductStatus), cbxStatus.Text);
-                AddData(txtCode.Text, txtName.Text, quantity, status);
+                var quantity = int.Parse(TxtQuantity.Text);
+                ProductStatus status = (ProductStatus)Enum.Parse(typeof(ProductStatus), CbxStatus.Text);
+                AddData(TxtCode.Text, TxtName.Text, quantity, status);
             }
             catch (Exception ex)
             {
@@ -36,36 +74,10 @@ namespace Presentation
             }
         }
 
-        private void AddData(string code, string name, int quantity, ProductStatus status)
-        {
-            var item = new Product(code, name, quantity, status);
-            inv.AddProduct(item);
-            LoadData();
-        }
-
-        private void LoadData()
-        {
-            this.dataGridProducts.Rows.Clear();
-            foreach (Product product in inv.Products)
-            {
-                this.dataGridProducts.Rows.Insert(0, product.ProductCode, product.ProductName, product.ProductQuantity, product.ProductStatus);
-            }
-            txtCode.Text = "";
-            txtName.Text = "";
-            txtQuantity.Text = "";
-            cbxStatus.SelectedIndex = 0;
-        }
-
-        private void ShowError(Exception ex)
-        {
-            
-            System.Windows.Forms.MessageBox.Show(ex.InnerException.Message);  //txtMessage.Tex
-        }
-
         private void BtnImport_Click(object sender, EventArgs e)
         {
             inv.ImportData();
-            LoadData();
+            LoadDataToView();
         }
 
         private void BtnExport_Click(object sender, EventArgs e)
@@ -78,12 +90,31 @@ namespace Presentation
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = this.dataGridProducts.Rows[e.RowIndex];
-                txtCode.Text = row.Cells[0].Value.ToString();
-                txtName.Text = row.Cells[1].Value.ToString();
-                txtQuantity.Text = row.Cells[2].Value.ToString();
-                cbxStatus.SelectedItem = row.Cells[3].Value.ToString();
+                TxtCode.Text = row.Cells[0].Value.ToString();
+                TxtName.Text = row.Cells[1].Value.ToString();
+                TxtQuantity.Text = row.Cells[2].Value.ToString();
+                CbxStatus.SelectedItem = row.Cells[3].Value.ToString();
             }
         }
 
+        private void BtnPlaceOrder_Click(object sender, EventArgs e)
+        {
+            if (dataGridProducts.SelectedCells.Count > 0)
+            {
+                int selectedrowindex = dataGridProducts.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = dataGridProducts.Rows[selectedrowindex];
+
+                foreach (Product product in inv.Products)
+                {
+                    if (product.ProductName == Convert.ToString(selectedRow.Cells["Name"].Value))
+                    {
+                        //- (int) NmrOrderQuantity.Value
+                        Order item = new Order(product.ProductCode, product.ProductName, product.ProductQuantity, (OrderStatus)Enum.Parse(typeof(OrderStatus), CbxOrderStatus.Text));
+                        inv.AddOrder(item);
+                        LoadOrdersDataToView();
+                    }
+                }
+            }
+        }
     }
 }
