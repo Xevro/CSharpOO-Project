@@ -7,10 +7,6 @@ namespace ConsoleInventory
     {
         private readonly Inventory inv = new Inventory();
 
-        public UserInterface()
-        {   
-        }
-
         public void Run()
         {
             ShowBanner();

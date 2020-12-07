@@ -26,5 +26,12 @@ namespace Globals
             OrderQuantity = quantity;
             OrderStatus = status;
         }
+
+        public Order(int code, string name, int quantity)
+        {
+            OrderCode = code;
+            OrderName = name;
+            OrderQuantity = quantity;
+        }
     }
 }
