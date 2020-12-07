@@ -1,7 +1,6 @@
 ﻿using Globals;
 using Logic;
 using System;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace Presentation
@@ -57,7 +56,8 @@ namespace Presentation
         private void ShowError(Exception ex)
         {
             System.Windows.Forms.MessageBox.Show(ex.Message);
-            //txtMessage.Text
+            LoadOrdersDataToView();
+            LoadDataToView();
         }
 
         private void BtnAdd_Click(object sender, EventArgs e)
@@ -70,9 +70,11 @@ namespace Presentation
                 {
                     throw new ArgumentOutOfRangeException("Quantity is to small, must be 1 at least.");
                 }
-
-                ProductStatus status = (ProductStatus)Enum.Parse(typeof(ProductStatus), CbxStatus.Text);
-                AddData(Int32.Parse(TxtCode.Text), TxtName.Text, quantity, status);
+                else
+                {
+                    ProductStatus status = (ProductStatus)Enum.Parse(typeof(ProductStatus), CbxStatus.Text);
+                    AddData(Int32.Parse(TxtCode.Text), TxtName.Text, quantity, status);
+                }
             }
             catch (Exception ex)
             {
@@ -124,7 +126,7 @@ namespace Presentation
 
                 foreach (Product product in inv.GetProducts())
                 {
-                    if (product.ProductCode == (int)selectedRow.Cells[0].Value)
+                    if (product.ProductCode == (int)selectedRow.Cells[0].Value && CheckQuantity(product))
                     {
                         product.ProductQuantity -= (int)NmrOrderQuantity.Value;
                         Order item = new Order(product.ProductCode, product.ProductName, (int)NmrOrderQuantity.Value, (OrderStatus)Enum.Parse(typeof(OrderStatus), CbxOrderStatus.Text));
@@ -137,6 +139,18 @@ namespace Presentation
             else
             {
                 throw new Exception("Please select an item and an order status!");
+            }
+        }
+
+        private bool CheckQuantity(Product product)
+        {
+            if (!(product.ProductQuantity < 0))
+            {
+                return true;
+            }
+            else
+            {
+                throw new Exception("Can't add order, There must be a quantity");
             }
         }
     }

@@ -32,16 +32,6 @@ namespace Logic
             }
         }
 
-        public List<Product> GetProducts()
-        {
-            return Products;
-        }
-
-        public List<Order> GetOrders()
-        {
-            return Orders;
-        }
-
         public void RemoveProduct(Product product)
         {
             Products.RemoveAll(x => x.ProductCode == product.ProductCode);
@@ -52,10 +42,14 @@ namespace Logic
             if (!Orders.Any(a => a.OrderCode == order.OrderCode) || product.ProductStatus != ProductStatus.Outofstock)
             {
                 Orders.Add(order);
+                if (product.ProductQuantity <= 8)
+                {
+                    throw new Exception($"Stock is running low on {product.ProductName}");
+                }
             }
             else
             {
-                if (product.ProductStatus == ProductStatus.Outofstock)
+                if (product.ProductStatus == ProductStatus.Outofstock || product.ProductQuantity <= 0)
                 {
                     throw new OperationCanceledException("Product is out of stock");
                 }
@@ -90,5 +84,14 @@ namespace Logic
         {
             fileData.DirectoryInfo();
         }
+        public List<Product> GetProducts()
+        {
+            return Products;
+        }
+        public List<Order> GetOrders()
+        {
+            return Orders;
+        }
+
     }
 }
