@@ -39,10 +39,8 @@ namespace Presentation
             this.TxtCode = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.TxtName = new System.Windows.Forms.TextBox();
             this.TxtQuantity = new System.Windows.Forms.TextBox();
-            this.CbxStatus = new System.Windows.Forms.ComboBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.lblMessage = new System.Windows.Forms.Label();
             this.BtnImport = new System.Windows.Forms.Button();
@@ -50,6 +48,11 @@ namespace Presentation
             this.BtnExport = new System.Windows.Forms.Button();
             this.txtMessage = new System.Windows.Forms.Label();
             this.dataGridOrders = new System.Windows.Forms.DataGridView();
+            this.OrderID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrderProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrderName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrderQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrderStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
             this.BtnPlaceOrder = new System.Windows.Forms.Button();
             this.CbxOrderStatus = new System.Windows.Forms.ComboBox();
@@ -58,11 +61,6 @@ namespace Presentation
             this.label7 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.OrdersID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrderID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrderProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrderName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrderQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrderStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProducts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NmrOrderQuantity)).BeginInit();
@@ -73,7 +71,7 @@ namespace Presentation
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(3364, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(3218, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -165,15 +163,6 @@ namespace Presentation
             this.label2.TabIndex = 8;
             this.label2.Text = "Quantity";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(134, 363);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 32);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Status";
-            // 
             // TxtName
             // 
             this.TxtName.Location = new System.Drawing.Point(247, 203);
@@ -188,17 +177,9 @@ namespace Presentation
             this.TxtQuantity.Size = new System.Drawing.Size(200, 39);
             this.TxtQuantity.TabIndex = 11;
             // 
-            // CbxStatus
-            // 
-            this.CbxStatus.FormattingEnabled = true;
-            this.CbxStatus.Location = new System.Drawing.Point(247, 360);
-            this.CbxStatus.Name = "CbxStatus";
-            this.CbxStatus.Size = new System.Drawing.Size(200, 40);
-            this.CbxStatus.TabIndex = 12;
-            // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(247, 446);
+            this.btnAdd.Location = new System.Drawing.Point(247, 362);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(200, 46);
             this.btnAdd.TabIndex = 13;
@@ -215,7 +196,7 @@ namespace Presentation
             // 
             // BtnImport
             // 
-            this.BtnImport.Location = new System.Drawing.Point(49, 606);
+            this.BtnImport.Location = new System.Drawing.Point(49, 498);
             this.BtnImport.Name = "BtnImport";
             this.BtnImport.Size = new System.Drawing.Size(200, 46);
             this.BtnImport.TabIndex = 14;
@@ -227,7 +208,7 @@ namespace Presentation
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(37, 536);
+            this.label4.Location = new System.Drawing.Point(49, 432);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(119, 40);
             this.label4.TabIndex = 15;
@@ -235,7 +216,7 @@ namespace Presentation
             // 
             // BtnExport
             // 
-            this.BtnExport.Location = new System.Drawing.Point(49, 686);
+            this.BtnExport.Location = new System.Drawing.Point(49, 584);
             this.BtnExport.Name = "BtnExport";
             this.BtnExport.Size = new System.Drawing.Size(200, 46);
             this.BtnExport.TabIndex = 16;
@@ -264,87 +245,12 @@ namespace Presentation
             this.OrderName,
             this.OrderQuantity,
             this.OrderStatus});
-            this.dataGridOrders.Location = new System.Drawing.Point(2146, 122);
+            this.dataGridOrders.Location = new System.Drawing.Point(525, 866);
             this.dataGridOrders.Name = "dataGridOrders";
             this.dataGridOrders.RowHeadersWidth = 82;
             this.dataGridOrders.RowTemplate.Height = 41;
             this.dataGridOrders.Size = new System.Drawing.Size(1184, 616);
             this.dataGridOrders.TabIndex = 18;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(1821, 46);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(161, 59);
-            this.label5.TabIndex = 19;
-            this.label5.Text = "Orders";
-            // 
-            // BtnPlaceOrder
-            // 
-            this.BtnPlaceOrder.Location = new System.Drawing.Point(1909, 332);
-            this.BtnPlaceOrder.Name = "BtnPlaceOrder";
-            this.BtnPlaceOrder.Size = new System.Drawing.Size(170, 46);
-            this.BtnPlaceOrder.TabIndex = 20;
-            this.BtnPlaceOrder.Text = "Place order";
-            this.BtnPlaceOrder.UseVisualStyleBackColor = true;
-            this.BtnPlaceOrder.Click += new System.EventHandler(this.BtnPlaceOrder_Click);
-            // 
-            // CbxOrderStatus
-            // 
-            this.CbxOrderStatus.FormattingEnabled = true;
-            this.CbxOrderStatus.Location = new System.Drawing.Point(1909, 174);
-            this.CbxOrderStatus.Name = "CbxOrderStatus";
-            this.CbxOrderStatus.Size = new System.Drawing.Size(170, 40);
-            this.CbxOrderStatus.TabIndex = 21;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(1739, 177);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(144, 32);
-            this.label6.TabIndex = 22;
-            this.label6.Text = "Order status";
-            // 
-            // NmrOrderQuantity
-            // 
-            this.NmrOrderQuantity.Location = new System.Drawing.Point(1909, 252);
-            this.NmrOrderQuantity.Name = "NmrOrderQuantity";
-            this.NmrOrderQuantity.Size = new System.Drawing.Size(170, 39);
-            this.NmrOrderQuantity.TabIndex = 23;
-            this.NmrOrderQuantity.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // label7
-            // 
-            this.label7.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1777, 254);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(106, 32);
-            this.label7.TabIndex = 24;
-            this.label7.Text = "Quantity";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(297, 606);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 46);
-            this.button1.TabIndex = 25;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // OrdersID
-            // 
-            this.OrdersID.HeaderText = "Order ID";
-            this.OrdersID.MinimumWidth = 10;
-            this.OrdersID.Name = "OrdersID";
-            this.OrdersID.Width = 250;
             // 
             // OrderID
             // 
@@ -381,11 +287,86 @@ namespace Presentation
             this.OrderStatus.Name = "OrderStatus";
             this.OrderStatus.Width = 200;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(49, 772);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(161, 59);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "Orders";
+            // 
+            // BtnPlaceOrder
+            // 
+            this.BtnPlaceOrder.Location = new System.Drawing.Point(247, 1102);
+            this.BtnPlaceOrder.Name = "BtnPlaceOrder";
+            this.BtnPlaceOrder.Size = new System.Drawing.Size(200, 56);
+            this.BtnPlaceOrder.TabIndex = 20;
+            this.BtnPlaceOrder.Text = "Place order";
+            this.BtnPlaceOrder.UseVisualStyleBackColor = true;
+            this.BtnPlaceOrder.Click += new System.EventHandler(this.BtnPlaceOrder_Click);
+            // 
+            // CbxOrderStatus
+            // 
+            this.CbxOrderStatus.FormattingEnabled = true;
+            this.CbxOrderStatus.Location = new System.Drawing.Point(247, 900);
+            this.CbxOrderStatus.Name = "CbxOrderStatus";
+            this.CbxOrderStatus.Size = new System.Drawing.Size(200, 40);
+            this.CbxOrderStatus.TabIndex = 21;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(68, 903);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(144, 32);
+            this.label6.TabIndex = 22;
+            this.label6.Text = "Order status";
+            // 
+            // NmrOrderQuantity
+            // 
+            this.NmrOrderQuantity.Location = new System.Drawing.Point(247, 998);
+            this.NmrOrderQuantity.Name = "NmrOrderQuantity";
+            this.NmrOrderQuantity.Size = new System.Drawing.Size(200, 39);
+            this.NmrOrderQuantity.TabIndex = 23;
+            this.NmrOrderQuantity.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label7
+            // 
+            this.label7.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(106, 1000);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(106, 32);
+            this.label7.TabIndex = 24;
+            this.label7.Text = "Quantity";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(297, 498);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(150, 46);
+            this.button1.TabIndex = 25;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // OrdersID
+            // 
+            this.OrdersID.HeaderText = "Order ID";
+            this.OrdersID.MinimumWidth = 10;
+            this.OrdersID.Name = "OrdersID";
+            this.OrdersID.Width = 250;
+            // 
             // Presentation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(3364, 1088);
+            this.ClientSize = new System.Drawing.Size(3218, 1617);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.NmrOrderQuantity);
@@ -400,10 +381,8 @@ namespace Presentation
             this.Controls.Add(this.BtnImport);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.CbxStatus);
             this.Controls.Add(this.TxtQuantity);
             this.Controls.Add(this.TxtName);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TxtCode);
@@ -426,10 +405,8 @@ namespace Presentation
         private System.Windows.Forms.TextBox TxtCode;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox TxtName;
         private System.Windows.Forms.TextBox TxtQuantity;
-        private System.Windows.Forms.ComboBox CbxStatus;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label lblMessage;
         private System.Windows.Forms.Button BtnImport;

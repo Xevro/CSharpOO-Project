@@ -1,11 +1,11 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 
 namespace Globals
 {
-    public class Order
+    public class Order : IEquatable<Order>
     {
-
         private int orderCode;
         public int OrderCode { get { return orderCode; } set { orderCode = value; } }
 
@@ -13,7 +13,7 @@ namespace Globals
         public int OrderProductCode { get { return orderProductCode; } set { orderProductCode = value; } }
 
         private string orderName;
-         
+
         public string OrderName { get { return orderName; } set { orderName = value; } }
 
         private int orderQuantity;
@@ -37,6 +37,11 @@ namespace Globals
             OrderName = name;
             OrderQuantity = quantity;
             OrderStatus = status;
+        }
+
+        public bool Equals(Order other)
+        {
+            return other.orderCode == this.orderCode;
         }
     }
 }

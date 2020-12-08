@@ -7,16 +7,13 @@ namespace Presentation
 {
     public partial class Presentation : Form
     {
-        private readonly Inventory inv = new Inventory();
-        public Presentation()
+        private readonly Inventory inv;
+
+        public Presentation(Inventory inventory)
         {
             InitializeComponent();
+            this.inv = inventory;
             txtMessage.Text = "";
-
-            foreach (var productStatus in Enum.GetNames(typeof(ProductStatus)))
-            {
-                CbxStatus.Items.Add(productStatus);
-            }
             foreach (var orderStatus in Enum.GetNames(typeof(OrderStatus)))
             {
                 CbxOrderStatus.Items.Add(orderStatus);
@@ -25,9 +22,9 @@ namespace Presentation
             LoadDataToView();
         }
 
-        private void AddProduct(int code, string name, int quantity, ProductStatus status)
+        private void AddProduct(int code, string name, int quantity)
         {
-            Product item = new Product(code, name, quantity, status);
+            Product item = new Product(code, name, quantity);
             inv.AddProduct(item);
             LoadDataToView();
         }
@@ -35,19 +32,18 @@ namespace Presentation
         private void LoadDataToView()
         {
             this.dataGridProducts.Rows.Clear();
-            foreach (Product product in inv.GetProducts())
+            foreach (Product product in inv.GetSortedProducts)
             {
                 this.dataGridProducts.Rows.Insert(0, product.ProductCode, product.ProductName, product.ProductQuantity, product.ProductStatus);
             }
             TxtCode.Text = "";
             TxtName.Text = "";
             TxtQuantity.Text = "";
-            CbxStatus.SelectedIndex = 0;
         }
         private void LoadOrdersDataToView()
         {
             this.dataGridOrders.Rows.Clear();
-            foreach (Order order in inv.GetOrders())
+            foreach (Order order in inv.GetSortedOrders)
             {
                 this.dataGridOrders.Rows.Insert(0, order.OrderCode, order.OrderProductCode, order.OrderName, order.OrderQuantity, order.OrderStatus);
             }
@@ -66,8 +62,7 @@ namespace Presentation
             try
             {
                 int quantity = int.Parse(TxtQuantity.Text);
-                ProductStatus status = (ProductStatus)Enum.Parse(typeof(ProductStatus), CbxStatus.Text);
-                AddProduct(int.Parse(TxtCode.Text), TxtName.Text, quantity, status);
+                AddProduct(int.Parse(TxtCode.Text), TxtName.Text, quantity);
             }
             catch (Exception ex)
             {
@@ -77,13 +72,27 @@ namespace Presentation
 
         private void BtnImport_Click(object sender, EventArgs e)
         {
-            inv.ImportData();
-            LoadDataToView();
+            try
+            {
+                inv.ImportData();
+                LoadDataToView();
+            }
+            catch (Exception ex)
+            {
+                ShowError(ex);
+            }
         }
 
         private void BtnExport_Click(object sender, EventArgs e)
         {
-            inv.ExportData(@"./ProductsData.json");
+            try
+            {
+                inv.ExportData(@"./ProductsData.json");
+            }
+            catch (Exception ex)
+            {
+                ShowError(ex);
+            }
         }
 
         private void DataGrid_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -94,7 +103,6 @@ namespace Presentation
                 TxtCode.Text = row.Cells[0].Value.ToString();
                 TxtName.Text = row.Cells[1].Value.ToString();
                 TxtQuantity.Text = row.Cells[2].Value.ToString();
-                CbxStatus.SelectedItem = row.Cells[3].Value.ToString();
             }
         }
 
@@ -116,11 +124,10 @@ namespace Presentation
             {
                 DataGridViewRow selectedRow = dataGridProducts.Rows[dataGridProducts.SelectedCells[0].RowIndex];
 
-                foreach (Product product in inv.GetProducts())
+                foreach (Product product in inv.GetSortedProducts)
                 {
                     if (product.ProductCode == (int)selectedRow.Cells[0].Value)
                     {
-
                         if (product.ProductQuantity - (int)NmrOrderQuantity.Value >= 0)
                         {
                             Order order = new Order(product.ProductCode, product.ProductName, (int)NmrOrderQuantity.Value, (OrderStatus)Enum.Parse(typeof(OrderStatus), CbxOrderStatus.Text));

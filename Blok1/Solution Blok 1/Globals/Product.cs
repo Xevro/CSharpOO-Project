@@ -2,9 +2,18 @@
 
 namespace Globals
 {
-    public class Product : IComparable<Product>
+    public class Product : IEquatable<Product>
     {
-        public int ProductCode { get; set; }
+        private int productCode;
+        public int ProductCode
+        {
+            get { return productCode; }
+            set
+            {
+                if (value.GetType() == typeof(int)) productCode = value;
+                else throw new FormatException($"{nameof(value)} must be a number");
+            }
+        }
         public string ProductName { get; set; }
 
         private int productQuantity;
@@ -19,22 +28,28 @@ namespace Globals
         }
         public ProductStatus ProductStatus { get; set; }
 
-        public Product(int code, string name, int quantity, ProductStatus status)
+        public Product(int code, string name, int quantity)
         {
             ProductCode = code;
             ProductName = name;
             ProductQuantity = quantity;
-            ProductStatus = status;
+            if (quantity <= 0)
+            {
+                ProductStatus = ProductStatus.Outofstock;
+            }
+            else
+            {
+                ProductStatus = ProductStatus.Instock;
+            }
         }
-
         public override string ToString()
         {
             return $"Prduct code: {ProductCode}, Product name: {ProductName}, Quantity: {ProductQuantity}.";
         }
 
-        public int CompareTo(Product other)
+        public bool Equals(Product other)
         {
-            return this.ProductCode.CompareTo(other.ProductCode);
+            return other.productCode == this.productCode;
         }
     }
 }

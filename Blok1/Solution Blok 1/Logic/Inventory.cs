@@ -7,12 +7,30 @@ using System.Linq;
 namespace Logic
 {
     [Serializable]
-    public class Inventory
+    public class Inventory : IDataInventory
     {
         private readonly List<Product> Products = new List<Product>();
         private readonly List<Order> Orders = new List<Order>();
         private readonly Data data = new Data();
         private readonly FileDirectoryData fileData = new FileDirectoryData();
+
+        public List<Product> GetSortedProducts
+        {
+            get
+            {
+                List<Product> productsList = Products.OrderBy(p => p.ProductName).ToList();
+                return productsList;
+            }
+        }
+
+        public List<Order> GetSortedOrders
+        {
+            get
+            {
+                List<Order> ordersList = Orders.OrderBy(o => o.OrderName).ToList();
+                return ordersList;
+            }
+        }
 
         public void AddProduct(Product product)
         {
@@ -40,7 +58,7 @@ namespace Logic
             if ((product.ProductStatus == ProductStatus.Instock) && (quantityTxtField <= product.ProductQuantity))
             {
                 product.ProductQuantity -= quantityTxtField;
-                CheckProductStock(product); 
+                CheckProductStock(product);
                 Orders.Add(order);
 
                 if (product.ProductQuantity <= 8)
@@ -67,11 +85,11 @@ namespace Logic
             }
         }
 
-        public bool Equals(Product other)
-        {
-            if (other == null) return false;
-            return (this.Products.Equals(other.ProductCode));
-        }
+        /* public bool Equals(Product other)
+         {
+             if (other == null) return false;
+             return (this.Products.Equals(other.ProductCode));
+         }*/
 
         public void ExportData(string path)
         {
@@ -90,15 +108,6 @@ namespace Logic
         public void ShowDirectoryInfo()
         {
             fileData.DirectoryInfo();
-        }
-
-        public List<Product> GetProducts()
-        {
-            return Products;
-        }
-        public List<Order> GetOrders()
-        {
-            return Orders;
         }
     }
 }

@@ -2,12 +2,11 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 
 namespace Datalayer
 {
-    public class Data
+    public class Data : IDataProvived
     {
         public void ExportToJSON(List<Product> products, string path)
         {
@@ -38,11 +37,11 @@ namespace Datalayer
             }
         }
 
-        public List<Product> ImportFromJSON()
+        public List<Product> ImportFromJSON(string path)
         {
             try
             {
-                string json = File.ReadAllText(@"./ProductsData.json");
+                string json = File.ReadAllText(path);
                 List<Product> productsFromFile = JsonConvert.DeserializeObject<List<Product>>(json);
                 return productsFromFile;
             }
@@ -50,7 +49,6 @@ namespace Datalayer
             {
                 throw new Exception("Error while importing from json file");
             }
-
         }
     }
 }
