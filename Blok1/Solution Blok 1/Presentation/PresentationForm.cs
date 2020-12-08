@@ -66,15 +66,8 @@ namespace Presentation
             try
             {
                 int quantity = int.Parse(TxtQuantity.Text);
-                if (quantity <= 0)
-                {
-                    throw new ArgumentOutOfRangeException("Quantity is to small, must be 1 at least.");
-                }
-                else
-                {
-                    ProductStatus status = (ProductStatus)Enum.Parse(typeof(ProductStatus), CbxStatus.Text);
-                    AddData(Int32.Parse(TxtCode.Text), TxtName.Text, quantity, status);
-                }
+                ProductStatus status = (ProductStatus)Enum.Parse(typeof(ProductStatus), CbxStatus.Text);
+                AddData(int.Parse(TxtCode.Text), TxtName.Text, quantity, status);
             }
             catch (Exception ex)
             {
@@ -121,24 +114,14 @@ namespace Presentation
         {
             if (dataGridProducts.SelectedCells.Count > 0 && CbxOrderStatus.SelectedItem != null)
             {
-                int selectedrowindex = dataGridProducts.SelectedCells[0].RowIndex;
-                DataGridViewRow selectedRow = dataGridProducts.Rows[selectedrowindex];
+                DataGridViewRow selectedRow = dataGridProducts.Rows[dataGridProducts.SelectedCells[0].RowIndex];
 
                 foreach (Product product in inv.GetProducts())
                 {
                     if (product.ProductCode == (int)selectedRow.Cells[0].Value)
                     {
-                        int quantity = product.ProductQuantity - (int)NmrOrderQuantity.Value;
-                        if (quantity >= 0)
-                        {
-                            product.ProductQuantity = quantity;
-                        }
-                        if (product.ProductQuantity == 0)
-                        {
-                            product.ProductStatus = ProductStatus.Outofstock;
-                        }
-                        Order item = new Order(product.ProductCode, product.ProductName, (int)NmrOrderQuantity.Value, (OrderStatus)Enum.Parse(typeof(OrderStatus), CbxOrderStatus.Text));
-                        inv.AddOrder(item, product);
+                        Order order = new Order(product.ProductCode, product.ProductName, (int)NmrOrderQuantity.Value, (OrderStatus)Enum.Parse(typeof(OrderStatus), CbxOrderStatus.Text));
+                        inv.AddOrder(order, product, (int)NmrOrderQuantity.Value);
                     }
                 }
                 LoadOrdersDataToView();
@@ -147,18 +130,6 @@ namespace Presentation
             else
             {
                 throw new Exception("Please select an item and/or an order status!");
-            }
-        }
-
-        private bool CheckQuantity(Product product)
-        {
-            if (!(product.ProductQuantity <= 0))
-            {
-                return true;
-            }
-            else
-            {
-                throw new Exception("Can't add order, There must be a quantity available");
             }
         }
     }

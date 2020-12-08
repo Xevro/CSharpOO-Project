@@ -16,7 +16,11 @@ namespace Logic
 
         public void AddProduct(Product product)
         {
-            if (!Products.Any(a => a.ProductCode == product.ProductCode) || product.ProductQuantity > 1)
+            if (product.ProductQuantity <= 0)
+            {
+                throw new ArgumentOutOfRangeException("Quantity is to small, must be 1 at least.");
+            }
+            if (!Products.Any(a => a.ProductCode == product.ProductCode) && product.ProductQuantity >= 1)
             {
                 Products.Add(product);
             }
@@ -31,17 +35,21 @@ namespace Logic
             Products.RemoveAll(x => x.ProductCode == product.ProductCode);
         }
 
-        public void AddOrder(Order order, Product product)
+        public void AddOrder(Order order, Product product, int quantityTxtField)
         {
-            if (!Orders.Any(a => a.OrderCode == order.OrderCode) || !CheckStock(product) && product.ProductQuantity >= 1)
+            if ((product.ProductStatus == ProductStatus.Instock) && (quantityTxtField <= product.ProductQuantity))
             {
+                product.ProductQuantity = product.ProductQuantity - quantityTxtField;
+                CheckProductInfo(product, quantityTxtField);
                 Orders.Add(order);
+
                 if (product.ProductQuantity <= 8)
                 {
                     throw new Exception($"Stock is running low on {product.ProductName}");
                 }
-                if (!CheckStock(product))
+                if (product.ProductQuantity == 0)
                 {
+                    product.ProductStatus = ProductStatus.Outofstock;
                     throw new OperationCanceledException("Product is out of stock");
                 }
             }
@@ -50,6 +58,20 @@ namespace Logic
                 throw new OperationCanceledException("Can't add the order.");
             }
         }
+
+        private void CheckProductInfo(Product product, int quantityTxtField)
+        {
+            /*int quantity = product.ProductQuantity - quantityTxtField;
+            if (quantity >= 0)
+            {
+                product.ProductQuantity = quantity;
+            }*/
+            if (product.ProductQuantity == 0)
+            {
+                product.ProductStatus = ProductStatus.Outofstock;
+            }
+        }
+
 
         public bool Equals(Product other)
         {
@@ -83,20 +105,6 @@ namespace Logic
         public List<Order> GetOrders()
         {
             return Orders;
-        }
-
-        private bool CheckStock(Product product)
-        {
-            if (product.ProductQuantity <= 0)
-            {
-               // product.ProductStatus = ProductStatus.Outofstock;
-               // product.ProductQuantity = 0;
-                return false;
-            }
-            else
-            {
-                return true;
-            }
         }
     }
 }
