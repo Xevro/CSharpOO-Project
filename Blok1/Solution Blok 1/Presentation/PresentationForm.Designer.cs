@@ -50,10 +50,6 @@ namespace Presentation
             this.BtnExport = new System.Windows.Forms.Button();
             this.txtMessage = new System.Windows.Forms.Label();
             this.dataGridOrders = new System.Windows.Forms.DataGridView();
-            this.OrdersProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrdersName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrdersQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrdersStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
             this.BtnPlaceOrder = new System.Windows.Forms.Button();
             this.CbxOrderStatus = new System.Windows.Forms.ComboBox();
@@ -61,6 +57,12 @@ namespace Presentation
             this.NmrOrderQuantity = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.OrdersID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrderID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrderProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrderName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrderQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrderStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProducts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NmrOrderQuantity)).BeginInit();
@@ -257,44 +259,17 @@ namespace Presentation
             this.dataGridOrders.AllowUserToDeleteRows = false;
             this.dataGridOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridOrders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.OrdersProductID,
-            this.OrdersName,
-            this.OrdersQuantity,
-            this.OrdersStatus});
+            this.OrderID,
+            this.OrderProductID,
+            this.OrderName,
+            this.OrderQuantity,
+            this.OrderStatus});
             this.dataGridOrders.Location = new System.Drawing.Point(2146, 122);
             this.dataGridOrders.Name = "dataGridOrders";
             this.dataGridOrders.RowHeadersWidth = 82;
             this.dataGridOrders.RowTemplate.Height = 41;
             this.dataGridOrders.Size = new System.Drawing.Size(1184, 616);
             this.dataGridOrders.TabIndex = 18;
-            // 
-            // OrdersProductID
-            // 
-            this.OrdersProductID.HeaderText = "Product ID";
-            this.OrdersProductID.MinimumWidth = 10;
-            this.OrdersProductID.Name = "OrdersProductID";
-            this.OrdersProductID.Width = 250;
-            // 
-            // OrdersName
-            // 
-            this.OrdersName.HeaderText = "Name";
-            this.OrdersName.MinimumWidth = 10;
-            this.OrdersName.Name = "OrdersName";
-            this.OrdersName.Width = 350;
-            // 
-            // OrdersQuantity
-            // 
-            this.OrdersQuantity.HeaderText = "Quantity";
-            this.OrdersQuantity.MinimumWidth = 10;
-            this.OrdersQuantity.Name = "OrdersQuantity";
-            this.OrdersQuantity.Width = 250;
-            // 
-            // OrdersStatus
-            // 
-            this.OrdersStatus.HeaderText = "Status";
-            this.OrdersStatus.MinimumWidth = 10;
-            this.OrdersStatus.Name = "OrdersStatus";
-            this.OrdersStatus.Width = 250;
             // 
             // label5
             // 
@@ -364,6 +339,48 @@ namespace Presentation
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // OrdersID
+            // 
+            this.OrdersID.HeaderText = "Order ID";
+            this.OrdersID.MinimumWidth = 10;
+            this.OrdersID.Name = "OrdersID";
+            this.OrdersID.Width = 250;
+            // 
+            // OrderID
+            // 
+            this.OrderID.HeaderText = "Order ID";
+            this.OrderID.MinimumWidth = 10;
+            this.OrderID.Name = "OrderID";
+            this.OrderID.Width = 200;
+            // 
+            // OrderProductID
+            // 
+            this.OrderProductID.HeaderText = "Product ID";
+            this.OrderProductID.MinimumWidth = 10;
+            this.OrderProductID.Name = "OrderProductID";
+            this.OrderProductID.Width = 200;
+            // 
+            // OrderName
+            // 
+            this.OrderName.HeaderText = "Name";
+            this.OrderName.MinimumWidth = 10;
+            this.OrderName.Name = "OrderName";
+            this.OrderName.Width = 300;
+            // 
+            // OrderQuantity
+            // 
+            this.OrderQuantity.HeaderText = "Quantity";
+            this.OrderQuantity.MinimumWidth = 10;
+            this.OrderQuantity.Name = "OrderQuantity";
+            this.OrderQuantity.Width = 200;
+            // 
+            // OrderStatus
+            // 
+            this.OrderStatus.HeaderText = "Order status";
+            this.OrderStatus.MinimumWidth = 10;
+            this.OrderStatus.Name = "OrderStatus";
+            this.OrderStatus.Width = 200;
+            // 
             // Presentation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
@@ -424,10 +441,6 @@ namespace Presentation
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private System.Windows.Forms.Label txtMessage;
         private System.Windows.Forms.DataGridView dataGridOrders;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OrdersProductID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OrdersName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OrdersQuantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OrdersStatus;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button BtnPlaceOrder;
         private System.Windows.Forms.ComboBox CbxOrderStatus;
@@ -435,6 +448,12 @@ namespace Presentation
         private System.Windows.Forms.NumericUpDown NmrOrderQuantity;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrdersID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrderID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrderProductID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrderName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrderQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrderStatus;
     }
 }
 

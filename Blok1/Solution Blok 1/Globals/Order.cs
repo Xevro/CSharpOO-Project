@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Threading;
 
 namespace Globals
 {
     public class Order
     {
         public int OrderCode { get; set; }
+        public int OrderProductCode { get; set; }
         public string OrderName { get; set; }
 
         private int orderQuantity;
@@ -18,20 +20,23 @@ namespace Globals
             }
         }
         public OrderStatus OrderStatus { get; set; }
+        private static int lastId = 0;
 
-        public Order(int code, string name, int quantity, OrderStatus status)
+        public Order(int orderProductCode, string name, int quantity, OrderStatus status)
         {
-            OrderCode = code;
+            //OrderCode = orderCode;
+            this.OrderCode = Interlocked.Increment(ref lastId);
+            OrderProductCode = orderProductCode;
             OrderName = name;
             OrderQuantity = quantity;
             OrderStatus = status;
         }
 
-        public Order(int code, string name, int quantity)
+        /*public Order(int code, string name, int quantity)
         {
             OrderCode = code;
             OrderName = name;
             OrderQuantity = quantity;
-        }
+        }*/
     }
 }

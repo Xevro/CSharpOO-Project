@@ -40,7 +40,7 @@ namespace Logic
             if ((product.ProductStatus == ProductStatus.Instock) && (quantityTxtField <= product.ProductQuantity))
             {
                 product.ProductQuantity = product.ProductQuantity - quantityTxtField;
-                CheckProductInfo(product, quantityTxtField);
+                CheckProductStock(product);
                 Orders.Add(order);
 
                 if (product.ProductQuantity <= 8)
@@ -59,19 +59,13 @@ namespace Logic
             }
         }
 
-        private void CheckProductInfo(Product product, int quantityTxtField)
+        private void CheckProductStock(Product product)
         {
-            /*int quantity = product.ProductQuantity - quantityTxtField;
-            if (quantity >= 0)
-            {
-                product.ProductQuantity = quantity;
-            }*/
             if (product.ProductQuantity == 0)
             {
                 product.ProductStatus = ProductStatus.Outofstock;
             }
         }
-
 
         public bool Equals(Product other)
         {

@@ -49,7 +49,7 @@ namespace Presentation
             this.dataGridOrders.Rows.Clear();
             foreach (Order order in inv.GetOrders())
             {
-                this.dataGridOrders.Rows.Insert(0, order.OrderCode, order.OrderName, order.OrderQuantity, order.OrderStatus);
+                this.dataGridOrders.Rows.Insert(0, order.OrderCode, order.OrderProductCode, order.OrderName, order.OrderQuantity, order.OrderStatus);
             }
         }
 
