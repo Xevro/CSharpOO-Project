@@ -5,9 +5,16 @@ namespace Globals
 {
     public class Order
     {
-        public int OrderCode { get; set; }
-        public int OrderProductCode { get; set; }
-        public string OrderName { get; set; }
+
+        private int orderCode;
+        public int OrderCode { get { return orderCode; } set { orderCode = value; } }
+
+        private int orderProductCode;
+        public int OrderProductCode { get { return orderProductCode; } set { orderProductCode = value; } }
+
+        private string orderName;
+         
+        public string OrderName { get { return orderName; } set { orderName = value; } }
 
         private int orderQuantity;
         public int OrderQuantity
@@ -20,23 +27,16 @@ namespace Globals
             }
         }
         public OrderStatus OrderStatus { get; set; }
+
         private static int lastId = 0;
 
         public Order(int orderProductCode, string name, int quantity, OrderStatus status)
         {
-            //OrderCode = orderCode;
             this.OrderCode = Interlocked.Increment(ref lastId);
             OrderProductCode = orderProductCode;
             OrderName = name;
             OrderQuantity = quantity;
             OrderStatus = status;
         }
-
-        /*public Order(int code, string name, int quantity)
-        {
-            OrderCode = code;
-            OrderName = name;
-            OrderQuantity = quantity;
-        }*/
     }
 }

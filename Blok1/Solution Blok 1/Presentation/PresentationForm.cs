@@ -25,7 +25,7 @@ namespace Presentation
             LoadDataToView();
         }
 
-        private void AddData(int code, string name, int quantity, ProductStatus status)
+        private void AddProduct(int code, string name, int quantity, ProductStatus status)
         {
             Product item = new Product(code, name, quantity, status);
             inv.AddProduct(item);
@@ -67,7 +67,7 @@ namespace Presentation
             {
                 int quantity = int.Parse(TxtQuantity.Text);
                 ProductStatus status = (ProductStatus)Enum.Parse(typeof(ProductStatus), CbxStatus.Text);
-                AddData(int.Parse(TxtCode.Text), TxtName.Text, quantity, status);
+                AddProduct(int.Parse(TxtCode.Text), TxtName.Text, quantity, status);
             }
             catch (Exception ex)
             {
@@ -120,8 +120,16 @@ namespace Presentation
                 {
                     if (product.ProductCode == (int)selectedRow.Cells[0].Value)
                     {
-                        Order order = new Order(product.ProductCode, product.ProductName, (int)NmrOrderQuantity.Value, (OrderStatus)Enum.Parse(typeof(OrderStatus), CbxOrderStatus.Text));
-                        inv.AddOrder(order, product, (int)NmrOrderQuantity.Value);
+
+                        if (product.ProductQuantity - (int)NmrOrderQuantity.Value >= 0)
+                        {
+                            Order order = new Order(product.ProductCode, product.ProductName, (int)NmrOrderQuantity.Value, (OrderStatus)Enum.Parse(typeof(OrderStatus), CbxOrderStatus.Text));
+                            inv.AddOrder(order, product, (int)NmrOrderQuantity.Value);
+                        }
+                        else
+                        {
+                            throw new OperationCanceledException("Can't place the order.");
+                        }
                     }
                 }
                 LoadOrdersDataToView();

@@ -40,7 +40,7 @@ namespace Logic
             if ((product.ProductStatus == ProductStatus.Instock) && (quantityTxtField <= product.ProductQuantity))
             {
                 product.ProductQuantity -= quantityTxtField;
-                CheckProductStock(product);
+                CheckProductStock(product); 
                 Orders.Add(order);
 
                 if (product.ProductQuantity <= 8)
@@ -55,7 +55,7 @@ namespace Logic
             }
             else
             {
-                throw new OperationCanceledException("Can't add the order.");
+                throw new OperationCanceledException("Can't place the order.");
             }
         }
 
