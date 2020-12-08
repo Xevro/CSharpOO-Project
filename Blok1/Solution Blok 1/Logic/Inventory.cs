@@ -39,7 +39,7 @@ namespace Logic
         {
             if ((product.ProductStatus == ProductStatus.Instock) && (quantityTxtField <= product.ProductQuantity))
             {
-                product.ProductQuantity = product.ProductQuantity - quantityTxtField;
+                product.ProductQuantity -= quantityTxtField;
                 CheckProductStock(product);
                 Orders.Add(order);
 
@@ -73,9 +73,9 @@ namespace Logic
             return (this.Products.Equals(other.ProductCode));
         }
 
-        public void ExportData()
+        public void ExportData(string path)
         {
-            data.ExportToJSON(Products);
+            data.ExportToJSON(Products, path);
         }
 
         public void ImportData()

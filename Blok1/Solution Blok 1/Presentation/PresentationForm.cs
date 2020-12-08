@@ -83,7 +83,7 @@ namespace Presentation
 
         private void BtnExport_Click(object sender, EventArgs e)
         {
-            inv.ExportData();
+            inv.ExportData(@"./ProductsData.json");
         }
 
         private void DataGrid_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
