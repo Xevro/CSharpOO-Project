@@ -98,7 +98,7 @@ namespace Logic
 
         public void ImportData()
         {
-            Products.AddRange(data.ImportFromJSON());
+            Products.AddRange(data.ImportFromJSON(@"./ProductsData.json"));
         }
 
         public void ShowFileInfo()

@@ -6,7 +6,7 @@ using System.IO;
 
 namespace Datalayer
 {
-    public class Data : IDataProvived
+    public class Data : IDataProvider
     {
         public void ExportToJSON(List<Product> products, string path)
         {

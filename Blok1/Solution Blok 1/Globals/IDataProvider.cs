@@ -4,9 +4,10 @@ using System.Text;
 
 namespace Globals
 {
-    public interface IDataProvived
+    public interface IDataProvider
     {
         void ExportToJSON(List<Product> products, string path);
         List<Product> ImportFromJSON(string path);
+
     }
 }
