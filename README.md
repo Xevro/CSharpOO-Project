@@ -34,32 +34,38 @@
 
 #### Programmeerstijl
 
---> Nog niet beoordeeld
+- [x] *Huisregels voor programmeerstijl volgen*
 
-- [ ] *Huisregels voor programmeerstijl volgen*
+* Je volgt niet altijd de regels voor naamgeving.
+  * Voor namen van private velden wordt camelCasing gebruikt.
+* Gebruik type inference ('var') volgens de conventie uit de stijlregels.
+* Gebruik de 'this'-qualifier enkel waar nodig om verwarring te vermijden.
+* Hanteer de gevraagde volgorde voor de verschillende onderdelen van je klasse (properties na de velden en voor de constructor).
+* Schrijf geen te lange methoden (richtlijn ~20 lijnen).
 
-* Gebruik geen publieke velden (Logic.Inventory - Products). Maak ze private of vervang ze door publieke properties als ze van buitenaf zichtbaar moeten zijn.
-* Het is niet nodig om zelf een lege default-constructor te schrijven (UserInterface). 
+* Tip: hou rekening met de messages en warnings uit de 'Error List'.
+
  
 #### Exceptions
 
---> Nog niet beoordeeld
+- [x] *try..catch..finally*
+- [x] *Je werpt bruikbare exceptions op wanneer je een foutsituatie detecteert die niet lokaal op een beter manier kan afgehandeld worden.*
 
-- [ ] *try..catch*
-- [ ] *try..catch..finally*
-- [ ] *Je werpt bruikbare exceptions op wanneer je een foutsituatie detecteert die niet lokaal op een beter manier kan afgehandeld worden.*
+* `catch (Exception e)` is geen good practice. Probeer meer specifieke excepties op te vangen.
+* Een exceptie opvangen om ze dan onmiddellijk weer op te gooien heeft niet zoveel zin.
 
 #### Enumerations
 
 - [x] *Declaratie en gebruik van enum-type*
-
-* Je declareert al een enum-type en gebruikt dat ook voor variabelen maar je gebruikt het nog niet bij beslissingen of om de flow van je programma te beïnvloeden.
  
 #### Properties
 
-- [ ] *Full property (with private backing field)*
+- [x] *Full property (with private backing field)*
 - [x] *Auto-implemented property*
 - [ ] *Access-modifiers voor Getters en Setters*
+
+* het heeft geen zin in de setter van een 'int' property te testen of 'value' een int is (als dat niet zo is , krijg je al een exception vooraleer je in de setter-code komt).
+
 
 #### Interpolated strings
 
@@ -87,22 +93,21 @@
 #### Architectuur van een toepassing - Meerlagenmodel
 
 - [x] *Klasseblibliotheken*
-- [ ] *Meerlagenmodel - 3lagenmodel*
-- [ ] *'Loose coupling' - dependency injection*
+- [x] *Meerlagenmodel - 3lagenmodel*
+- [x] *'Loose coupling' - dependency injection*
 - [ ] *Interface gebruiken als scheiding tussen architectuurlagen*
 
-* Je hebt al volwaardige klassedeclaraties
-* Je hebt nog geen constructor overloading
-* Je hebt nog geen klassehiërarchie
-
-
+* je hebt een goede indeling volgens het 3-lagen model.
+* Je gebruikt Dependency injection voor de koppeling tussen presentatie en logica maar niet tussen die logica en de datalaag.
+* Bij de koppeling tussen presentatie en logica gebruik je het concrete type 'Inventory' en niet het interface type 'IDataInventory'.
+*
 #### Bestanden en 'streams'
 
---> Nog niet beoordeeld
+- [x] *Statische klassen uit 'System.IO'*
+- [x] *Streams*
+- [x] *Serialisatie*
 
-- [ ] *Statische klassen uit 'System.IO'*
-- [ ] *Streams*
-- [ ] *Serialisatie*
+De Serialisatie naar een Json-bestand is onnodig complex gemaakt.
 
 #### 'Value' en 'Reference' types, cloning van objecten
 
@@ -115,7 +120,13 @@
 
 - [¨x] *Klasse declaratie - constructoren*
 - [ ] *constructor overloading*
-- [ ] *Klasse-hirarchie*
+- [ ] *Klasse-hiërarchie*
+
+* Je hebt al volwaardige klassedeclaraties
+* Je hebt nog geen constructor overloading
+* Je hebt nog geen klassehiërarchie
+
+
 
 #### Structs
 
