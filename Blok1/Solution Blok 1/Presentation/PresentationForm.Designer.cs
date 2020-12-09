@@ -406,7 +406,6 @@ namespace Presentation
             this.Controls.Add(this.dataGridProducts);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Presentation";
             this.Text = "Inventory Application";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProducts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridOrders)).EndInit();
