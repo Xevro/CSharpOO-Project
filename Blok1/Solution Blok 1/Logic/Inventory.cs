@@ -1,5 +1,6 @@
 ﻿using Datalayer;
 using Globals;
+using Globals.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -66,26 +67,23 @@ namespace Logic
 
                 if (product.ProductQuantity <= 8)
                 {
-                    throw new Exception($"Stock is running low on {product.ProductName}");
+                    throw new ProductRunningLowOnStockException($"Stock is running low on {product.ProductName}");
                 }
                 if (product.ProductQuantity == 0)
                 {
                     product.ProductStatus = ProductStatus.Outofstock;
-                    throw new SystemException("Product is out of stock");
+                    throw new ProductOutOfstockException("Product is out of stock");
                 }
             }
             else
             {
-                throw new OperationCanceledException("Can't place the order.");
+                throw new AddingOrderException("Can't place the order.");
             }
         }
 
         private void CheckProductStock(Product product)
         {
-            if (product.ProductQuantity == 0)
-            {
-                product.ProductStatus = ProductStatus.Outofstock;
-            }
+            if (product.ProductQuantity == 0) product.ProductStatus = ProductStatus.Outofstock;
         }
 
         public void ExportData()
@@ -102,7 +100,7 @@ namespace Logic
             }
             else
             {
-                throw new Exception("Products data file is empty");
+                throw new ProductsDataIsEmptyException("Products data file is empty");
             }
         }
 

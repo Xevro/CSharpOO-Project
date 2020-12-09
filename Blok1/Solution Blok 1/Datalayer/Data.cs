@@ -1,4 +1,5 @@
 ﻿using Globals;
+using Globals.Exceptions;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace Datalayer
             try
             {
                 string path = @"./ProductData.json";
-                var formatter = new Newtonsoft.Json.JsonSerializer();
+                var formatter = new JsonSerializer();
                 using var stream = new MemoryStream();
                 using var sr = new StreamWriter(stream);
                 formatter.Serialize(sr, products);
@@ -32,9 +33,9 @@ namespace Datalayer
                 s.Close();
                 f.Close();
             }
-            catch (Exception ex)
+            catch (ExportDataException)
             {
-                throw new Exception(ex.Message);
+                throw new ExportDataException("Can't export data to file");
             }
         }
 
@@ -52,9 +53,9 @@ namespace Datalayer
                 var productsFromFile = JsonConvert.DeserializeObject<List<Product>>(json);
                 return productsFromFile;
             }
-            catch (Exception)
+            catch (ImportDataException)
             {
-                throw new Exception("Error while importing from json file");
+                throw new ImportDataException("Error while importing from json file");
             }
         }
 

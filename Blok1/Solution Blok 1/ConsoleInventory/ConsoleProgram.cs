@@ -1,6 +1,6 @@
 ﻿namespace ConsoleInventory
 {
-    internal class Program
+    internal class ConsoleProgram
     {
         private static void Main()
         {

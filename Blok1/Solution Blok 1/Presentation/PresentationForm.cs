@@ -1,4 +1,5 @@
 ﻿using Globals;
+using Globals.Exceptions;
 using Logic;
 using System;
 using System.Windows.Forms;
@@ -84,7 +85,7 @@ namespace Presentation
                 inv.ImportData();
                 LoadDataToView();
             }
-            catch (Exception ex)
+            catch (ImportDataException ex)
             {
                 ShowError(ex);
             }
@@ -96,7 +97,7 @@ namespace Presentation
             {
                 inv.ExportData();
             }
-            catch (Exception ex)
+            catch (ExportDataException ex)
             {
                 ShowError(ex);
             }
@@ -119,7 +120,7 @@ namespace Presentation
             {
                 PlaceOrder();
             }
-            catch (Exception ex)
+            catch (AddingOrderException ex)
             {
                 ShowError(ex);
             }
@@ -135,7 +136,7 @@ namespace Presentation
             }
             else
             {
-                throw new Exception("Please select an item and/or an order status!");
+                throw new InvalidOperationException("Please select an item and/or an order status!");
             }
         }
 
@@ -153,7 +154,7 @@ namespace Presentation
                     }
                     else
                     {
-                        throw new OperationCanceledException("Can't place the order.");
+                        throw new AddingOrderException("Can't add the order");
                     }
                 }
             }
@@ -177,7 +178,7 @@ namespace Presentation
             }
             else
             {
-                ShowError(new Exception("Please select a product!"));
+                ShowError(new RemovingProductException("Please select a product!"));
             }
         }
 
@@ -198,7 +199,7 @@ namespace Presentation
             }
             else
             {
-                ShowError(new Exception("Please select an order!"));
+                ShowError(new RemovingOrderException("Please select an order!"));
             }
         }
     }
