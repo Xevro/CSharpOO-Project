@@ -20,8 +20,8 @@ namespace Datalayer
                 sr.Flush();
                 stream.Seek(0, SeekOrigin.Begin);
                 System.IO.File.WriteAllText(path, string.Empty);
-                FileStream f = new FileStream(path, FileMode.OpenOrCreate);
-                StreamWriter s = new StreamWriter(f);
+                var f = new FileStream(path, FileMode.OpenOrCreate);
+                var s = new StreamWriter(f);
 
                 using var reader = new StreamReader(stream);
                 while (!reader.EndOfStream)
@@ -49,12 +49,39 @@ namespace Datalayer
             try
             {
                 string json = File.ReadAllText(path);
-                return JsonConvert.DeserializeObject<List<Product>>(json);
+                var productsFromFile = JsonConvert.DeserializeObject<List<Product>>(json);
+                return productsFromFile;
             }
             catch (Exception)
             {
                 throw new Exception("Error while importing from json file");
             }
+        }
+
+        public void DirectoryInfo()
+        {
+            Console.WriteLine("Directory");
+            Console.WriteLine("");
+            var dir1 = new DirectoryInfo(@"./../../../../");
+
+            Console.WriteLine($"Directories under {dir1.Name}");
+            foreach (var dir in dir1.EnumerateDirectories())
+            {
+                Console.WriteLine($" {dir.Name}");
+            }
+            Console.WriteLine("");
+        }
+
+        public void FileInfo()
+        {
+            // list all files in C:\
+            Console.WriteLine(@"Files in project directory");
+            foreach (string fileName in Directory.EnumerateFiles(@"./../../../"))
+            {
+                var fileInfo = new FileInfo(fileName);
+                Console.WriteLine($" {fileInfo.Name,-20} - {fileInfo.Length,10} bytes - created: {fileInfo.CreationTime}");
+            }
+            Console.WriteLine("");
         }
     }
 }

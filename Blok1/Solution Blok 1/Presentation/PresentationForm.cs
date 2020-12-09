@@ -12,7 +12,7 @@ namespace Presentation
         public Presentation(Inventory inventory)
         {
             InitializeComponent();
-            this.inv = inventory;
+            inv = inventory;
             txtMessage.Text = "";
             foreach (var orderStatus in Enum.GetNames(typeof(OrderStatus)))
             {
@@ -31,7 +31,7 @@ namespace Presentation
 
         private void AddProduct(int code, string name, int quantity)
         {
-            Product item = new Product(code, name, quantity);
+            var item = new Product(code, name, quantity);
             inv.AddProduct(item);
             LoadDataToView();
         }
@@ -39,7 +39,7 @@ namespace Presentation
         private void LoadDataToView()
         {
             this.dataGridProducts.Rows.Clear();
-            foreach (Product product in inv.GetSortedProducts)
+            foreach (var product in inv.GetSortedProducts)
             {
                 this.dataGridProducts.Rows.Insert(0, product.ProductCode, product.ProductName, product.ProductQuantity, product.ProductStatus);
             }
@@ -50,7 +50,7 @@ namespace Presentation
         private void LoadOrdersDataToView()
         {
             this.dataGridOrders.Rows.Clear();
-            foreach (Order order in inv.GetSortedOrders)
+            foreach (var order in inv.GetSortedOrders)
             {
                 this.dataGridOrders.Rows.Insert(0, order.OrderCode, order.OrderProductCode, order.OrderName, order.OrderQuantity, order.OrderStatus);
             }
@@ -106,7 +106,7 @@ namespace Presentation
         {
             if (e.RowIndex >= 0)
             {
-                DataGridViewRow row = this.dataGridProducts.Rows[e.RowIndex];
+                var row = this.dataGridProducts.Rows[e.RowIndex];
                 TxtCode.Text = row.Cells[0].Value.ToString();
                 TxtName.Text = row.Cells[1].Value.ToString();
                 TxtQuantity.Text = row.Cells[2].Value.ToString();
@@ -129,23 +129,7 @@ namespace Presentation
         {
             if (dataGridProducts.SelectedCells.Count > 0 && CbxOrderStatus.SelectedItem != null)
             {
-                DataGridViewRow selectedRow = dataGridProducts.Rows[dataGridProducts.SelectedCells[0].RowIndex];
-
-                foreach (Product product in inv.GetSortedProducts)
-                {
-                    if (product.ProductCode == (int)selectedRow.Cells[0].Value)
-                    {
-                        if (product.ProductQuantity - (int)NmrOrderQuantity.Value >= 0)
-                        {
-                            Order order = new Order(product.ProductCode, product.ProductName, (int)NmrOrderQuantity.Value, (OrderStatus)Enum.Parse(typeof(OrderStatus), CbxOrderStatus.Text));
-                            inv.AddOrder(order, product, (int)NmrOrderQuantity.Value);
-                        }
-                        else
-                        {
-                            throw new OperationCanceledException("Can't place the order.");
-                        }
-                    }
-                }
+                AddOrder();
                 LoadOrdersDataToView();
                 LoadDataToView();
             }
@@ -155,17 +139,38 @@ namespace Presentation
             }
         }
 
+        private void AddOrder()
+        {
+            var selectedRow = dataGridProducts.Rows[dataGridProducts.SelectedCells[0].RowIndex];
+            foreach (var product in inv.GetSortedProducts)
+            {
+                if (product.ProductCode == (int)selectedRow.Cells[0].Value)
+                {
+                    if (product.ProductQuantity - (int)NmrOrderQuantity.Value >= 0)
+                    {
+                        var order = new Order(product.ProductCode, product.ProductName, (int)NmrOrderQuantity.Value, (OrderStatus)Enum.Parse(typeof(OrderStatus), CbxOrderStatus.Text));
+                        inv.AddOrder(order, product, (int)NmrOrderQuantity.Value);
+                    }
+                    else
+                    {
+                        throw new OperationCanceledException("Can't place the order.");
+                    }
+                }
+            }
+
+        }
+
         private void BtnRemoveProduct_Click(object sender, EventArgs e)
         {
             if (dataGridProducts.SelectedCells.Count > 0)
             {
-                DataGridViewRow selectedRow = dataGridProducts.Rows[dataGridProducts.SelectedCells[0].RowIndex];
+                var selectedRow = dataGridProducts.Rows[dataGridProducts.SelectedCells[0].RowIndex];
 
-                foreach (Product product in inv.GetSortedProducts)
+                foreach (var product in inv.GetSortedProducts)
                 {
                     if (product.ProductCode == (int)selectedRow.Cells[0].Value)
                     {
-                        inv.RemoveProduct(product);  
+                        inv.RemoveProduct(product);
                     }
                 }
                 LoadDataToView();
@@ -180,9 +185,9 @@ namespace Presentation
         {
             if (dataGridOrders.SelectedCells.Count > 0)
             {
-                DataGridViewRow selectedRow = dataGridOrders.Rows[dataGridOrders.SelectedCells[0].RowIndex];
+                var selectedRow = dataGridOrders.Rows[dataGridOrders.SelectedCells[0].RowIndex];
 
-                foreach (Order order in inv.GetSortedOrders)
+                foreach (var order in inv.GetSortedOrders)
                 {
                     if (order.OrderCode == (int)selectedRow.Cells[0].Value)
                     {

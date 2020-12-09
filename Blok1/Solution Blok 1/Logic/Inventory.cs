@@ -9,16 +9,15 @@ namespace Logic
     [Serializable]
     public class Inventory : IDataInventory
     {
-        private readonly List<Product> Products = new List<Product>();
-        private readonly List<Order> Orders = new List<Order>();
-        private readonly Data data = new Data();
-        private readonly FileDirectoryData fileData = new FileDirectoryData();
+        private readonly List<Product> products = new List<Product>();
+        private readonly List<Order> orders = new List<Order>();
+        private readonly IDataProvider data = new Data();
 
         public List<Product> GetSortedProducts
         {
             get
             {
-                List<Product> productsList = Products.OrderBy(p => p.ProductName).ToList();
+                var productsList = products.OrderBy(p => p.ProductName).ToList();
                 return productsList;
             }
         }
@@ -27,7 +26,7 @@ namespace Logic
         {
             get
             {
-                List<Order> ordersList = Orders.OrderBy(o => o.OrderName).ToList();
+                var ordersList = orders.OrderBy(o => o.OrderName).ToList();
                 return ordersList;
             }
         }
@@ -38,9 +37,9 @@ namespace Logic
             {
                 throw new ArgumentOutOfRangeException("Quantity is to small, must be 1 at least.");
             }
-            if (!Products.Any(a => a.ProductCode == product.ProductCode) && product.ProductQuantity >= 1)
+            if (!products.Any(p => p == product) && product.ProductQuantity >= 1)
             {
-                Products.Add(product);
+                products.Add(product);
             }
             else
             {
@@ -50,11 +49,11 @@ namespace Logic
 
         public void RemoveProduct(Product product)
         {
-            Products.RemoveAll(x => x.ProductCode == product.ProductCode);
+            products.RemoveAll(p => p == product);
         }
         public void RemoveOrder(Order order)
         {
-            Orders.RemoveAll(x => x.OrderCode == order.OrderCode);
+            orders.RemoveAll(o => o == order);
         }
 
         public void AddOrder(Order order, Product product, int quantityTxtField)
@@ -63,7 +62,7 @@ namespace Logic
             {
                 product.ProductQuantity -= quantityTxtField;
                 CheckProductStock(product);
-                Orders.Add(order);
+                orders.Add(order);
 
                 if (product.ProductQuantity <= 8)
                 {
@@ -72,7 +71,7 @@ namespace Logic
                 if (product.ProductQuantity == 0)
                 {
                     product.ProductStatus = ProductStatus.Outofstock;
-                    throw new OperationCanceledException("Product is out of stock");
+                    throw new SystemException("Product is out of stock");
                 }
             }
             else
@@ -89,38 +88,31 @@ namespace Logic
             }
         }
 
-        /* public bool Equals(Product other)
-         {
-             if (other == null) return false;
-             return (this.Products.Equals(other.ProductCode));
-         }*/
-
         public void ExportData()
         {
-            data.ExportToJSON(Products);
+            data.ExportToJSON(products);
         }
 
         public void ImportData()
         {
-            List<Product> products = data.ImportFromJSON();
+            var products = data.ImportFromJSON();
             if (products != null)
-                {
-                Products.AddRange(products);
+            {
+                this.products.AddRange(products);
             }
             else
             {
                 throw new Exception("Products data file is empty");
             }
-            
         }
 
         public void ShowFileInfo()
         {
-            fileData.FileInfo();
+            data.FileInfo();
         }
         public void ShowDirectoryInfo()
         {
-            fileData.DirectoryInfo();
+            data.DirectoryInfo();
         }
     }
 }

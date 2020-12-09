@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 
 namespace Globals
@@ -17,22 +16,15 @@ namespace Globals
         public string OrderName { get { return orderName; } set { orderName = value; } }
 
         private int orderQuantity;
-        public int OrderQuantity
-        {
-            get { return orderQuantity; }
-            set
-            {
-                if (value.GetType() == typeof(int)) orderQuantity = value;
-                else throw new FormatException($"{nameof(value)} must be a number");
-            }
-        }
+        public int OrderQuantity { get { return orderQuantity; } set { orderQuantity = value; } }
+
         public OrderStatus OrderStatus { get; set; }
 
         private static int lastId = 0;
 
         public Order(int orderProductCode, string name, int quantity, OrderStatus status)
         {
-            this.OrderCode = Interlocked.Increment(ref lastId);
+            OrderCode = Interlocked.Increment(ref lastId);
             OrderProductCode = orderProductCode;
             OrderName = name;
             OrderQuantity = quantity;

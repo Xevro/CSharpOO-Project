@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Globals
 {
@@ -9,5 +7,8 @@ namespace Globals
         void ExportToJSON(List<Product> products);
         List<Product> ImportFromJSON();
 
+        public void DirectoryInfo();
+
+        public void FileInfo();
     }
 }

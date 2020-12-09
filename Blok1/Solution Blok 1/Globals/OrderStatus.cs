@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Globals
+﻿namespace Globals
 {
     public enum OrderStatus
     {

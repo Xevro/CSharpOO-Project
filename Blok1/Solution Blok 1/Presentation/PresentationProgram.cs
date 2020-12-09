@@ -1,13 +1,10 @@
 using Logic;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Presentation
 {
-    static class Program
+    static class PresentationProgram
     {
         /// <summary>
         ///  The main entry point for the application.
@@ -16,7 +13,7 @@ namespace Presentation
         static void Main()
         {
             Inventory inv = new Inventory();
-            
+
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

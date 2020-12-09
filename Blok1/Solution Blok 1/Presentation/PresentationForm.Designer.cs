@@ -231,9 +231,9 @@ namespace Presentation
             this.txtMessage.Font = new System.Drawing.Font("Segoe UI", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txtMessage.Location = new System.Drawing.Point(49, 46);
             this.txtMessage.Name = "txtMessage";
-            this.txtMessage.Size = new System.Drawing.Size(136, 59);
+            this.txtMessage.Size = new System.Drawing.Size(323, 59);
             this.txtMessage.TabIndex = 17;
-            this.txtMessage.Text = "Stock";
+            this.txtMessage.Text = "Products stock";
             // 
             // dataGridOrders
             // 
@@ -378,6 +378,9 @@ namespace Presentation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(3218, 1617);
             this.Controls.Add(this.BtnRemoveOrder);
             this.Controls.Add(this.BtnRemoveProduct);
@@ -403,6 +406,8 @@ namespace Presentation
             this.Controls.Add(this.dataGridProducts);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Name = "Presentation";
+            this.Text = "Inventory Application";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProducts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridOrders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NmrOrderQuantity)).EndInit();

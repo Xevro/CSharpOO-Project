@@ -4,28 +4,20 @@ namespace Globals
 {
     public class Product : IEquatable<Product>
     {
-        private int productCode;
-        public int ProductCode
-        {
-            get { return productCode; }
-            set
-            {
-                if (value.GetType() == typeof(int)) productCode = value;
-                else throw new FormatException($"{nameof(value)} must be a number");
-            }
-        }
+        public int ProductCode { get; set; }
         public string ProductName { get; set; }
 
-        private int productQuantity;
-        public int ProductQuantity
-        {
-            get { return productQuantity; }
-            set
-            {
-                if (value.GetType() == typeof(int)) productQuantity = value;
-                else throw new FormatException($"{nameof(value)} must be a number");
-            }
-        }
+        //private int productQuantity;
+        public int ProductQuantity { get; set; }
+
+        /* {
+             get { return productQuantity; }
+             set
+             {
+                 if (value >= 1) productQuantity = value;
+                 else throw new ArgumentOutOfRangeException($"{value} must be at least 1");
+             }
+         }*/
         public ProductStatus ProductStatus { get; set; }
 
         public Product(int code, string name, int quantity)
@@ -33,14 +25,7 @@ namespace Globals
             ProductCode = code;
             ProductName = name;
             ProductQuantity = quantity;
-            if (quantity <= 0)
-            {
-                ProductStatus = ProductStatus.Outofstock;
-            }
-            else
-            {
-                ProductStatus = ProductStatus.Instock;
-            }
+            ProductStatus = (quantity <= 0) ? ProductStatus.Outofstock : ProductStatus.Instock;
         }
         public override string ToString()
         {
@@ -49,7 +34,7 @@ namespace Globals
 
         public bool Equals(Product other)
         {
-            return other.productCode == this.productCode;
+            return other.ProductCode == this.ProductCode;
         }
     }
 }
