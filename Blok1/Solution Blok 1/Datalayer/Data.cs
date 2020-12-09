@@ -8,10 +8,11 @@ namespace Datalayer
 {
     public class Data : IDataProvider
     {
-        public void ExportToJSON(List<Product> products, string path)
+        public void ExportToJSON(List<Product> products)
         {
             try
             {
+                string path = @"./ProductData.json";
                 var formatter = new Newtonsoft.Json.JsonSerializer();
                 using var stream = new MemoryStream();
                 using var sr = new StreamWriter(stream);
@@ -21,7 +22,7 @@ namespace Datalayer
                 System.IO.File.WriteAllText(path, string.Empty);
                 FileStream f = new FileStream(path, FileMode.OpenOrCreate);
                 StreamWriter s = new StreamWriter(f);
-                
+
                 using var reader = new StreamReader(stream);
                 while (!reader.EndOfStream)
                 {
@@ -37,13 +38,18 @@ namespace Datalayer
             }
         }
 
-        public List<Product> ImportFromJSON(string path)
+        public List<Product> ImportFromJSON()
         {
+            string path = @"Resources/ProductsData.json";
+
+            if (!File.Exists(path))
+            {
+                File.Create(path);
+            }
             try
             {
                 string json = File.ReadAllText(path);
-                List<Product> productsFromFile = JsonConvert.DeserializeObject<List<Product>>(json);
-                return productsFromFile;
+                return JsonConvert.DeserializeObject<List<Product>>(json);
             }
             catch (Exception)
             {

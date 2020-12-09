@@ -18,8 +18,15 @@ namespace Presentation
             {
                 CbxOrderStatus.Items.Add(orderStatus);
             }
-            inv.ImportData(@"./ProductsData.json");
-            LoadDataToView();
+            try
+            {
+                inv.ImportData();
+                LoadDataToView();
+            }
+            catch (Exception ex)
+            {
+                ShowError(ex);
+            }
         }
 
         private void AddProduct(int code, string name, int quantity)
@@ -74,7 +81,7 @@ namespace Presentation
         {
             try
             {
-                inv.ImportData(@"./ProductsData.json");
+                inv.ImportData();
                 LoadDataToView();
             }
             catch (Exception ex)
@@ -87,7 +94,7 @@ namespace Presentation
         {
             try
             {
-                inv.ExportData(@"./ProductsData.json");
+                inv.ExportData();
             }
             catch (Exception ex)
             {

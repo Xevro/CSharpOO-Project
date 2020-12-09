@@ -6,8 +6,8 @@ namespace Globals
 {
     public interface IDataProvider
     {
-        void ExportToJSON(List<Product> products, string path);
-        List<Product> ImportFromJSON(string path);
+        void ExportToJSON(List<Product> products);
+        List<Product> ImportFromJSON();
 
     }
 }

@@ -95,14 +95,23 @@ namespace Logic
              return (this.Products.Equals(other.ProductCode));
          }*/
 
-        public void ExportData(string path)
+        public void ExportData()
         {
-            data.ExportToJSON(Products, path);
+            data.ExportToJSON(Products);
         }
 
-        public void ImportData(string path)
+        public void ImportData()
         {
-            Products.AddRange(data.ImportFromJSON(path));
+            List<Product> products = data.ImportFromJSON();
+            if (products != null)
+                {
+                Products.AddRange(products);
+            }
+            else
+            {
+                throw new Exception("Products data file is empty");
+            }
+            
         }
 
         public void ShowFileInfo()
