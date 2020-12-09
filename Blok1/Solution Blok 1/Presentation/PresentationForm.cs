@@ -72,7 +72,8 @@ namespace Presentation
                 int quantity = int.Parse(TxtQuantity.Text);
                 AddProduct(int.Parse(TxtCode.Text), TxtName.Text, quantity);
             }
-            catch (Exception ex)
+            catch (Exception ex) when (ex is ProductOutOfstockException || ex is ProductRunningLowOnStockException
+            || ex is ProductsDataIsEmptyException || ex is ArgumentOutOfRangeException)
             {
                 ShowError(ex);
             }
@@ -120,7 +121,7 @@ namespace Presentation
             {
                 PlaceOrder();
             }
-            catch (AddingOrderException ex)
+            catch (Exception ex) when (ex is AddingOrderException || ex is ProductRunningLowOnStockException)
             {
                 ShowError(ex);
             }
@@ -136,7 +137,7 @@ namespace Presentation
             }
             else
             {
-                throw new InvalidOperationException("Please select an item and/or an order status!");
+                throw new AddingOrderException("Please select an item and/or an order status!");
             }
         }
 

@@ -5,18 +5,13 @@ namespace Globals
 {
     public class Order : IEquatable<Order>
     {
-        private int orderCode;
-        public int OrderCode { get { return orderCode; } set { orderCode = value; } }
+        public int OrderCode { get; set; }
 
-        private int orderProductCode;
-        public int OrderProductCode { get { return orderProductCode; } set { orderProductCode = value; } }
+        public int OrderProductCode { get; set; }
 
-        private string orderName;
+        public string OrderName { get; set; }
 
-        public string OrderName { get { return orderName; } set { orderName = value; } }
-
-        private int orderQuantity;
-        public int OrderQuantity { get { return orderQuantity; } set { orderQuantity = value; } }
+        public int OrderQuantity { get; set; }
 
         public OrderStatus OrderStatus { get; set; }
 
@@ -33,7 +28,7 @@ namespace Globals
 
         public bool Equals(Order other)
         {
-            return other.orderCode == this.orderCode;
+            return other.OrderCode == this.OrderCode;
         }
     }
 }

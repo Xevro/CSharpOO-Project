@@ -72,7 +72,7 @@ namespace Presentation
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(3218, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(3118, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -406,6 +406,7 @@ namespace Presentation
             this.Controls.Add(this.dataGridProducts);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Padding = new System.Windows.Forms.Padding(0, 0, 100, 100);
             this.Text = "Inventory Application";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProducts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridOrders)).EndInit();
