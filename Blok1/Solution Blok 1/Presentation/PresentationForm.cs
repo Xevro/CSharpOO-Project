@@ -18,7 +18,7 @@ namespace Presentation
             {
                 CbxOrderStatus.Items.Add(orderStatus);
             }
-            inv.ImportData();
+            inv.ImportData(@"./ProductsData.json");
             LoadDataToView();
         }
 
@@ -74,7 +74,7 @@ namespace Presentation
         {
             try
             {
-                inv.ImportData();
+                inv.ImportData(@"./ProductsData.json");
                 LoadDataToView();
             }
             catch (Exception ex)
@@ -145,6 +145,48 @@ namespace Presentation
             else
             {
                 throw new Exception("Please select an item and/or an order status!");
+            }
+        }
+
+        private void BtnRemoveProduct_Click(object sender, EventArgs e)
+        {
+            if (dataGridProducts.SelectedCells.Count > 0)
+            {
+                DataGridViewRow selectedRow = dataGridProducts.Rows[dataGridProducts.SelectedCells[0].RowIndex];
+
+                foreach (Product product in inv.GetSortedProducts)
+                {
+                    if (product.ProductCode == (int)selectedRow.Cells[0].Value)
+                    {
+                        inv.RemoveProduct(product);  
+                    }
+                }
+                LoadDataToView();
+            }
+            else
+            {
+                ShowError(new Exception("Please select a product!"));
+            }
+        }
+
+        private void BtnRemoveOrder_Click(object sender, EventArgs e)
+        {
+            if (dataGridOrders.SelectedCells.Count > 0)
+            {
+                DataGridViewRow selectedRow = dataGridOrders.Rows[dataGridOrders.SelectedCells[0].RowIndex];
+
+                foreach (Order order in inv.GetSortedOrders)
+                {
+                    if (order.OrderCode == (int)selectedRow.Cells[0].Value)
+                    {
+                        inv.RemoveOrder(order);
+                    }
+                }
+                LoadOrdersDataToView();
+            }
+            else
+            {
+                ShowError(new Exception("Please select an order!"));
             }
         }
     }

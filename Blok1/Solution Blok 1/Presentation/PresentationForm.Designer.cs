@@ -59,8 +59,9 @@ namespace Presentation
             this.label6 = new System.Windows.Forms.Label();
             this.NmrOrderQuantity = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BtnRemoveProduct = new System.Windows.Forms.Button();
             this.OrdersID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BtnRemoveOrder = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProducts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NmrOrderQuantity)).BeginInit();
@@ -196,11 +197,11 @@ namespace Presentation
             // 
             // BtnImport
             // 
-            this.BtnImport.Location = new System.Drawing.Point(49, 498);
+            this.BtnImport.Location = new System.Drawing.Point(275, 594);
             this.BtnImport.Name = "BtnImport";
             this.BtnImport.Size = new System.Drawing.Size(200, 46);
             this.BtnImport.TabIndex = 14;
-            this.BtnImport.Text = "Import Data";
+            this.BtnImport.Text = "Import Products";
             this.BtnImport.UseVisualStyleBackColor = true;
             this.BtnImport.Click += new System.EventHandler(this.BtnImport_Click);
             // 
@@ -208,7 +209,7 @@ namespace Presentation
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(49, 432);
+            this.label4.Location = new System.Drawing.Point(49, 512);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(119, 40);
             this.label4.TabIndex = 15;
@@ -216,11 +217,11 @@ namespace Presentation
             // 
             // BtnExport
             // 
-            this.BtnExport.Location = new System.Drawing.Point(49, 584);
+            this.BtnExport.Location = new System.Drawing.Point(49, 594);
             this.BtnExport.Name = "BtnExport";
             this.BtnExport.Size = new System.Drawing.Size(200, 46);
             this.BtnExport.TabIndex = 16;
-            this.BtnExport.Text = "Export Data";
+            this.BtnExport.Text = "Export Products";
             this.BtnExport.UseVisualStyleBackColor = true;
             this.BtnExport.Click += new System.EventHandler(this.BtnExport_Click);
             // 
@@ -299,9 +300,9 @@ namespace Presentation
             // 
             // BtnPlaceOrder
             // 
-            this.BtnPlaceOrder.Location = new System.Drawing.Point(247, 1102);
+            this.BtnPlaceOrder.Location = new System.Drawing.Point(247, 1074);
             this.BtnPlaceOrder.Name = "BtnPlaceOrder";
-            this.BtnPlaceOrder.Size = new System.Drawing.Size(200, 56);
+            this.BtnPlaceOrder.Size = new System.Drawing.Size(200, 48);
             this.BtnPlaceOrder.TabIndex = 20;
             this.BtnPlaceOrder.Text = "Place order";
             this.BtnPlaceOrder.UseVisualStyleBackColor = true;
@@ -346,14 +347,15 @@ namespace Presentation
             this.label7.TabIndex = 24;
             this.label7.Text = "Quantity";
             // 
-            // button1
+            // BtnRemoveProduct
             // 
-            this.button1.Location = new System.Drawing.Point(297, 498);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 46);
-            this.button1.TabIndex = 25;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.BtnRemoveProduct.Location = new System.Drawing.Point(247, 430);
+            this.BtnRemoveProduct.Name = "BtnRemoveProduct";
+            this.BtnRemoveProduct.Size = new System.Drawing.Size(200, 46);
+            this.BtnRemoveProduct.TabIndex = 25;
+            this.BtnRemoveProduct.Text = "Remove Product";
+            this.BtnRemoveProduct.UseVisualStyleBackColor = true;
+            this.BtnRemoveProduct.Click += new System.EventHandler(this.BtnRemoveProduct_Click);
             // 
             // OrdersID
             // 
@@ -362,12 +364,23 @@ namespace Presentation
             this.OrdersID.Name = "OrdersID";
             this.OrdersID.Width = 250;
             // 
+            // BtnRemoveOrder
+            // 
+            this.BtnRemoveOrder.Location = new System.Drawing.Point(247, 1156);
+            this.BtnRemoveOrder.Name = "BtnRemoveOrder";
+            this.BtnRemoveOrder.Size = new System.Drawing.Size(200, 46);
+            this.BtnRemoveOrder.TabIndex = 26;
+            this.BtnRemoveOrder.Text = "Remove Order";
+            this.BtnRemoveOrder.UseVisualStyleBackColor = true;
+            this.BtnRemoveOrder.Click += new System.EventHandler(this.BtnRemoveOrder_Click);
+            // 
             // Presentation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(3218, 1617);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.BtnRemoveOrder);
+            this.Controls.Add(this.BtnRemoveProduct);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.NmrOrderQuantity);
             this.Controls.Add(this.label6);
@@ -424,13 +437,14 @@ namespace Presentation
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.NumericUpDown NmrOrderQuantity;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BtnRemoveProduct;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrdersID;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderID;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderProductID;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderName;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderStatus;
+        private System.Windows.Forms.Button BtnRemoveOrder;
     }
 }
 

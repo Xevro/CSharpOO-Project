@@ -52,6 +52,10 @@ namespace Logic
         {
             Products.RemoveAll(x => x.ProductCode == product.ProductCode);
         }
+        public void RemoveOrder(Order order)
+        {
+            Orders.RemoveAll(x => x.OrderCode == order.OrderCode);
+        }
 
         public void AddOrder(Order order, Product product, int quantityTxtField)
         {
@@ -96,9 +100,9 @@ namespace Logic
             data.ExportToJSON(Products, path);
         }
 
-        public void ImportData()
+        public void ImportData(string path)
         {
-            Products.AddRange(data.ImportFromJSON(@"./ProductsData.json"));
+            Products.AddRange(data.ImportFromJSON(path));
         }
 
         public void ShowFileInfo()
