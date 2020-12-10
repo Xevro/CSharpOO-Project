@@ -1,4 +1,5 @@
 ﻿using Globals;
+using Globals.ErrorMessages;
 using Globals.Exceptions;
 using Logic;
 using System;
@@ -24,7 +25,7 @@ namespace Presentation
                 inv.ImportData();
                 LoadDataToView();
             }
-            catch (Exception ex)
+            catch (ImportDataException ex)
             {
                 ShowError(ex);
             }
@@ -179,7 +180,7 @@ namespace Presentation
             }
             else
             {
-                ShowError(new RemovingProductException("Please select a product!"));
+                ShowError(new RemovingProductException(ErrorMessages.RemovingProductError));
             }
         }
 
@@ -200,7 +201,7 @@ namespace Presentation
             }
             else
             {
-                ShowError(new RemovingOrderException("Please select an order!"));
+                ShowError(new RemovingOrderException(ErrorMessages.RemovingOrderError));
             }
         }
     }

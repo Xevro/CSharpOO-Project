@@ -1,0 +1,103 @@
+Titel: C# OO - verslag codereview
+==========================
+
+Naam reviewer: Thomas Hollevoet
+Datum review:  9 december
+
+Beoordeelde code
+----------------
+
+Auteur: Louis D'Hont
+Titel: Inventory
+Datum code: 8 december 2020: commit 12d8453660300a859658def1f9277d0120430b86
+
+
+Programmeerstijl
+----------------
+
+- naamgeving variabelen (conventies & zinvolle namen)
+
+In Logic.Inventory moeten de variabelen die private zijn allemaal camelCased zijn niet Products en Orders maar products en orders.
+
+Gebruik var waar nodig volgens de conventie bij
+	- Data.cs: 22, 23, 45 
+	- Inventory: 21, 30
+	- Presentation.Program: 18
+	- PresentationForm: 17, 27, 35, 46, 102, 125, 127, 133, 18
+
+In Datalayer.DirectoryInfo() is het niet duidelijk waarvoor dir1 staat wat zou dan het verschil zijn met dir2?
+
+- naamgeving methodes (conventies & zinvolle namen)
+
+- layout (gebruik accolades en inspringen)
+
+Overal in orde.
+
+- geen publieke velden (properties waar nodig)
+
+In Order kan OrderCode, OrderProductCode en OrderName een auto-implemented propertie zijn er wordt geen bebaalde validatie gedaan in de setter zoals bij OrderQuantity en de getter geeft ook gewoon de waarde terug.
+
+- korte methodes (< 25 lijnen), 'single responisbility rule'
+
+De methode PlaceOrder in PresentationForm is aan de lange kant, splits dit misschien op met een methode die elke Product in de foreach afzonderlijk afhandelt. Dit zou dan 10 lijnen korter zijn. Anders niets te lang.
+
+
+Algemeen Commentaar
+-------------------
+
+In de constructor van Product kan de if/else mooier geschreven worden door gebruik te maken van een ternary operator.
+ProductStatus = (quantity <= 0) ? ProductStatus.Outofstock : ProductStatus.Instock;
+
+De naamgeving van de interface IDataProvider en IDataInventory vind ik dubbelzinning, ze worden geïmplementeerd in een logische laag en niet in een data-laag.
+
+Tijdens het opstarten van de applicatie gaat de app er van uit dat 'ProductsData.json' bestaat. Wanneer er geen bestand bestaat, wordt er een Exception opgeroepen. Maak hiervoor een aanpassing waardoor als er geen bestand bestaat een leeg bestand wordt aangemaakt. Ik heb dit nu manueel aangemaakt.
+
+Tijdens het opvragen van de files in FileInfo en DirectoryInfo ga je er specifiek vanuit dat het programma in een bepaalde map wordt uitgevoerd. Wanneer je dus de bestanden specifiek uit C:\ wil lezen gebruik je beter een absoluut pad inplaats van @"./../../../".
+
+Het is geen good practice om exceptions op te vangen onder 'Exception' propeer een specifiekere exception op te vangen in Data: 48 en PresentationForm: 67, 80, 92, 115 
+ 
+TIP: VisualStudio geeft veel warnings, probeer deze in het oog te houden.
+
+TIP: Doe vaak een code cleanup, dit vind je onder Analyze > Code Cleanup > Run Code Cleanup
+
+
+Structuur
+---------
+
+Het is een simpele app die werkt. De code is opgesplitst in een Data-, Logic- en Presentation-laag.
+
+Probeer niet meerdere keren een bestand/klasse dezelfde naam te geven. Zowel in Presentation als in ConsoleInvetory bestaat een bestand Program.cs met de klasse Program. Dit maakt het moeilijk om soms te weten over welk bestand het gaat. Probeer namen te geven die beschrijven welk 'Program' het juist is.
+
+Probeer wanneer je een Object instantieert een mogelijke Interface te gebruiken. In Inventory maak je een Data-object aan die IDataProvider implementeerd. Gebruik hiervoor 'IDataProvider data' en niet 'Data data'. Dit zorgt ervoor dat later een gelijk welk IDataProvider kan aangemaakt worden en niet niet enkel een Data-object.
+
+
+Userinterface
+-------------
+
+In de userinterface staat er een button met text 'button1'. Deze doet niets en heeft dus geen functionaliteit.
+
+De window van de UI heeft een vaste breedte/hoogte die bepaalde elementen verstoppen. De breedte is veel te breed namelijk 2 keer zo breed als de effectieve content in de window. Terwijl de hoogte dan te klein is Quantity en Place order is niet zichtbaar. Ik moet zelf de window gaan resizen om dit te kunnen zien. Misschien geen fixed breedte/hoogte gebruiken maar eerder gebaseerd op de effectieve content van de window en maken als er overflow is dat de gebruiker kan scrollen.
+
+Misschien een titel Products toevoegen deze bestaat niet maar er is wel een titel voor Orders.
+
+Het gebruik om Orders te plaatsen van uit de Producten is intuitief. 
+
+Wanneer een order wordt toegevoegd en er is nog geen 'Order status' krijgt de gebruiker een warning. Misschien zou het hier beter zijn om een order initieel op 'Processing' te zetten. Een Order wordt namelijk eerst geprocessed en dan pas verstuurd.
+
+
+Analyse van methode 'AddOrder' (klasse 'Inventory')
+--------------------------------------------------------
+
+Er wordt twee maal de exception "OperationCanceledException" en één algemene Exception opgeroepen, dit heeft niets te maken met de oorzaak van het probleem. Wanneer een Product Out of Stock is bijvoorbeeld, is dit geen OperationCanceled probleem. Probeer hiervoor nuttige exceptions op te roepen.
+
+
+Analyse van methode 'RemoveProduct' (klasse 'Inventory')
+----------------------------------------------------
+
+Je heb je Product Equatable gemaakt op basis van de productCode. Het is dus niet nodig om specifiek nog eens in het predikaat RemoveAll(x => x.ProductCode == product.ProductCode); te doen. Je kan gewoon Products.RemoveAll(p => p == product);
+
+
+Analyse van methode 'AddProduct' (klasse 'Inventory')
+-----------------------------------------------------
+
+Bij Products.Any(a => a.ProductCode == product.ProductCode) kan je gewoon Products.Any(p => p == product) doen, zie hierboven beschreven in analyse van RemoveProduct.

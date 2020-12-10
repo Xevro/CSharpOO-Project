@@ -1,4 +1,5 @@
 ﻿using Globals;
+using Globals.ErrorMessages;
 using Globals.Exceptions;
 using Newtonsoft.Json;
 using System;
@@ -35,7 +36,7 @@ namespace Datalayer
             }
             catch (ExportDataException)
             {
-                throw new ExportDataException("Can't export data to file");
+                throw new ExportDataException(ErrorMessages.ExportDataError);
             }
         }
 
@@ -55,7 +56,7 @@ namespace Datalayer
             }
             catch (ImportDataException)
             {
-                throw new ImportDataException("Error while importing from json file");
+                throw new ImportDataException(ErrorMessages.ImpotDataError);
             }
         }
 

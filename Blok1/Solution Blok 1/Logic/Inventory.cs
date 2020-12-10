@@ -1,5 +1,6 @@
 ﻿using Datalayer;
 using Globals;
+using Globals.ErrorMessages;
 using Globals.Exceptions;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Linq;
 namespace Logic
 {
     [Serializable]
-    public class Inventory : IDataInventory
+    public class Inventory : ILogicInventory
     {
         private readonly List<Product> products = new List<Product>();
         private readonly List<Order> orders = new List<Order>();
@@ -36,7 +37,7 @@ namespace Logic
         {
             if (product.ProductQuantity <= 0)
             {
-                throw new ArgumentOutOfRangeException("Quantity is to small, must be 1 at least.");
+                throw new AddingProductException(ErrorMessages.ProductQuantityTooLowError);
             }
             if (!products.Any(p => p == product) && product.ProductQuantity >= 1)
             {
@@ -44,7 +45,7 @@ namespace Logic
             }
             else
             {
-                throw new OperationCanceledException("Can't add the product.");
+                throw new AddingProductException(ErrorMessages.CanNotAddProductError);
             }
         }
 
@@ -72,12 +73,12 @@ namespace Logic
                 if (product.ProductQuantity == 0)
                 {
                     product.ProductStatus = ProductStatus.Outofstock;
-                    throw new ProductOutOfstockException("Product is out of stock");
+                    throw new ProductOutOfstockException(ErrorMessages.ProductOutOfStockError);
                 }
             }
             else
             {
-                throw new AddingOrderException("Can't place the order.");
+                throw new AddingOrderException(ErrorMessages.CanNotAddOrderError);
             }
         }
 
@@ -100,7 +101,7 @@ namespace Logic
             }
             else
             {
-                throw new ProductsDataIsEmptyException("Products data file is empty");
+                throw new ProductsDataIsEmptyException(ErrorMessages.ProductFileIsEmptyError);
             }
         }
 

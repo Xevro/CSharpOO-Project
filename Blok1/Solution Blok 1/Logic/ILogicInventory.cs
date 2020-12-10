@@ -2,7 +2,7 @@
 
 namespace Globals
 {
-    public interface IDataInventory
+    public interface ILogicInventory
     {
         List<Product> GetSortedProducts { get; }
         List<Order> GetSortedOrders { get; }

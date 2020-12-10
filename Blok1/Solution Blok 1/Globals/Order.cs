@@ -6,13 +6,9 @@ namespace Globals
     public class Order : IEquatable<Order>
     {
         public int OrderCode { get; set; }
-
         public int OrderProductCode { get; set; }
-
         public string OrderName { get; set; }
-
         public int OrderQuantity { get; set; }
-
         public OrderStatus OrderStatus { get; set; }
 
         private static int lastId = 0;
