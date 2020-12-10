@@ -1,10 +1,14 @@
-﻿namespace ConsoleInventory
+﻿using Datalayer;
+using Logic;
+
+namespace ConsoleInventory
 {
     internal class ConsoleProgram
     {
         private static void Main()
         {
-            new UserInterface().Run();
+            var inv = new Inventory(new Data());
+            new UserInterface(inv).Run();
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using Globals;
 using Globals.ErrorMessages;
 using Globals.Exceptions;
-using Logic;
 using System;
 using System.Windows.Forms;
 
@@ -9,14 +8,14 @@ namespace Presentation
 {
     public partial class Presentation : Form
     {
-        private readonly Inventory inv;
+        private readonly ILogicInventory inv;
 
-        public Presentation(Inventory inventory)
+        public Presentation(ILogicInventory inventory)
         {
             InitializeComponent();
             inv = inventory;
             txtMessage.Text = "";
-            foreach (var orderStatus in Enum.GetNames(typeof(OrderStatus)))
+            foreach (string orderStatus in Enum.GetNames(typeof(OrderStatus)))
             {
                 CbxOrderStatus.Items.Add(orderStatus);
             }
@@ -138,7 +137,7 @@ namespace Presentation
             }
             else
             {
-                throw new AddingOrderException("Please select an item and/or an order status!");
+                throw new AddingOrderException(ErrorMessages.SelectOrderStatusError);
             }
         }
 
@@ -156,7 +155,7 @@ namespace Presentation
                     }
                     else
                     {
-                        throw new AddingOrderException("Can't add the order");
+                        throw new AddingOrderException(ErrorMessages.CanNotAddOrderError);
                     }
                 }
             }

@@ -2,7 +2,7 @@
 
 namespace Globals
 {
-    public class Product : IEquatable<Product>
+    public struct Product : IEquatable<Product>
     {
         public int ProductCode { get; set; }
         public string ProductName { get; set; }
@@ -15,6 +15,14 @@ namespace Globals
             ProductName = name;
             ProductQuantity = quantity;
             ProductStatus = (quantity <= 0) ? ProductStatus.Outofstock : ProductStatus.Instock;
+        }
+
+        public Product(int code, string name, int quantity, ProductStatus status)
+        {
+            ProductCode = code;
+            ProductName = name;
+            ProductQuantity = quantity;
+            ProductStatus = status;
         }
         public override string ToString()
         {

@@ -1,14 +1,20 @@
-﻿using Logic;
+﻿using Globals;
 using System;
 
 namespace ConsoleInventory
 {
     public class UserInterface
     {
-        private readonly Inventory inv = new Inventory();
+        private readonly ILogicInventory inv;
+
+        public UserInterface(ILogicInventory inventory)
+        {
+            this.inv = inventory;
+        }
 
         public void Run()
         {
+            inv.ImportData();
             ShowBanner();
         }
 
@@ -16,9 +22,14 @@ namespace ConsoleInventory
         {
             Console.WriteLine("Console Inventory Application");
             Console.WriteLine("-----------------------------\n");
-            Console.WriteLine("File & Directory information");
-            inv.ShowFileInfo();
-            inv.ShowDirectoryInfo();
+            Console.WriteLine("A list of all the products");
+            foreach (var product in inv.GetSortedProducts)
+            {
+                Console.WriteLine(product);
+            }
+
+            //inv.ShowFileInfo();
+            //inv.ShowDirectoryInfo();
 
         }
     }

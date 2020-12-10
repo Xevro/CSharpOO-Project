@@ -6,9 +6,7 @@ namespace Globals
     {
         void ExportToJSON(List<Product> products);
         List<Product> ImportFromJSON();
-
         public void DirectoryInfo();
-
         public void FileInfo();
     }
 }

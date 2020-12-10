@@ -1,5 +1,4 @@
-﻿using Datalayer;
-using Globals;
+﻿using Globals;
 using Globals.ErrorMessages;
 using Globals.Exceptions;
 using System;
@@ -13,7 +12,12 @@ namespace Logic
     {
         private readonly List<Product> products = new List<Product>();
         private readonly List<Order> orders = new List<Order>();
-        private readonly IDataProvider data = new Data();
+        private readonly IDataProvider data;
+
+        public Inventory(IDataProvider data)
+        {
+            this.data = data;
+        }
 
         public List<Product> GetSortedProducts
         {
@@ -39,7 +43,7 @@ namespace Logic
             {
                 throw new AddingProductException(ErrorMessages.ProductQuantityTooLowError);
             }
-            if (!products.Any(p => p == product) && product.ProductQuantity >= 1)
+            if (!products.Any(p => p.ProductCode == product.ProductCode) && product.ProductQuantity >= 1)
             {
                 products.Add(product);
             }
@@ -51,11 +55,11 @@ namespace Logic
 
         public void RemoveProduct(Product product)
         {
-            products.RemoveAll(p => p == product);
+            products.RemoveAll(e => e.ProductCode == product.ProductCode);
         }
         public void RemoveOrder(Order order)
         {
-            orders.RemoveAll(o => o == order);
+            orders.RemoveAll(o => o.OrderCode == order.OrderCode);
         }
 
         public void AddOrder(Order order, Product product, int quantityTxtField)

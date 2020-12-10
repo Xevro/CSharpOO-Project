@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Threading;
 
 namespace Globals
 {
-    public class Order : IEquatable<Order>
+    public struct Order : IEquatable<Order>
     {
-        public int OrderCode { get; set; }
+        public int OrderCode { get; private set; }
         public int OrderProductCode { get; set; }
         public string OrderName { get; set; }
         public int OrderQuantity { get; set; }
@@ -15,7 +14,7 @@ namespace Globals
 
         public Order(int orderProductCode, string name, int quantity, OrderStatus status)
         {
-            OrderCode = Interlocked.Increment(ref lastId);
+            OrderCode = ++lastId;
             OrderProductCode = orderProductCode;
             OrderName = name;
             OrderQuantity = quantity;

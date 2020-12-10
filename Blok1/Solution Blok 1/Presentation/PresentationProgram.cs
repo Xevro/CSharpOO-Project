@@ -1,3 +1,4 @@
+using Datalayer;
 using Logic;
 using System;
 using System.Windows.Forms;
@@ -12,7 +13,7 @@ namespace Presentation
         [STAThread]
         static void Main()
         {
-            Inventory inv = new Inventory();
+            var inv = new Inventory(new Data());
 
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();

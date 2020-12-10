@@ -14,25 +14,10 @@ namespace Datalayer
         {
             try
             {
-                string path = @"./ProductData.json";
-                var formatter = new JsonSerializer();
-                using var stream = new MemoryStream();
-                using var sr = new StreamWriter(stream);
-                formatter.Serialize(sr, products);
-                sr.Flush();
-                stream.Seek(0, SeekOrigin.Begin);
-                System.IO.File.WriteAllText(path, string.Empty);
-                var f = new FileStream(path, FileMode.OpenOrCreate);
-                var s = new StreamWriter(f);
+                string path = @"Resources/ProductsData.json";
 
-                using var reader = new StreamReader(stream);
-                while (!reader.EndOfStream)
-                {
-                    string line = reader.ReadLine();
-                    s.WriteLine(line);
-                }
-                s.Close();
-                f.Close();
+                string productsJson = JsonConvert.SerializeObject(products);
+                File.WriteAllText(path, productsJson);
             }
             catch (ExportDataException)
             {
@@ -73,7 +58,6 @@ namespace Datalayer
             }
             Console.WriteLine("");
         }
-
         public void FileInfo()
         {
             // list all files in C:\
@@ -87,4 +71,3 @@ namespace Datalayer
         }
     }
 }
-

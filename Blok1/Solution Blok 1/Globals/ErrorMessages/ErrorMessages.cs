@@ -11,5 +11,6 @@
         public const string ImpotDataError = "Error while importing from json file";
         public const string CanNotAddOrderError = "Can't Add the order.";
         public const string RemovingOrderError = "Please select an order!";
+        public const string SelectOrderStatusError = "Please select an item and/or an order status!";
     }
 }

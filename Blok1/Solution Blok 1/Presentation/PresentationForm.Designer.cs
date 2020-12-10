@@ -31,10 +31,6 @@ namespace Presentation
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dataGridProducts = new System.Windows.Forms.DataGridView();
-            this.ProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblproductcode = new System.Windows.Forms.Label();
             this.TxtCode = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -62,6 +58,10 @@ namespace Presentation
             this.BtnRemoveProduct = new System.Windows.Forms.Button();
             this.OrdersID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnRemoveOrder = new System.Windows.Forms.Button();
+            this.ProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProducts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NmrOrderQuantity)).BeginInit();
@@ -84,7 +84,7 @@ namespace Presentation
             this.dataGridProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ProductID,
-            this.Name,
+            this.ProductName,
             this.Quantity,
             this.Status});
             this.dataGridProducts.Location = new System.Drawing.Point(525, 128);
@@ -97,38 +97,6 @@ namespace Presentation
             this.dataGridProducts.Size = new System.Drawing.Size(1184, 610);
             this.dataGridProducts.TabIndex = 4;
             this.dataGridProducts.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGrid_CellMouseClick);
-            // 
-            // ProductID
-            // 
-            this.ProductID.HeaderText = "Product ID";
-            this.ProductID.MinimumWidth = 10;
-            this.ProductID.Name = "ProductID";
-            this.ProductID.ReadOnly = true;
-            this.ProductID.Width = 250;
-            // 
-            // Name
-            // 
-            this.Name.HeaderText = "Name";
-            this.Name.MinimumWidth = 10;
-            this.Name.Name = "Name";
-            this.Name.ReadOnly = true;
-            this.Name.Width = 350;
-            // 
-            // Quantity
-            // 
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.MinimumWidth = 10;
-            this.Quantity.Name = "Quantity";
-            this.Quantity.ReadOnly = true;
-            this.Quantity.Width = 250;
-            // 
-            // Status
-            // 
-            this.Status.HeaderText = "Status";
-            this.Status.MinimumWidth = 10;
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
-            this.Status.Width = 250;
             // 
             // lblproductcode
             // 
@@ -247,9 +215,12 @@ namespace Presentation
             this.OrderQuantity,
             this.OrderStatus});
             this.dataGridOrders.Location = new System.Drawing.Point(525, 866);
+            this.dataGridOrders.MultiSelect = false;
             this.dataGridOrders.Name = "dataGridOrders";
+            this.dataGridOrders.ReadOnly = true;
             this.dataGridOrders.RowHeadersWidth = 82;
             this.dataGridOrders.RowTemplate.Height = 41;
+            this.dataGridOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridOrders.Size = new System.Drawing.Size(1184, 616);
             this.dataGridOrders.TabIndex = 18;
             // 
@@ -258,6 +229,7 @@ namespace Presentation
             this.OrderID.HeaderText = "Order ID";
             this.OrderID.MinimumWidth = 10;
             this.OrderID.Name = "OrderID";
+            this.OrderID.ReadOnly = true;
             this.OrderID.Width = 200;
             // 
             // OrderProductID
@@ -265,6 +237,7 @@ namespace Presentation
             this.OrderProductID.HeaderText = "Product ID";
             this.OrderProductID.MinimumWidth = 10;
             this.OrderProductID.Name = "OrderProductID";
+            this.OrderProductID.ReadOnly = true;
             this.OrderProductID.Width = 200;
             // 
             // OrderName
@@ -272,6 +245,7 @@ namespace Presentation
             this.OrderName.HeaderText = "Name";
             this.OrderName.MinimumWidth = 10;
             this.OrderName.Name = "OrderName";
+            this.OrderName.ReadOnly = true;
             this.OrderName.Width = 300;
             // 
             // OrderQuantity
@@ -279,6 +253,7 @@ namespace Presentation
             this.OrderQuantity.HeaderText = "Quantity";
             this.OrderQuantity.MinimumWidth = 10;
             this.OrderQuantity.Name = "OrderQuantity";
+            this.OrderQuantity.ReadOnly = true;
             this.OrderQuantity.Width = 200;
             // 
             // OrderStatus
@@ -286,6 +261,7 @@ namespace Presentation
             this.OrderStatus.HeaderText = "Order status";
             this.OrderStatus.MinimumWidth = 10;
             this.OrderStatus.Name = "OrderStatus";
+            this.OrderStatus.ReadOnly = true;
             this.OrderStatus.Width = 200;
             // 
             // label5
@@ -374,6 +350,38 @@ namespace Presentation
             this.BtnRemoveOrder.UseVisualStyleBackColor = true;
             this.BtnRemoveOrder.Click += new System.EventHandler(this.BtnRemoveOrder_Click);
             // 
+            // ProductID
+            // 
+            this.ProductID.HeaderText = "Product ID";
+            this.ProductID.MinimumWidth = 10;
+            this.ProductID.Name = "ProductID";
+            this.ProductID.ReadOnly = true;
+            this.ProductID.Width = 250;
+            // 
+            // ProductName
+            // 
+            this.ProductName.HeaderText = "Product Name";
+            this.ProductName.MinimumWidth = 10;
+            this.ProductName.Name = "ProductName";
+            this.ProductName.ReadOnly = true;
+            this.ProductName.Width = 350;
+            // 
+            // Quantity
+            // 
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.MinimumWidth = 10;
+            this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
+            this.Quantity.Width = 250;
+            // 
+            // Status
+            // 
+            this.Status.HeaderText = "Status";
+            this.Status.MinimumWidth = 10;
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            this.Status.Width = 250;
+            // 
             // Presentation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
@@ -406,6 +414,7 @@ namespace Presentation
             this.Controls.Add(this.dataGridProducts);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Name = "Presentation";
             this.Padding = new System.Windows.Forms.Padding(0, 0, 100, 100);
             this.Text = "Inventory Application";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProducts)).EndInit();
@@ -430,10 +439,6 @@ namespace Presentation
         private System.Windows.Forms.Button BtnImport;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button BtnExport;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private System.Windows.Forms.Label txtMessage;
         private System.Windows.Forms.DataGridView dataGridOrders;
         private System.Windows.Forms.Label label5;
@@ -450,6 +455,10 @@ namespace Presentation
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderStatus;
         private System.Windows.Forms.Button BtnRemoveOrder;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
     }
 }
 
