@@ -36,14 +36,6 @@
 
 - [x] *Huisregels voor programmeerstijl volgen*
 
-* Je volgt niet altijd de regels voor naamgeving.
-  * Voor namen van private velden wordt camelCasing gebruikt.
-* Gebruik type inference ('var') volgens de conventie uit de stijlregels.
-* Gebruik de 'this'-qualifier enkel waar nodig om verwarring te vermijden.
-* Hanteer de gevraagde volgorde voor de verschillende onderdelen van je klasse (properties na de velden en voor de constructor).
-* Schrijf geen te lange methoden (richtlijn ~20 lijnen).
-
-* Tip: hou rekening met de messages en warnings uit de 'Error List'.
 
  
 #### Exceptions
@@ -51,8 +43,6 @@
 - [x] *try..catch..finally*
 - [x] *Je werpt bruikbare exceptions op wanneer je een foutsituatie detecteert die niet lokaal op een beter manier kan afgehandeld worden.*
 
-* `catch (Exception e)` is geen good practice. Probeer meer specifieke excepties op te vangen.
-* Een exceptie opvangen om ze dan onmiddellijk weer op te gooien heeft niet zoveel zin.
 
 #### Enumerations
 
@@ -64,21 +54,17 @@
 - [x] *Auto-implemented property*
 - [ ] *Access-modifiers voor Getters en Setters*
 
-* het heeft geen zin in de setter van een 'int' property te testen of 'value' een int is (als dat niet zo is , krijg je al een exception vooraleer je in de setter-code komt).
-
 
 #### Interpolated strings
 
 - [x] *Interpolated strings*
 
-* Bij een interpolated string is het niet nodig om 'ToString' op te roepen bij het resultaat van een expression tussen accolades.
  
 
 #### Generic collections
 
---> Nog niet beoordeeld
 
-- [ ] *List<T>*
+- [x] *List<T>*
 - [ ] *Dictionary<T,T>*
 - [ ] *Overzicht andere generic collections*
 
@@ -118,7 +104,7 @@ De Serialisatie naar een Json-bestand is onnodig complex gemaakt.
 
 #### Klassen - klassehiërarchie
 
-- [¨x] *Klasse declaratie - constructoren*
+- [x] *Klasse declaratie - constructoren*
 - [ ] *constructor overloading*
 - [ ] *Klasse-hiërarchie*
 
