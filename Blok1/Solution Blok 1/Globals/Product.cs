@@ -26,7 +26,7 @@ namespace Globals
         }
         public override string ToString()
         {
-            return $"Prduct code: {ProductCode}, Product name: {ProductName}, Quantity: {ProductQuantity}.";
+            return $"Prduct code: {ProductCode}, Product name: {ProductName}, Quantity: {ProductQuantity}, Product status: {ProductStatus}.";
         }
 
         public bool Equals(Product other)
