@@ -29,7 +29,8 @@ namespace ConsoleInventory
         {
             Console.WriteLine("1) View all the products");
             Console.WriteLine("2) View all the orders");
-            Console.WriteLine("3) View folder information");
+            Console.WriteLine("3) View file information");
+            Console.WriteLine("4) View directory information");
             Console.WriteLine("0) Exit the application");
             Console.WriteLine("Enter your choice:");
             bool exit = false;
@@ -57,6 +58,11 @@ namespace ConsoleInventory
                     case '3':
                         {
                             inv.ShowFileInfo();
+                            break;
+                        }
+                    case '4':
+                        {
+                            inv.ShowDirectoryInfo();
                             break;
                         }
                     default:

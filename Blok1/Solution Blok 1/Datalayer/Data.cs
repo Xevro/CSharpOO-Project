@@ -47,9 +47,9 @@ namespace Datalayer
 
         public void DirectoryInfo()
         {
-            Console.WriteLine("Directory");
+            Console.WriteLine("Directory information");
             Console.WriteLine("");
-            var dir1 = new DirectoryInfo(@"./../../../../");
+            var dir1 = new DirectoryInfo(@"./");
 
             Console.WriteLine($"Directories under {dir1.Name}");
             foreach (var dir in dir1.EnumerateDirectories())
@@ -62,7 +62,7 @@ namespace Datalayer
         {
             // list all files in C:\
             Console.WriteLine(@"Files in project directory");
-            foreach (string fileName in Directory.EnumerateFiles(@"./../../../"))
+            foreach (string fileName in Directory.EnumerateFiles(@"./"))
             {
                 var fileInfo = new FileInfo(fileName);
                 Console.WriteLine($" {fileInfo.Name,-20} - {fileInfo.Length,10} bytes - created: {fileInfo.CreationTime}");
