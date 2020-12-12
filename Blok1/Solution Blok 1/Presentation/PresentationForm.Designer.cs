@@ -70,6 +70,7 @@ namespace Presentation
             this.HistoryOrderDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.BtnUpdateOrder = new System.Windows.Forms.Button();
+            this.BtnUpdateProduct = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProducts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NmrOrderQuantity)).BeginInit();
@@ -197,7 +198,7 @@ namespace Presentation
             // 
             // BtnImport
             // 
-            this.BtnImport.Location = new System.Drawing.Point(275, 594);
+            this.BtnImport.Location = new System.Drawing.Point(269, 640);
             this.BtnImport.Name = "BtnImport";
             this.BtnImport.Size = new System.Drawing.Size(200, 46);
             this.BtnImport.TabIndex = 14;
@@ -209,7 +210,7 @@ namespace Presentation
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(49, 512);
+            this.label4.Location = new System.Drawing.Point(49, 560);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(119, 40);
             this.label4.TabIndex = 15;
@@ -217,7 +218,7 @@ namespace Presentation
             // 
             // BtnExport
             // 
-            this.BtnExport.Location = new System.Drawing.Point(49, 594);
+            this.BtnExport.Location = new System.Drawing.Point(49, 640);
             this.BtnExport.Name = "BtnExport";
             this.BtnExport.Size = new System.Drawing.Size(200, 46);
             this.BtnExport.TabIndex = 16;
@@ -472,6 +473,16 @@ namespace Presentation
             this.BtnUpdateOrder.UseVisualStyleBackColor = true;
             this.BtnUpdateOrder.Click += new System.EventHandler(this.BtnUpdateOrder_Click);
             // 
+            // BtnUpdateProduct
+            // 
+            this.BtnUpdateProduct.Location = new System.Drawing.Point(247, 510);
+            this.BtnUpdateProduct.Name = "BtnUpdateProduct";
+            this.BtnUpdateProduct.Size = new System.Drawing.Size(200, 46);
+            this.BtnUpdateProduct.TabIndex = 30;
+            this.BtnUpdateProduct.Text = "Update Product";
+            this.BtnUpdateProduct.UseVisualStyleBackColor = true;
+            this.BtnUpdateProduct.Click += new System.EventHandler(this.BtnUpdateProduct_Click);
+            // 
             // Presentation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
@@ -480,6 +491,7 @@ namespace Presentation
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(3246, 1617);
+            this.Controls.Add(this.BtnUpdateProduct);
             this.Controls.Add(this.BtnUpdateOrder);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dataGridHistoryOrders);
@@ -559,6 +571,7 @@ namespace Presentation
         private System.Windows.Forms.DataGridViewTextBoxColumn HistoryOrderDate;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button BtnUpdateOrder;
+        private System.Windows.Forms.Button BtnUpdateProduct;
     }
 }
 

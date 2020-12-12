@@ -21,6 +21,15 @@ namespace Globals
             OrderStatus = status;
         }
 
+        public Order(int orderID, int orderProductCode, string name, int quantity, OrderStatus status)
+        {
+            OrderCode = orderID;
+            OrderProductCode = orderProductCode;
+            OrderName = name;
+            OrderQuantity = quantity;
+            OrderStatus = status;
+        }
+
         public bool Equals(Order other)
         {
             return other.OrderCode == this.OrderCode;

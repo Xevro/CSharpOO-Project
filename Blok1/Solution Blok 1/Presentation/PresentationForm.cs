@@ -2,8 +2,6 @@
 using Globals.ErrorMessages;
 using Globals.Exceptions;
 using System;
-using System.Diagnostics;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Presentation
@@ -218,25 +216,32 @@ namespace Presentation
 
         private void BtnUpdateOrder_Click(object sender, EventArgs e)
         {
-            /*var selectedRow = dataGridOrders.Rows[dataGridOrders.SelectedCells[0].RowIndex];
+            var selectedRow = dataGridOrders.Rows[dataGridOrders.SelectedCells[0].RowIndex];
             foreach (var order in inv.GetSortedOrders)
             {
                 if (order.OrderCode == (int)selectedRow.Cells[0].Value)
                 {
-                    //if (product. - (int)NmrOrderQuantity.Value >= 0)
-                    //{
-                    inv.UpdateOrder(order.OrderCode, (OrderStatus)Enum.Parse(typeof(OrderStatus), CbxOrderStatus.Text));
+                    inv.UpdateOrder(order, (OrderStatus)Enum.Parse(typeof(OrderStatus), CbxOrderStatus.Text));
                     LoadOrdersDataToView();
                     LoadDataToView();
                     LoadDataHistoryToView();
-                    //}
-                    // else
-                    //{
-                    //    throw new AddingOrderException(ErrorMessages.CanNotAddOrderError);
-                    // }
                 }
-            }*/
-            
+            }
+        }
+
+        private void BtnUpdateProduct_Click(object sender, EventArgs e)
+        {
+            var selectedRow = dataGridProducts.Rows[dataGridProducts.SelectedCells[0].RowIndex];
+            foreach (var product in inv.GetSortedProducts)
+            {
+                if (product.ProductCode == (int)selectedRow.Cells[0].Value)
+                {
+                    int productID = int.Parse(TxtCode.Text);
+                    int quantity = int.Parse(TxtQuantity.Text);
+                    inv.UpdateProduct(product, productID, TxtName.Text, quantity);
+                    LoadDataToView();
+                }
+            }
         }
     }
 }

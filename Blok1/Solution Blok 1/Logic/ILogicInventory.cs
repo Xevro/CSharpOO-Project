@@ -12,7 +12,8 @@ namespace Globals
         public void RemoveProduct(Product product);
         public void RemoveOrder(Order order);
         public void AddOrder(Order order, Product product, int quantityTxtField);
-        public void UpdateOrder(int orderID, OrderStatus status);
+        public void UpdateProduct(Product product, int productID, string name, int quantity);
+        public void UpdateOrder(Order order, OrderStatus status);
         public void ExportData();
         public void ImportData();
         public void ShowFileInfo();

@@ -10,7 +10,7 @@ namespace Globals
         public HistoryOrder(Order order, DateTime date)
         {
             this.Order = order;
-             this.DateDelivered = date;
+            this.DateDelivered = date;
         }
     }
 }

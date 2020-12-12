@@ -106,9 +106,24 @@ namespace Logic
             }
         }
 
-        public void UpdateOrder(int orderID, OrderStatus status)
+        public void UpdateProduct(Product product, int productID, string name, int quantity)
         {
-            orders.Where(w => w.OrderCode == orderID).ToList().ForEach(i => i.OrderStatus = status);
+            int index = products.FindLastIndex(p => p.ProductCode == product.ProductCode);
+            if (index != -1)
+            {
+                var p = new Product(productID, name, quantity, product.ProductStatus);
+                products[index] = p;
+            }
+        }
+
+        public void UpdateOrder(Order order, OrderStatus status)
+        {
+            int index = orders.FindLastIndex(c => c.OrderCode == order.OrderCode);
+            if (index != -1)
+            {
+                var o = new Order(order.OrderCode, order.OrderProductCode, order.OrderName, order.OrderQuantity, status);
+                orders[index] = o;
+            }
         }
 
         private void CheckProductStock(Product product)
