@@ -12,6 +12,7 @@ namespace Logic
     {
         private readonly List<Product> products = new List<Product>();
         private readonly List<Order> orders = new List<Order>();
+        private readonly List<Order> ordersHistory = new List<Order>();
         private readonly IDataProvider data;
 
         public Inventory(IDataProvider data)
@@ -37,6 +38,15 @@ namespace Logic
             }
         }
 
+        public List<Order> GetSortedOrderHistory
+        {
+            get
+            {
+                var ordersList = ordersHistory.OrderBy(o => o.OrderName).ToList();
+                return ordersList;
+            }
+        }
+
         public void AddProduct(Product product)
         {
             if (product.ProductQuantity <= 0)
@@ -57,6 +67,7 @@ namespace Logic
         {
             products.RemoveAll(e => e.ProductCode == product.ProductCode);
         }
+
         public void RemoveOrder(Order order)
         {
             orders.RemoveAll(o => o.OrderCode == order.OrderCode);
@@ -69,7 +80,7 @@ namespace Logic
                 product.ProductQuantity -= quantityTxtField;
                 CheckProductStock(product);
                 orders.Add(order);
-
+                AddToHistory(order);
                 if (product.ProductQuantity <= 8)
                 {
                     throw new ProductRunningLowOnStockException($"Stock is running low on {product.ProductName}");
@@ -84,6 +95,20 @@ namespace Logic
             {
                 throw new AddingOrderException(ErrorMessages.CanNotAddOrderError);
             }
+        }
+
+        public void AddToHistory(Order order)
+        {
+            if (order.OrderStatus == OrderStatus.Delivered)
+            {
+                ordersHistory.Add(order.Shallowcopy());
+            }
+        }
+
+        public void UpdateOrder(int orderID, OrderStatus status)
+        {
+            orders.Where(w => w.OrderCode == orderID).ToList().ForEach(s => s.OrderStatus = status);
+            //orders.First(d => d.OrderCode = orderID).OrderStatus = status;
         }
 
         private void CheckProductStock(Product product)

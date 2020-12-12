@@ -29,8 +29,11 @@ namespace Presentation
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dataGridProducts = new System.Windows.Forms.DataGridView();
+            this.ProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblproductcode = new System.Windows.Forms.Label();
             this.TxtCode = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -58,23 +61,19 @@ namespace Presentation
             this.BtnRemoveProduct = new System.Windows.Forms.Button();
             this.OrdersID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnRemoveOrder = new System.Windows.Forms.Button();
-            this.ProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridHistoryOrders = new System.Windows.Forms.DataGridView();
+            this.HistoryOrderID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HistoryOrderProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HistoryOrderName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HistoryOrderQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HistoryOrderStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HistoryOrderDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProducts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NmrOrderQuantity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridHistoryOrders)).BeginInit();
             this.SuspendLayout();
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(2838, 24);
-            this.menuStrip1.TabIndex = 3;
-            this.menuStrip1.Text = "menuStrip1";
             // 
             // dataGridProducts
             // 
@@ -97,6 +96,38 @@ namespace Presentation
             this.dataGridProducts.Size = new System.Drawing.Size(1184, 610);
             this.dataGridProducts.TabIndex = 4;
             this.dataGridProducts.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGrid_CellMouseClick);
+            // 
+            // ProductID
+            // 
+            this.ProductID.HeaderText = "Product ID";
+            this.ProductID.MinimumWidth = 10;
+            this.ProductID.Name = "ProductID";
+            this.ProductID.ReadOnly = true;
+            this.ProductID.Width = 250;
+            // 
+            // ProductName
+            // 
+            this.ProductName.HeaderText = "Product Name";
+            this.ProductName.MinimumWidth = 10;
+            this.ProductName.Name = "ProductName";
+            this.ProductName.ReadOnly = true;
+            this.ProductName.Width = 350;
+            // 
+            // Quantity
+            // 
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.MinimumWidth = 10;
+            this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
+            this.Quantity.Width = 250;
+            // 
+            // Status
+            // 
+            this.Status.HeaderText = "Status";
+            this.Status.MinimumWidth = 10;
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            this.Status.Width = 250;
             // 
             // lblproductcode
             // 
@@ -350,37 +381,85 @@ namespace Presentation
             this.BtnRemoveOrder.UseVisualStyleBackColor = true;
             this.BtnRemoveOrder.Click += new System.EventHandler(this.BtnRemoveOrder_Click);
             // 
-            // ProductID
+            // dataGridHistoryOrders
             // 
-            this.ProductID.HeaderText = "Product ID";
-            this.ProductID.MinimumWidth = 10;
-            this.ProductID.Name = "ProductID";
-            this.ProductID.ReadOnly = true;
-            this.ProductID.Width = 250;
+            this.dataGridHistoryOrders.AllowUserToAddRows = false;
+            this.dataGridHistoryOrders.AllowUserToDeleteRows = false;
+            this.dataGridHistoryOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridHistoryOrders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.HistoryOrderID,
+            this.HistoryOrderProductID,
+            this.HistoryOrderName,
+            this.HistoryOrderQuantity,
+            this.HistoryOrderStatus,
+            this.HistoryOrderDate});
+            this.dataGridHistoryOrders.Location = new System.Drawing.Point(1809, 131);
+            this.dataGridHistoryOrders.MultiSelect = false;
+            this.dataGridHistoryOrders.Name = "dataGridHistoryOrders";
+            this.dataGridHistoryOrders.ReadOnly = true;
+            this.dataGridHistoryOrders.RowHeadersWidth = 82;
+            this.dataGridHistoryOrders.RowTemplate.Height = 41;
+            this.dataGridHistoryOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridHistoryOrders.Size = new System.Drawing.Size(1384, 616);
+            this.dataGridHistoryOrders.TabIndex = 27;
             // 
-            // ProductName
+            // HistoryOrderID
             // 
-            this.ProductName.HeaderText = "Product Name";
-            this.ProductName.MinimumWidth = 10;
-            this.ProductName.Name = "ProductName";
-            this.ProductName.ReadOnly = true;
-            this.ProductName.Width = 350;
+            this.HistoryOrderID.HeaderText = "Order ID";
+            this.HistoryOrderID.MinimumWidth = 10;
+            this.HistoryOrderID.Name = "HistoryOrderID";
+            this.HistoryOrderID.ReadOnly = true;
+            this.HistoryOrderID.Width = 200;
             // 
-            // Quantity
+            // HistoryOrderProductID
             // 
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.MinimumWidth = 10;
-            this.Quantity.Name = "Quantity";
-            this.Quantity.ReadOnly = true;
-            this.Quantity.Width = 250;
+            this.HistoryOrderProductID.HeaderText = "Product ID";
+            this.HistoryOrderProductID.MinimumWidth = 10;
+            this.HistoryOrderProductID.Name = "HistoryOrderProductID";
+            this.HistoryOrderProductID.ReadOnly = true;
+            this.HistoryOrderProductID.Width = 200;
             // 
-            // Status
+            // HistoryOrderName
             // 
-            this.Status.HeaderText = "Status";
-            this.Status.MinimumWidth = 10;
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
-            this.Status.Width = 250;
+            this.HistoryOrderName.HeaderText = "Name";
+            this.HistoryOrderName.MinimumWidth = 10;
+            this.HistoryOrderName.Name = "HistoryOrderName";
+            this.HistoryOrderName.ReadOnly = true;
+            this.HistoryOrderName.Width = 300;
+            // 
+            // HistoryOrderQuantity
+            // 
+            this.HistoryOrderQuantity.HeaderText = "Quantity";
+            this.HistoryOrderQuantity.MinimumWidth = 10;
+            this.HistoryOrderQuantity.Name = "HistoryOrderQuantity";
+            this.HistoryOrderQuantity.ReadOnly = true;
+            this.HistoryOrderQuantity.Width = 200;
+            // 
+            // HistoryOrderStatus
+            // 
+            this.HistoryOrderStatus.HeaderText = "Order status";
+            this.HistoryOrderStatus.MinimumWidth = 10;
+            this.HistoryOrderStatus.Name = "HistoryOrderStatus";
+            this.HistoryOrderStatus.ReadOnly = true;
+            this.HistoryOrderStatus.Width = 200;
+            // 
+            // HistoryOrderDate
+            // 
+            this.HistoryOrderDate.HeaderText = "DeliveryDate";
+            this.HistoryOrderDate.MinimumWidth = 10;
+            this.HistoryOrderDate.Name = "HistoryOrderDate";
+            this.HistoryOrderDate.ReadOnly = true;
+            this.HistoryOrderDate.Width = 200;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(1809, 46);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(296, 59);
+            this.label3.TabIndex = 28;
+            this.label3.Text = "Order history";
             // 
             // Presentation
             // 
@@ -389,7 +468,9 @@ namespace Presentation
             this.AutoScroll = true;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(2938, 1617);
+            this.ClientSize = new System.Drawing.Size(3246, 1617);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.dataGridHistoryOrders);
             this.Controls.Add(this.BtnRemoveOrder);
             this.Controls.Add(this.BtnRemoveProduct);
             this.Controls.Add(this.label7);
@@ -412,21 +493,19 @@ namespace Presentation
             this.Controls.Add(this.TxtCode);
             this.Controls.Add(this.lblproductcode);
             this.Controls.Add(this.dataGridProducts);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Presentation";
             this.Padding = new System.Windows.Forms.Padding(0, 0, 100, 100);
             this.Text = "Inventory Application";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProducts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridOrders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NmrOrderQuantity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridHistoryOrders)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.DataGridView dataGridProducts;
         private System.Windows.Forms.Label lblproductcode;
         private System.Windows.Forms.TextBox TxtCode;
@@ -459,6 +538,14 @@ namespace Presentation
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        private System.Windows.Forms.DataGridView dataGridHistoryOrders;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HistoryOrderID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HistoryOrderProductID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HistoryOrderName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HistoryOrderQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HistoryOrderStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HistoryOrderDate;
+        private System.Windows.Forms.Label label3;
     }
 }
 

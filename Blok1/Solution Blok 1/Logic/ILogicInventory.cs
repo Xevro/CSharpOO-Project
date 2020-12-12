@@ -6,6 +6,7 @@ namespace Globals
     {
         List<Product> GetSortedProducts { get; }
         List<Order> GetSortedOrders { get; }
+        List<Order> GetSortedOrderHistory { get; }
 
         public void AddProduct(Product product);
         public void RemoveProduct(Product product);

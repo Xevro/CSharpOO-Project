@@ -24,6 +24,15 @@ namespace Globals
             ProductQuantity = quantity;
             ProductStatus = status;
         }
+
+        public Product(Product product)
+        {
+            ProductCode = product.ProductCode;
+            ProductName = product.ProductName;
+            ProductQuantity = product.ProductQuantity; ;
+            ProductStatus = product.ProductStatus;
+        }
+
         public override string ToString()
         {
             return $"Prduct code: {ProductCode}, Product name: {ProductName}, Quantity: {ProductQuantity}, Product status: {ProductStatus}.";

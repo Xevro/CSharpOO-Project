@@ -25,5 +25,10 @@ namespace Globals
         {
             return other.OrderCode == this.OrderCode;
         }
+
+        public Order Shallowcopy()
+        {
+            return (Order)this.MemberwiseClone();
+        }
     }
 }

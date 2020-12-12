@@ -23,6 +23,7 @@ namespace Presentation
             {
                 inv.ImportData();
                 LoadDataToView();
+                LoadDataHistoryToView();
             }
             catch (ImportDataException ex)
             {
@@ -54,6 +55,15 @@ namespace Presentation
             foreach (var order in inv.GetSortedOrders)
             {
                 this.dataGridOrders.Rows.Insert(0, order.OrderCode, order.OrderProductCode, order.OrderName, order.OrderQuantity, order.OrderStatus);
+            }
+        }
+
+        private void LoadDataHistoryToView()
+        {
+            this.dataGridHistoryOrders.Rows.Clear();
+            foreach (var order in inv.GetSortedOrderHistory)
+            {
+                this.dataGridHistoryOrders.Rows.Insert(0, order.OrderCode, order.OrderProductCode, order.OrderName, order.OrderQuantity, order.OrderStatus);
             }
         }
 
@@ -120,6 +130,7 @@ namespace Presentation
             try
             {
                 PlaceOrder();
+                LoadDataHistoryToView();
             }
             catch (Exception ex) when (ex is AddingOrderException || ex is ProductRunningLowOnStockException)
             {
