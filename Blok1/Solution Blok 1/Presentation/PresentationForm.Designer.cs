@@ -69,6 +69,7 @@ namespace Presentation
             this.HistoryOrderStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HistoryOrderDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
+            this.BtnUpdateOrder = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProducts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NmrOrderQuantity)).BeginInit();
@@ -461,6 +462,16 @@ namespace Presentation
             this.label3.TabIndex = 28;
             this.label3.Text = "Order history";
             // 
+            // BtnUpdateOrder
+            // 
+            this.BtnUpdateOrder.Location = new System.Drawing.Point(247, 1236);
+            this.BtnUpdateOrder.Name = "BtnUpdateOrder";
+            this.BtnUpdateOrder.Size = new System.Drawing.Size(200, 46);
+            this.BtnUpdateOrder.TabIndex = 29;
+            this.BtnUpdateOrder.Text = "Update order";
+            this.BtnUpdateOrder.UseVisualStyleBackColor = true;
+            this.BtnUpdateOrder.Click += new System.EventHandler(this.BtnUpdateOrder_Click);
+            // 
             // Presentation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
@@ -469,6 +480,7 @@ namespace Presentation
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(3246, 1617);
+            this.Controls.Add(this.BtnUpdateOrder);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dataGridHistoryOrders);
             this.Controls.Add(this.BtnRemoveOrder);
@@ -546,6 +558,7 @@ namespace Presentation
         private System.Windows.Forms.DataGridViewTextBoxColumn HistoryOrderStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn HistoryOrderDate;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button BtnUpdateOrder;
     }
 }
 

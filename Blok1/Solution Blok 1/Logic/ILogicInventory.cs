@@ -6,12 +6,13 @@ namespace Globals
     {
         List<Product> GetSortedProducts { get; }
         List<Order> GetSortedOrders { get; }
-        List<Order> GetSortedOrderHistory { get; }
+        List<HistoryOrder> GetSortedOrderHistory { get; }
 
         public void AddProduct(Product product);
         public void RemoveProduct(Product product);
         public void RemoveOrder(Order order);
         public void AddOrder(Order order, Product product, int quantityTxtField);
+        public void UpdateOrder(int orderID, OrderStatus status);
         public void ExportData();
         public void ImportData();
         public void ShowFileInfo();

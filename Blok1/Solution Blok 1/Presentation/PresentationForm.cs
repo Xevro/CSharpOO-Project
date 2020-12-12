@@ -2,6 +2,8 @@
 using Globals.ErrorMessages;
 using Globals.Exceptions;
 using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Presentation
@@ -63,7 +65,7 @@ namespace Presentation
             this.dataGridHistoryOrders.Rows.Clear();
             foreach (var order in inv.GetSortedOrderHistory)
             {
-                this.dataGridHistoryOrders.Rows.Insert(0, order.OrderCode, order.OrderProductCode, order.OrderName, order.OrderQuantity, order.OrderStatus);
+                this.dataGridHistoryOrders.Rows.Insert(0, order.Order.OrderName, order.Order.OrderProductCode, order.Order.OrderName, order.Order.OrderQuantity, order.Order.OrderStatus, order.DateDelivered);
             }
         }
 
@@ -170,7 +172,6 @@ namespace Presentation
                     }
                 }
             }
-
         }
 
         private void BtnRemoveProduct_Click(object sender, EventArgs e)
@@ -213,6 +214,29 @@ namespace Presentation
             {
                 ShowError(new RemovingOrderException(ErrorMessages.RemovingOrderError));
             }
+        }
+
+        private void BtnUpdateOrder_Click(object sender, EventArgs e)
+        {
+            /*var selectedRow = dataGridOrders.Rows[dataGridOrders.SelectedCells[0].RowIndex];
+            foreach (var order in inv.GetSortedOrders)
+            {
+                if (order.OrderCode == (int)selectedRow.Cells[0].Value)
+                {
+                    //if (product. - (int)NmrOrderQuantity.Value >= 0)
+                    //{
+                    inv.UpdateOrder(order.OrderCode, (OrderStatus)Enum.Parse(typeof(OrderStatus), CbxOrderStatus.Text));
+                    LoadOrdersDataToView();
+                    LoadDataToView();
+                    LoadDataHistoryToView();
+                    //}
+                    // else
+                    //{
+                    //    throw new AddingOrderException(ErrorMessages.CanNotAddOrderError);
+                    // }
+                }
+            }*/
+            
         }
     }
 }

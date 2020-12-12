@@ -1,15 +1,16 @@
-﻿namespace Globals
+﻿using System;
+
+namespace Globals
 {
     public class HistoryOrder : IHistory
     {
-
-        //public DateTime DateDeliveredTime { get; set; }
+        public DateTime DateDelivered { get; set; }
         public Order Order { get; set; }
 
-        public HistoryOrder(Order order) //, DateTime dateTime
+        public HistoryOrder(Order order, DateTime date)
         {
             this.Order = order;
-            // this.DateDeliveredTime = dateTime;
+             this.DateDelivered = date;
         }
     }
 }

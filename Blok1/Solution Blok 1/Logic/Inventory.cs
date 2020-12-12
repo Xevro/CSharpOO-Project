@@ -12,7 +12,7 @@ namespace Logic
     {
         private readonly List<Product> products = new List<Product>();
         private readonly List<Order> orders = new List<Order>();
-        private readonly List<Order> ordersHistory = new List<Order>();
+        private readonly List<HistoryOrder> ordersHistory = new List<HistoryOrder>();
         private readonly IDataProvider data;
 
         public Inventory(IDataProvider data)
@@ -38,11 +38,11 @@ namespace Logic
             }
         }
 
-        public List<Order> GetSortedOrderHistory
+        public List<HistoryOrder> GetSortedOrderHistory
         {
             get
             {
-                var ordersList = ordersHistory.OrderBy(o => o.OrderName).ToList();
+                var ordersList = ordersHistory.OrderBy(o => o.Order.OrderName).ToList();
                 return ordersList;
             }
         }
@@ -101,14 +101,14 @@ namespace Logic
         {
             if (order.OrderStatus == OrderStatus.Delivered)
             {
-                ordersHistory.Add(order.Shallowcopy());
+                HistoryOrder d = new HistoryOrder(order.Shallowcopy(), DateTime.Today);
+                ordersHistory.Add(d);
             }
         }
 
         public void UpdateOrder(int orderID, OrderStatus status)
         {
-            orders.Where(w => w.OrderCode == orderID).ToList().ForEach(s => s.OrderStatus = status);
-            //orders.First(d => d.OrderCode = orderID).OrderStatus = status;
+            orders.Where(w => w.OrderCode == orderID).ToList().ForEach(i => i.OrderStatus = status);
         }
 
         private void CheckProductStock(Product product)
