@@ -36,6 +36,8 @@
 
 - [x] *Huisregels voor programmeerstijl volgen*
 
+* Gebruik de 'this'-qualifier enkel waar nodig om verwarring te vermijden.
+
 
  
 #### Exceptions
@@ -81,44 +83,36 @@
 - [x] *Klasseblibliotheken*
 - [x] *Meerlagenmodel - 3lagenmodel*
 - [x] *'Loose coupling' - dependency injection*
-- [ ] *Interface gebruiken als scheiding tussen architectuurlagen*
+- [x] *Interface gebruiken als scheiding tussen architectuurlagen*
 
-* je hebt een goede indeling volgens het 3-lagen model.
-* Je gebruikt Dependency injection voor de koppeling tussen presentatie en logica maar niet tussen die logica en de datalaag.
-* Bij de koppeling tussen presentatie en logica gebruik je het concrete type 'Inventory' en niet het interface type 'IDataInventory'.
-*
+
 #### Bestanden en 'streams'
 
 - [x] *Statische klassen uit 'System.IO'*
 - [x] *Streams*
 - [x] *Serialisatie*
 
-De Serialisatie naar een Json-bestand is onnodig complex gemaakt.
-
 #### 'Value' en 'Reference' types, cloning van objecten
 
---> Nog niet beoordeeld
-
 - [ ] *'value' en 'reference' types, 'deep' versus 'shallow' copy*
-- [ ] *object cloning*
+- [x] *object cloning*
+
+* Je hebt al 'Copy' constructors maar nog geen 'deep' copy.
 
 #### Klassen - klassehiërarchie
 
 - [x] *Klasse declaratie - constructoren*
-- [ ] *constructor overloading*
+- [x] *constructor overloading*
 - [ ] *Klasse-hiërarchie*
 
-* Je hebt al volwaardige klassedeclaraties
-* Je hebt nog geen constructor overloading
+* Vermijd 'code clones' bij je constructor overloading
 * Je hebt nog geen klassehiërarchie
 
 
 
 #### Structs
 
---> Nog niet beoordeeld
-
-- [ ] *Structs*
+- [x] *Structs*
 
 ##### Extension methods
 
@@ -198,6 +192,4 @@ De Serialisatie naar een Json-bestand is onnodig complex gemaakt.
 
 #### Code Reviews
 
---> Nog niet beoordeeld
-
-- [ ] *Code reviews*
+- [x] *Code reviews*
