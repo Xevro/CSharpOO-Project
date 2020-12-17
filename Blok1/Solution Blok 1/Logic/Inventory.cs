@@ -101,7 +101,7 @@ namespace Logic
         {
             if (order.OrderStatus == OrderStatus.Delivered)
             {
-                HistoryOrder d = new HistoryOrder(order.Shallowcopy(), DateTime.Today);
+                var d = new HistoryOrder(order.Shallowcopy(), DateTime.Today);
                 ordersHistory.Add(d);
             }
         }
