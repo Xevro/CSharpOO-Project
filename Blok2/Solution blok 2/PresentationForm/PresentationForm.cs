@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Logic;
 using System.Windows.Forms;
 
 namespace PresentationForm
 {
     public partial class PresentationForm : Form
     {
-        public PresentationForm()
+        private readonly ILogic logic;
+
+        public PresentationForm(ILogic logicCovid)
         {
+            this.logic = logicCovid;
             InitializeComponent();
+            logic.load();
         }
 
     }
