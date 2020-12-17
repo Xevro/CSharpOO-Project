@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Datalayer
+namespace Logic
 {
     public class Class1
     {

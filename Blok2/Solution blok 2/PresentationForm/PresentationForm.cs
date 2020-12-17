@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PresentationForm
 {
-    public partial class Form1 : Form
+    public partial class PresentationForm : Form
     {
-        public Form1()
+        public PresentationForm()
         {
             InitializeComponent();
         }
