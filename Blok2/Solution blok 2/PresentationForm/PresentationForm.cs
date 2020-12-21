@@ -1,4 +1,5 @@
 ﻿using Logic;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace PresentationForm
@@ -11,8 +12,12 @@ namespace PresentationForm
         {
             this.logic = logicCovid;
             InitializeComponent();
-            logic.load();
-        }
+            var data = logic.GetJsonData();
 
+            foreach (var caseData in data.Data)
+            {
+                Debug.WriteLine(caseData.Active);
+            }
+        }
     }
 }

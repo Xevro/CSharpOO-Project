@@ -1,7 +1,5 @@
 ﻿using Datalayer;
-using System;
-using System.Diagnostics;
-using System.Threading.Tasks;
+using Globals;
 
 namespace Logic
 {
@@ -14,10 +12,9 @@ namespace Logic
             this.data = data;
         }
 
-        public async Task load()
+        public JsonData GetJsonData()
         {
-            var x = await data.RetrieveDataAsync();
-            Debug.WriteLine(x.ToString());
+            return data.GetJsonDataFromAPI();
         }
     }
 }

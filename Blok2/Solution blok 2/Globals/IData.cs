@@ -1,10 +1,9 @@
-﻿using System.Net.Http;
-using System.Threading.Tasks;
+﻿using Globals;
 
 namespace Datalayer
 {
     public interface IData
     {
-        public Task<string> RetrieveDataAsync();
+        public JsonData GetJsonDataFromAPI();
     }
 }

@@ -1,9 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using Globals;
 
 namespace Logic
 {
     public interface ILogic
     {
-        public Task load();
+        public JsonData GetJsonData();
     }
 }
