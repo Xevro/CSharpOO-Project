@@ -1,4 +1,5 @@
-﻿namespace Globals
+﻿
+namespace Globals
 {
     public class Case
     {
