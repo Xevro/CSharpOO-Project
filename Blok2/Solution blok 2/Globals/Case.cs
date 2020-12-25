@@ -17,5 +17,11 @@ namespace Globals
             Recovered = recovered;
             Active = active;
         }
+
+        public Case DeepCopy()
+        {
+            var deepcopyCase = new Case(this.Location, this.Confirmed, this.Deaths, this.Recovered, this.Active);
+            return deepcopyCase;
+        }
     }
 }

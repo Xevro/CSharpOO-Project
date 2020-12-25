@@ -43,6 +43,18 @@ namespace PresentationForm
             this.lblTotalRecovered = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lblTotalActive = new System.Windows.Forms.Label();
+            this.BtnShowDetailsCase = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.lblSelectedLocation = new System.Windows.Forms.Label();
+            this.lblSelectedConfirmed = new System.Windows.Forms.Label();
+            this.lblSelectedDeaths = new System.Windows.Forms.Label();
+            this.lblSelectedRecovered = new System.Windows.Forms.Label();
+            this.lblSelectedActive = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.datagridCases)).BeginInit();
             this.SuspendLayout();
             // 
@@ -147,7 +159,7 @@ namespace PresentationForm
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1237, 190);
+            this.label3.Location = new System.Drawing.Point(1242, 190);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(183, 32);
             this.label3.TabIndex = 5;
@@ -165,11 +177,11 @@ namespace PresentationForm
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1286, 246);
+            this.label4.Location = new System.Drawing.Point(1223, 246);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(139, 32);
+            this.label4.Size = new System.Drawing.Size(202, 32);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Total active:";
+            this.label4.Text = "Total active cases:";
             // 
             // lblTotalActive
             // 
@@ -180,11 +192,133 @@ namespace PresentationForm
             this.lblTotalActive.TabIndex = 8;
             this.lblTotalActive.Text = "label5";
             // 
+            // BtnShowDetailsCase
+            // 
+            this.BtnShowDetailsCase.Location = new System.Drawing.Point(1303, 740);
+            this.BtnShowDetailsCase.Name = "BtnShowDetailsCase";
+            this.BtnShowDetailsCase.Size = new System.Drawing.Size(263, 46);
+            this.BtnShowDetailsCase.TabIndex = 9;
+            this.BtnShowDetailsCase.Text = "Show selected info";
+            this.BtnShowDetailsCase.UseVisualStyleBackColor = true;
+            this.BtnShowDetailsCase.Click += new System.EventHandler(this.BtnShowCaseDetails_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(1239, 392);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(333, 45);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Selected information";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(1262, 518);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(186, 32);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Total confirmed:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(1300, 568);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(148, 32);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Total deaths:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(1268, 618);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(183, 32);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "Total recovered:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(1239, 674);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(209, 32);
+            this.label9.TabIndex = 14;
+            this.label9.Text = "Total  active cases:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(1344, 468);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(104, 32);
+            this.label10.TabIndex = 15;
+            this.label10.Text = "Country:";
+            // 
+            // lblSelectedLocation
+            // 
+            this.lblSelectedLocation.AutoSize = true;
+            this.lblSelectedLocation.Location = new System.Drawing.Point(1467, 468);
+            this.lblSelectedLocation.Name = "lblSelectedLocation";
+            this.lblSelectedLocation.Size = new System.Drawing.Size(23, 32);
+            this.lblSelectedLocation.TabIndex = 16;
+            this.lblSelectedLocation.Text = "/";
+            // 
+            // lblSelectedConfirmed
+            // 
+            this.lblSelectedConfirmed.AutoSize = true;
+            this.lblSelectedConfirmed.Location = new System.Drawing.Point(1467, 518);
+            this.lblSelectedConfirmed.Name = "lblSelectedConfirmed";
+            this.lblSelectedConfirmed.Size = new System.Drawing.Size(27, 32);
+            this.lblSelectedConfirmed.TabIndex = 17;
+            this.lblSelectedConfirmed.Text = "0";
+            // 
+            // lblSelectedDeaths
+            // 
+            this.lblSelectedDeaths.AutoSize = true;
+            this.lblSelectedDeaths.Location = new System.Drawing.Point(1467, 568);
+            this.lblSelectedDeaths.Name = "lblSelectedDeaths";
+            this.lblSelectedDeaths.Size = new System.Drawing.Size(27, 32);
+            this.lblSelectedDeaths.TabIndex = 18;
+            this.lblSelectedDeaths.Text = "0";
+            // 
+            // lblSelectedRecovered
+            // 
+            this.lblSelectedRecovered.AutoSize = true;
+            this.lblSelectedRecovered.Location = new System.Drawing.Point(1467, 618);
+            this.lblSelectedRecovered.Name = "lblSelectedRecovered";
+            this.lblSelectedRecovered.Size = new System.Drawing.Size(27, 32);
+            this.lblSelectedRecovered.TabIndex = 19;
+            this.lblSelectedRecovered.Text = "0";
+            // 
+            // lblSelectedActive
+            // 
+            this.lblSelectedActive.AutoSize = true;
+            this.lblSelectedActive.Location = new System.Drawing.Point(1467, 674);
+            this.lblSelectedActive.Name = "lblSelectedActive";
+            this.lblSelectedActive.Size = new System.Drawing.Size(27, 32);
+            this.lblSelectedActive.TabIndex = 20;
+            this.lblSelectedActive.Text = "0";
+            // 
             // PresentationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1696, 840);
+            this.Controls.Add(this.lblSelectedActive);
+            this.Controls.Add(this.lblSelectedRecovered);
+            this.Controls.Add(this.lblSelectedDeaths);
+            this.Controls.Add(this.lblSelectedConfirmed);
+            this.Controls.Add(this.lblSelectedLocation);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.BtnShowDetailsCase);
             this.Controls.Add(this.lblTotalActive);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lblTotalRecovered);
@@ -218,6 +352,18 @@ namespace PresentationForm
         private System.Windows.Forms.Label lblTotalRecovered;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblTotalActive;
+        private System.Windows.Forms.Button BtnShowDetailsCase;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblSelectedLocation;
+        private System.Windows.Forms.Label lblSelectedConfirmed;
+        private System.Windows.Forms.Label lblSelectedDeaths;
+        private System.Windows.Forms.Label lblSelectedRecovered;
+        private System.Windows.Forms.Label lblSelectedActive;
     }
 }
 
