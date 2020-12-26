@@ -3,15 +3,15 @@ using Globals.ErrorMessages;
 using Globals.Exceptions;
 using Logic;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
-using static Logic.ILogic;
 
 namespace PresentationForm
 {
     public partial class PresentationForm : Form
     {
         private readonly ILogic logic;
-        private ShowValues del;
+        private Dictionary<string, int> del;
 
         public PresentationForm(ILogic logicCovid)
         {
@@ -27,15 +27,15 @@ namespace PresentationForm
             {
                 this.datagridCases.Rows.Insert(0, caseData.Location, caseData.Confirmed, caseData.Deaths, caseData.Recovered, caseData.Active);
             }
-            del = logic.ShowTotalConfirmed;
 
-            this.lblTotalconfirmed.Text = Convert.ToDecimal(del(data)).ToString("#,##0");
-            del = logic.ShowTotaldeaths;
-            this.lblTotalDeaths.Text = Convert.ToDecimal(del(data)).ToString("#,##0");
-            del = logic.ShowTotalrecovered;
-            this.lblTotalRecovered.Text = Convert.ToDecimal(del(data)).ToString("#,##0");
-            del = logic.ShowTotalActive;
-            this.lblTotalActive.Text = Convert.ToDecimal(del(data)).ToString("#,##0");
+            del = logic.GetTotalsFromData(data);
+            if (del.Count == 4)
+            {
+                this.lblTotalconfirmed.Text = Convert.ToDecimal(del["totalConfirmed"]).ToString("#,##0");
+                this.lblTotalDeaths.Text = Convert.ToDecimal(del["totalDeaths"]).ToString("#,##0");
+                this.lblTotalRecovered.Text = Convert.ToDecimal(del["totalRecovered"]).ToString("#,##0");
+                this.lblTotalActive.Text = Convert.ToDecimal(del["totalActive"]).ToString("#,##0");
+            }
         }
 
         private void ShowError(Exception ex)
