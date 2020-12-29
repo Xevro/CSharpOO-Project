@@ -31,16 +31,16 @@ namespace PresentationForm
             caseTotal = logic.DataDelegate.Invoke(data);
             if (caseTotal.Count == 4)
             {
-                this.lblTotalconfirmed.Text = Convert.ToDecimal(caseTotal["totalConfirmed"]).ToString("#,##0");
-                this.lblTotalDeaths.Text = Convert.ToDecimal(caseTotal["totalDeaths"]).ToString("#,##0");
-                this.lblTotalRecovered.Text = Convert.ToDecimal(caseTotal["totalRecovered"]).ToString("#,##0");
-                this.lblTotalActive.Text = Convert.ToDecimal(caseTotal["totalActive"]).ToString("#,##0");
+                this.lblTotalconfirmed.Text = caseTotal["totalConfirmed"].RemoveDecimalPoint();
+                this.lblTotalDeaths.Text = caseTotal["totalDeaths"].RemoveDecimalPoint();
+                this.lblTotalRecovered.Text = caseTotal["totalRecovered"].RemoveDecimalPoint();
+                this.lblTotalActive.Text = caseTotal["totalActive"].RemoveDecimalPoint();
             }
         }
 
         private void ShowError(Exception ex)
         {
-            System.Windows.Forms.MessageBox.Show(ex.Message);
+            MessageBox.Show(ex.Message);
         }
 
         private void BtnShowCaseDetails_Click(object sender, System.EventArgs e)
@@ -53,7 +53,7 @@ namespace PresentationForm
                 {
                     if (caseData.Location == (string)selectedRow.Cells[0].Value)
                     {
-                        ShowDetails(caseData.DeepCopy());
+                        ShowDetails(caseData);
                     }
                 }
             }
@@ -66,10 +66,10 @@ namespace PresentationForm
         private void ShowDetails(Case caseData)
         {
             this.lblSelectedLocation.Text = caseData.Location;
-            this.lblSelectedConfirmed.Text = Convert.ToDecimal(caseData.Confirmed).ToString("#,##0");
-            this.lblSelectedDeaths.Text = Convert.ToDecimal(caseData.Deaths).ToString("#,##0");
-            this.lblSelectedRecovered.Text = Convert.ToDecimal(caseData.Recovered).ToString("#,##0");
-            this.lblSelectedActive.Text = Convert.ToDecimal(caseData.Active).ToString("#,##0");
+            this.lblSelectedConfirmed.Text = caseData.Confirmed.RemoveDecimalPoint();
+            this.lblSelectedDeaths.Text =  caseData.Deaths.RemoveDecimalPoint();
+            this.lblSelectedRecovered.Text = caseData.Recovered.RemoveDecimalPoint();
+            this.lblSelectedActive.Text = caseData.Active.RemoveDecimalPoint();
         }
     }
 }

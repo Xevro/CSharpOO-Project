@@ -4,7 +4,7 @@ namespace Globals
 {
     public class JsonData : ICase
     {
-        public List<Case> Data { get; set; }
+        public List<Case> Data { get; private set; }
         public string Dt { get; set; }
         public string Ts { get; set; }
 

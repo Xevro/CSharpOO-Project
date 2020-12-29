@@ -8,8 +8,6 @@ namespace Datalayer
     {
         private readonly string url = "https://covid2019-api.herokuapp.com/v2/current";
 
-        // public static HttpClient ApiClient { get; set; }
-
         public JsonData GetJsonDataFromAPI()
         {
             var result = new WebClient().DownloadString(url);

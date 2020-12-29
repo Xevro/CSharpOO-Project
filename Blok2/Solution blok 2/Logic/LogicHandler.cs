@@ -14,10 +14,7 @@ namespace Logic
         {
             this.data = data;
         }
-        public JsonData GetJsonData()
-        {
-            return data.GetJsonDataFromAPI();
-        }
+        public JsonData GetJsonData() => data.GetJsonDataFromAPI();
 
         public Dictionary<string, int> GetTotalsFromData(JsonData data)
         {
