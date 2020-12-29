@@ -37,7 +37,8 @@
 - [x] *Huisregels voor programmeerstijl volgen*
 
 * Gebruik de 'this'-qualifier enkel waar nodig om verwarring te vermijden.
-
+* Gebruik type inference ('var') volgens de conventie uit de stijlregels.
+* Gebruik betekenisvolle namen voor je variabelen. Het is niet duidelijk waarvoor 'del' in PresentationForm (Corona Viewer) gebruikt zal worden.
 
  
 #### Exceptions
@@ -67,8 +68,10 @@
 
 
 - [x] *List<T>*
-- [ ] *Dictionary<T,T>*
+- [x] *Dictionary<T,T>*
 - [ ] *Overzicht andere generic collections*
+
+* Je gebruikt een dictioanry correct maar op een zeer beperkte manier.
 
 #### Interfaces
 
@@ -98,6 +101,7 @@
 - [x] *object cloning*
 
 * Je hebt al 'Copy' constructors maar nog geen 'deep' copy.
+* Je hebt wel een 'DeepCopy' methode in 'Case' maar alle velden van die klasse zijn value-types en daarbij is er dus ook geen sprake van een 'deep' copy.
 
 #### Klassen - klassehiërarchie
 
@@ -123,9 +127,10 @@
 
 #### Delegates
 
---> Nog niet beoordeeld
+- [x] *Delegates*
 
-- [ ] *Delegates*
+* Je declareert al een delegate type, maar je gebruikt dat nergens.
+* Je maakt (nog) geen gebruik van predefined delagets (Action, Func).
 
 #### Lambda expressions
 
@@ -186,9 +191,9 @@
 
 #### (Statische klassen, methoden, velden)
 
---> Nog niet beoordeeld
+- [x] *Statische klassen, methoden, velden*
 
-- [ ] *Statische klassen, methoden, velden*
+* De meerwaarde van de statische 'Message' klasse is heel erg beperkt.
 
 #### Code Reviews
 
