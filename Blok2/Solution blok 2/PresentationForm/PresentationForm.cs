@@ -11,7 +11,7 @@ namespace PresentationForm
     public partial class PresentationForm : Form
     {
         private readonly ILogic logic;
-        private Dictionary<string, int> del;
+        private Dictionary<string, int> caseTotal;
 
         public PresentationForm(ILogic logicCovid)
         {
@@ -27,14 +27,14 @@ namespace PresentationForm
             {
                 this.datagridCases.Rows.Insert(0, caseData.Location, caseData.Confirmed, caseData.Deaths, caseData.Recovered, caseData.Active);
             }
-
-            del = logic.GetTotalsFromData(data);
-            if (del.Count == 4)
+            logic.DataDelegate = logic.GetTotalsFromData;
+            caseTotal = logic.DataDelegate.Invoke(data);
+            if (caseTotal.Count == 4)
             {
-                this.lblTotalconfirmed.Text = Convert.ToDecimal(del["totalConfirmed"]).ToString("#,##0");
-                this.lblTotalDeaths.Text = Convert.ToDecimal(del["totalDeaths"]).ToString("#,##0");
-                this.lblTotalRecovered.Text = Convert.ToDecimal(del["totalRecovered"]).ToString("#,##0");
-                this.lblTotalActive.Text = Convert.ToDecimal(del["totalActive"]).ToString("#,##0");
+                this.lblTotalconfirmed.Text = Convert.ToDecimal(caseTotal["totalConfirmed"]).ToString("#,##0");
+                this.lblTotalDeaths.Text = Convert.ToDecimal(caseTotal["totalDeaths"]).ToString("#,##0");
+                this.lblTotalRecovered.Text = Convert.ToDecimal(caseTotal["totalRecovered"]).ToString("#,##0");
+                this.lblTotalActive.Text = Convert.ToDecimal(caseTotal["totalActive"]).ToString("#,##0");
             }
         }
 
@@ -66,7 +66,6 @@ namespace PresentationForm
         private void ShowDetails(Case caseData)
         {
             this.lblSelectedLocation.Text = caseData.Location;
-
             this.lblSelectedConfirmed.Text = Convert.ToDecimal(caseData.Confirmed).ToString("#,##0");
             this.lblSelectedDeaths.Text = Convert.ToDecimal(caseData.Deaths).ToString("#,##0");
             this.lblSelectedRecovered.Text = Convert.ToDecimal(caseData.Recovered).ToString("#,##0");

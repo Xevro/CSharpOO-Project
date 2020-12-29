@@ -20,7 +20,7 @@ namespace Globals
 
         public Case DeepCopy()
         {
-            var deepcopyCase = new Case(this.Location, this.Confirmed, this.Deaths, this.Recovered, this.Active);
+            var deepcopyCase = new Case(Location, Confirmed, Deaths, Recovered, Active);
             return deepcopyCase;
         }
     }

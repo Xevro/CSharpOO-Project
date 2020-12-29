@@ -1,4 +1,5 @@
 ﻿using Globals;
+using System;
 using System.Collections.Generic;
 
 namespace Logic
@@ -6,8 +7,7 @@ namespace Logic
     public interface ILogic
     {
         public JsonData GetJsonData();
-
-        public delegate Dictionary<string, int> ShowValues(JsonData data);
+        public Func<JsonData, Dictionary<string, int>> DataDelegate { get; set; }
         public Dictionary<string, int> GetTotalsFromData(JsonData data);
     }
 }

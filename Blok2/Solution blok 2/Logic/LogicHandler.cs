@@ -1,5 +1,6 @@
 ﻿using Datalayer;
 using Globals;
+using System;
 using System.Collections.Generic;
 
 namespace Logic
@@ -7,7 +8,7 @@ namespace Logic
     public class LogicHandler : ILogic
     {
         private readonly IData data;
-        public delegate Dictionary<string, int> ShowValues(JsonData data);
+        public Func<JsonData, Dictionary<string, int>> DataDelegate { get; set; }
 
         public LogicHandler(IData data)
         {
@@ -20,10 +21,10 @@ namespace Logic
 
         public Dictionary<string, int> GetTotalsFromData(JsonData data)
         {
-            var totalConfirmed = 0;
-            var totalDeaths = 0;
-            var totalRecovered = 0;
-            var totalActive = 0;
+            int totalConfirmed = 0;
+            int totalDeaths = 0;
+            int totalRecovered = 0;
+            int totalActive = 0;
             foreach (var caseData in data.Data)
             {
                 totalConfirmed += caseData.Confirmed;
