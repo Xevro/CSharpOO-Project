@@ -2,7 +2,6 @@
 using Globals;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 
 namespace Logic
@@ -40,15 +39,12 @@ namespace Logic
 
         public void UpdateItem(Case caseInfo)
         {
-            //jsonData.Data.Where(c => c.Location == caseInfo.Location).Select(item => { item = caseInfo; return item; }).ToList();
-            jsonData.Data.Where(c => c.Location == caseInfo.Location).Select(item => { item.Confirmed = caseInfo.Confirmed; item.Deaths = caseInfo.Deaths;
-                item.Recovered = caseInfo.Recovered; item.Active = caseInfo.Active; return item; }).ToList();
-            //foreach (var d in jsonData.Data)
-              //  {
-             //   Debug.WriteLine(d.Location);
-               // Debug.WriteLine(d.Confirmed);
-           // }
-            
+            jsonData.Data.OrderBy(c => c.Confirmed).Where(c => c.Location == caseInfo.Location).Select(item =>
+            {
+                item.Confirmed = caseInfo.Confirmed; item.Deaths = caseInfo.Deaths;
+                item.Recovered = caseInfo.Recovered; item.Active = caseInfo.Active; return item;
+            }).ToList();
+
         }
     }
 }

@@ -4,6 +4,7 @@ using Globals.Exceptions;
 using Logic;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace PresentationForm
@@ -11,7 +12,7 @@ namespace PresentationForm
     public partial class PresentationForm : Form
     {
         private readonly ILogic logic;
-       // private readonly JsonData data;
+        // private readonly JsonData data;
         private Dictionary<string, int> caseTotal;
 
         public PresentationForm(ILogic logicCovid)
@@ -104,19 +105,15 @@ namespace PresentationForm
 
         private void BtnUpdateCase_Click(object sender, EventArgs e)
         {
-            if (datagridCases.SelectedCells.Count > 0)
+            if (TxtConfirmed.Text != "")
             {
                 Case selectedCase = new Case(LblCountry.Text, int.Parse(TxtConfirmed.Text), int.Parse(TxtDeaths.Text), int.Parse(TxtRecovered.Text), int.Parse(TxtActive.Text));
                 logic.UpdateItem(selectedCase);
-                datagridCases.Rows.Clear();
-                foreach (var caseData in logic.GetJsonData().Data)
-                {
-                    datagridCases.Rows.Insert(0, caseData.Location, caseData.Confirmed, caseData.Deaths, caseData.Recovered, caseData.Active);
-                }
+                LoadCaseData();
             }
             else
             {
-                ShowError(new FindingItemExeption(Messages.ErrorMessage("Please select an item in the list")));
+                ShowError(new FindingItemExeption(Messages.ErrorMessage(" Please select an item in the list")));
             }
         }
     }
