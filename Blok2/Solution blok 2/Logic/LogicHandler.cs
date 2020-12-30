@@ -43,8 +43,8 @@ namespace Logic
         public List<Case> GetSearchResults(string searchTerm)
         {
             var cases = GetJsonData().Data;
-            var getPromotion = cases.FindAll(p => p.Location.ToLower().Contains(searchTerm.ToLower()));
-            return getPromotion;
+            var results = cases.FindAll(c => c.Location.ToLower().Contains(searchTerm.ToLower()));
+            return results;
         }
     }
 }
