@@ -31,8 +31,7 @@ namespace Logic
 
         public List<Case> GetSearchResults(string searchTerm)
         {
-            var results = jsonData.Data.FindAll(c => c.Location.ToLower().Contains(searchTerm.ToLower()));
-            return results;
+            return jsonData.Data.FindAll(c => c.Location.ToLower().Contains(searchTerm.ToLower()));
         }
 
         public void UpdateItem(Case caseInfo)
