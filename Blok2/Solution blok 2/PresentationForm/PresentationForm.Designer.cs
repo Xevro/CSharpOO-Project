@@ -55,7 +55,17 @@ namespace PresentationForm
             this.lblSelectedDeaths = new System.Windows.Forms.Label();
             this.lblSelectedRecovered = new System.Windows.Forms.Label();
             this.lblSelectedActive = new System.Windows.Forms.Label();
+            this.dataGridSearchResults = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtSearchField = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.BtnSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.datagridCases)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridSearchResults)).BeginInit();
             this.SuspendLayout();
             // 
             // datagridCases
@@ -302,11 +312,103 @@ namespace PresentationForm
             this.lblSelectedActive.TabIndex = 20;
             this.lblSelectedActive.Text = "0";
             // 
+            // dataGridSearchResults
+            // 
+            this.dataGridSearchResults.AllowUserToAddRows = false;
+            this.dataGridSearchResults.AllowUserToDeleteRows = false;
+            this.dataGridSearchResults.AllowUserToOrderColumns = true;
+            this.dataGridSearchResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridSearchResults.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5});
+            this.dataGridSearchResults.Location = new System.Drawing.Point(45, 800);
+            this.dataGridSearchResults.MultiSelect = false;
+            this.dataGridSearchResults.Name = "dataGridSearchResults";
+            this.dataGridSearchResults.ReadOnly = true;
+            this.dataGridSearchResults.RowHeadersWidth = 82;
+            this.dataGridSearchResults.RowTemplate.Height = 41;
+            this.dataGridSearchResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridSearchResults.Size = new System.Drawing.Size(1104, 436);
+            this.dataGridSearchResults.TabIndex = 21;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Location";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Confirmed";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Deaths";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Recovered";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "Active";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 200;
+            // 
+            // TxtSearchField
+            // 
+            this.TxtSearchField.Location = new System.Drawing.Point(319, 606);
+            this.TxtSearchField.Name = "TxtSearchField";
+            this.TxtSearchField.Size = new System.Drawing.Size(230, 39);
+            this.TxtSearchField.TabIndex = 22;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(45, 606);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(253, 32);
+            this.label11.TabIndex = 23;
+            this.label11.Text = "Search term (Country):";
+            // 
+            // BtnSearch
+            // 
+            this.BtnSearch.Location = new System.Drawing.Point(45, 674);
+            this.BtnSearch.Name = "BtnSearch";
+            this.BtnSearch.Size = new System.Drawing.Size(150, 46);
+            this.BtnSearch.TabIndex = 24;
+            this.BtnSearch.Text = "Search data";
+            this.BtnSearch.UseVisualStyleBackColor = true;
+            this.BtnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
+            // 
             // PresentationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1696, 840);
+            this.ClientSize = new System.Drawing.Size(1696, 1390);
+            this.Controls.Add(this.BtnSearch);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.TxtSearchField);
+            this.Controls.Add(this.dataGridSearchResults);
             this.Controls.Add(this.lblSelectedActive);
             this.Controls.Add(this.lblSelectedRecovered);
             this.Controls.Add(this.lblSelectedDeaths);
@@ -331,6 +433,7 @@ namespace PresentationForm
             this.Name = "PresentationForm";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.datagridCases)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridSearchResults)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -364,6 +467,15 @@ namespace PresentationForm
         private System.Windows.Forms.Label lblSelectedDeaths;
         private System.Windows.Forms.Label lblSelectedRecovered;
         private System.Windows.Forms.Label lblSelectedActive;
+        private System.Windows.Forms.DataGridView dataGridSearchResults;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.TextBox TxtSearchField;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button BtnSearch;
     }
 }
 

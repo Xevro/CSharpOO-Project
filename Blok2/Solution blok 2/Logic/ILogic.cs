@@ -9,5 +9,6 @@ namespace Logic
         public JsonData GetJsonData();
         public Func<JsonData, Dictionary<string, int>> DataDelegate { get; set; }
         public Dictionary<string, int> GetTotalsFromData(JsonData data);
+        public List<Case> GetSearchResults(string searchTerm);
     }
 }

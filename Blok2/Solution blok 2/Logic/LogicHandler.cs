@@ -14,6 +14,7 @@ namespace Logic
         {
             this.data = data;
         }
+
         public JsonData GetJsonData() => data.GetJsonDataFromAPI();
 
         public Dictionary<string, int> GetTotalsFromData(JsonData data)
@@ -37,6 +38,13 @@ namespace Logic
                 { "totalActive", totalActive }
             };
             return values;
+        }
+
+        public List<Case> GetSearchResults(string searchTerm)
+        {
+            var cases = GetJsonData().Data;
+            var getPromotion = cases.FindAll(p => p.Location.ToLower().Contains(searchTerm.ToLower()));
+            return getPromotion;
         }
     }
 }

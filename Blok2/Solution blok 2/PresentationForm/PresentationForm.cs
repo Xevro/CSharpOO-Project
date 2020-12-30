@@ -23,18 +23,19 @@ namespace PresentationForm
 
         private void ShowData(JsonData data)
         {
+            datagridCases.Rows.Clear();
             foreach (var caseData in data.Data)
             {
-                this.datagridCases.Rows.Insert(0, caseData.Location, caseData.Confirmed, caseData.Deaths, caseData.Recovered, caseData.Active);
+                datagridCases.Rows.Insert(0, caseData.Location, caseData.Confirmed, caseData.Deaths, caseData.Recovered, caseData.Active);
             }
             logic.DataDelegate = logic.GetTotalsFromData;
             caseTotal = logic.DataDelegate.Invoke(data);
             if (caseTotal.Count == 4)
             {
-                this.lblTotalconfirmed.Text = caseTotal["totalConfirmed"].RemoveDecimalPoint();
-                this.lblTotalDeaths.Text = caseTotal["totalDeaths"].RemoveDecimalPoint();
-                this.lblTotalRecovered.Text = caseTotal["totalRecovered"].RemoveDecimalPoint();
-                this.lblTotalActive.Text = caseTotal["totalActive"].RemoveDecimalPoint();
+                lblTotalconfirmed.Text = caseTotal["totalConfirmed"].RemoveDecimalPoint();
+                lblTotalDeaths.Text = caseTotal["totalDeaths"].RemoveDecimalPoint();
+                lblTotalRecovered.Text = caseTotal["totalRecovered"].RemoveDecimalPoint();
+                lblTotalActive.Text = caseTotal["totalActive"].RemoveDecimalPoint();
             }
         }
 
@@ -65,11 +66,21 @@ namespace PresentationForm
 
         private void ShowDetails(Case caseData)
         {
-            this.lblSelectedLocation.Text = caseData.Location;
-            this.lblSelectedConfirmed.Text = caseData.Confirmed.RemoveDecimalPoint();
-            this.lblSelectedDeaths.Text =  caseData.Deaths.RemoveDecimalPoint();
-            this.lblSelectedRecovered.Text = caseData.Recovered.RemoveDecimalPoint();
-            this.lblSelectedActive.Text = caseData.Active.RemoveDecimalPoint();
+            lblSelectedLocation.Text = caseData.Location;
+            lblSelectedConfirmed.Text = caseData.Confirmed.RemoveDecimalPoint();
+            lblSelectedDeaths.Text = caseData.Deaths.RemoveDecimalPoint();
+            lblSelectedRecovered.Text = caseData.Recovered.RemoveDecimalPoint();
+            lblSelectedActive.Text = caseData.Active.RemoveDecimalPoint();
+        }
+
+        private void BtnSearch_Click(object sender, EventArgs e)
+        {
+            dataGridSearchResults.Rows.Clear();
+            var results = logic.GetSearchResults(this.TxtSearchField.Text);
+            foreach (var item in results)
+            {
+                dataGridSearchResults.Rows.Insert(0, item.Location, item.Confirmed, item.Deaths, item.Recovered, item.Active);
+            }
         }
     }
 }
