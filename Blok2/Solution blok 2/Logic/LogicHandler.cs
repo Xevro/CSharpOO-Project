@@ -8,13 +8,11 @@ namespace Logic
 {
     public class LogicHandler : ILogic
     {
-        //private readonly IData data;
         public Func<JsonData, Dictionary<string, int>> DataDelegate { get; set; }
         private readonly JsonData jsonData;
 
         public LogicHandler(IData data)
         {
-            //this.data = data;
             jsonData = data.GetJsonDataFromAPI();
         }
 

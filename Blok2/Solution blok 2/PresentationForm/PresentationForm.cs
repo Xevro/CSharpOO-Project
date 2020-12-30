@@ -4,7 +4,6 @@ using Globals.Exceptions;
 using Logic;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace PresentationForm
@@ -12,7 +11,6 @@ namespace PresentationForm
     public partial class PresentationForm : Form
     {
         private readonly ILogic logic;
-        // private readonly JsonData data;
         private Dictionary<string, int> caseTotal;
 
         public PresentationForm(ILogic logicCovid)
@@ -107,13 +105,26 @@ namespace PresentationForm
         {
             if (TxtConfirmed.Text != "")
             {
+                UpdateInformation();
+            }
+            else
+            {
+                ShowError(new FindingItemExeption(Messages.ErrorMessage(" Please select an item in the list")));
+            }
+        }
+
+        private void UpdateInformation()
+        {
+            if (int.TryParse(TxtConfirmed.Text, out _) && int.TryParse(TxtConfirmed.Text, out _) &&
+                        int.TryParse(TxtConfirmed.Text, out _) && int.TryParse(TxtConfirmed.Text, out _))
+            {
                 Case selectedCase = new Case(LblCountry.Text, int.Parse(TxtConfirmed.Text), int.Parse(TxtDeaths.Text), int.Parse(TxtRecovered.Text), int.Parse(TxtActive.Text));
                 logic.UpdateItem(selectedCase);
                 LoadCaseData();
             }
             else
             {
-                ShowError(new FindingItemExeption(Messages.ErrorMessage(" Please select an item in the list")));
+                ShowError(new InputNotANumberExeption(Messages.ErrorMessage(" Please type in a valid number")));
             }
         }
     }
