@@ -11,6 +11,7 @@ namespace PresentationForm
     public partial class PresentationForm : Form
     {
         private readonly ILogic logic;
+       // private readonly JsonData data;
         private Dictionary<string, int> caseTotal;
 
         public PresentationForm(ILogic logicCovid)
@@ -23,11 +24,7 @@ namespace PresentationForm
 
         private void ShowData(JsonData data)
         {
-            datagridCases.Rows.Clear();
-            foreach (var caseData in data.Data)
-            {
-                datagridCases.Rows.Insert(0, caseData.Location, caseData.Confirmed, caseData.Deaths, caseData.Recovered, caseData.Active);
-            }
+            LoadCaseData();
             logic.DataDelegate = logic.GetTotalsFromData;
             caseTotal = logic.DataDelegate.Invoke(data);
             if (caseTotal.Count == 4)
@@ -36,6 +33,15 @@ namespace PresentationForm
                 lblTotalDeaths.Text = caseTotal["totalDeaths"].RemoveDecimalPoint();
                 lblTotalRecovered.Text = caseTotal["totalRecovered"].RemoveDecimalPoint();
                 lblTotalActive.Text = caseTotal["totalActive"].RemoveDecimalPoint();
+            }
+        }
+
+        private void LoadCaseData()
+        {
+            datagridCases.Rows.Clear();
+            foreach (var caseData in logic.GetJsonData().Data)
+            {
+                datagridCases.Rows.Insert(0, caseData.Location, caseData.Confirmed, caseData.Deaths, caseData.Recovered, caseData.Active);
             }
         }
 
@@ -80,6 +86,37 @@ namespace PresentationForm
             foreach (var item in results)
             {
                 dataGridSearchResults.Rows.Insert(0, item.Location, item.Confirmed, item.Deaths, item.Recovered, item.Active);
+            }
+        }
+
+        private void DataGrid_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                var row = this.datagridCases.Rows[e.RowIndex];
+                LblCountry.Text = row.Cells[0].Value.ToString();
+                TxtConfirmed.Text = row.Cells[1].Value.ToString();
+                TxtDeaths.Text = row.Cells[2].Value.ToString();
+                TxtRecovered.Text = row.Cells[3].Value.ToString();
+                TxtActive.Text = row.Cells[4].Value.ToString();
+            }
+        }
+
+        private void BtnUpdateCase_Click(object sender, EventArgs e)
+        {
+            if (datagridCases.SelectedCells.Count > 0)
+            {
+                Case selectedCase = new Case(LblCountry.Text, int.Parse(TxtConfirmed.Text), int.Parse(TxtDeaths.Text), int.Parse(TxtRecovered.Text), int.Parse(TxtActive.Text));
+                logic.UpdateItem(selectedCase);
+                datagridCases.Rows.Clear();
+                foreach (var caseData in logic.GetJsonData().Data)
+                {
+                    datagridCases.Rows.Insert(0, caseData.Location, caseData.Confirmed, caseData.Deaths, caseData.Recovered, caseData.Active);
+                }
+            }
+            else
+            {
+                ShowError(new FindingItemExeption(Messages.ErrorMessage("Please select an item in the list")));
             }
         }
     }

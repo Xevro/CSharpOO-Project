@@ -64,6 +64,18 @@ namespace PresentationForm
             this.TxtSearchField = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.BtnSearch = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.TxtConfirmed = new System.Windows.Forms.TextBox();
+            this.TxtDeaths = new System.Windows.Forms.TextBox();
+            this.TxtRecovered = new System.Windows.Forms.TextBox();
+            this.TxtActive = new System.Windows.Forms.TextBox();
+            this.BtnUpdateCase = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
+            this.LblCountry = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.datagridCases)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridSearchResults)).BeginInit();
             this.SuspendLayout();
@@ -89,6 +101,7 @@ namespace PresentationForm
             this.datagridCases.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.datagridCases.Size = new System.Drawing.Size(1104, 436);
             this.datagridCases.TabIndex = 0;
+            this.datagridCases.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGrid_CellMouseClick);
             // 
             // CaseLocation
             // 
@@ -204,7 +217,7 @@ namespace PresentationForm
             // 
             // BtnShowDetailsCase
             // 
-            this.BtnShowDetailsCase.Location = new System.Drawing.Point(1303, 740);
+            this.BtnShowDetailsCase.Location = new System.Drawing.Point(1213, 674);
             this.BtnShowDetailsCase.Name = "BtnShowDetailsCase";
             this.BtnShowDetailsCase.Size = new System.Drawing.Size(263, 46);
             this.BtnShowDetailsCase.TabIndex = 9;
@@ -216,7 +229,7 @@ namespace PresentationForm
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(1239, 392);
+            this.label5.Location = new System.Drawing.Point(1213, 326);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(333, 45);
             this.label5.TabIndex = 10;
@@ -225,7 +238,7 @@ namespace PresentationForm
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(1262, 518);
+            this.label6.Location = new System.Drawing.Point(1236, 452);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(186, 32);
             this.label6.TabIndex = 11;
@@ -234,7 +247,7 @@ namespace PresentationForm
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1300, 568);
+            this.label7.Location = new System.Drawing.Point(1274, 502);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(148, 32);
             this.label7.TabIndex = 12;
@@ -243,7 +256,7 @@ namespace PresentationForm
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(1268, 618);
+            this.label8.Location = new System.Drawing.Point(1242, 552);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(183, 32);
             this.label8.TabIndex = 13;
@@ -252,7 +265,7 @@ namespace PresentationForm
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(1239, 674);
+            this.label9.Location = new System.Drawing.Point(1213, 608);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(209, 32);
             this.label9.TabIndex = 14;
@@ -261,7 +274,7 @@ namespace PresentationForm
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(1344, 468);
+            this.label10.Location = new System.Drawing.Point(1318, 402);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(104, 32);
             this.label10.TabIndex = 15;
@@ -270,7 +283,7 @@ namespace PresentationForm
             // lblSelectedLocation
             // 
             this.lblSelectedLocation.AutoSize = true;
-            this.lblSelectedLocation.Location = new System.Drawing.Point(1467, 468);
+            this.lblSelectedLocation.Location = new System.Drawing.Point(1453, 402);
             this.lblSelectedLocation.Name = "lblSelectedLocation";
             this.lblSelectedLocation.Size = new System.Drawing.Size(23, 32);
             this.lblSelectedLocation.TabIndex = 16;
@@ -279,7 +292,7 @@ namespace PresentationForm
             // lblSelectedConfirmed
             // 
             this.lblSelectedConfirmed.AutoSize = true;
-            this.lblSelectedConfirmed.Location = new System.Drawing.Point(1467, 518);
+            this.lblSelectedConfirmed.Location = new System.Drawing.Point(1453, 452);
             this.lblSelectedConfirmed.Name = "lblSelectedConfirmed";
             this.lblSelectedConfirmed.Size = new System.Drawing.Size(27, 32);
             this.lblSelectedConfirmed.TabIndex = 17;
@@ -288,7 +301,7 @@ namespace PresentationForm
             // lblSelectedDeaths
             // 
             this.lblSelectedDeaths.AutoSize = true;
-            this.lblSelectedDeaths.Location = new System.Drawing.Point(1467, 568);
+            this.lblSelectedDeaths.Location = new System.Drawing.Point(1453, 502);
             this.lblSelectedDeaths.Name = "lblSelectedDeaths";
             this.lblSelectedDeaths.Size = new System.Drawing.Size(27, 32);
             this.lblSelectedDeaths.TabIndex = 18;
@@ -297,7 +310,7 @@ namespace PresentationForm
             // lblSelectedRecovered
             // 
             this.lblSelectedRecovered.AutoSize = true;
-            this.lblSelectedRecovered.Location = new System.Drawing.Point(1467, 618);
+            this.lblSelectedRecovered.Location = new System.Drawing.Point(1453, 552);
             this.lblSelectedRecovered.Name = "lblSelectedRecovered";
             this.lblSelectedRecovered.Size = new System.Drawing.Size(27, 32);
             this.lblSelectedRecovered.TabIndex = 19;
@@ -306,7 +319,7 @@ namespace PresentationForm
             // lblSelectedActive
             // 
             this.lblSelectedActive.AutoSize = true;
-            this.lblSelectedActive.Location = new System.Drawing.Point(1467, 674);
+            this.lblSelectedActive.Location = new System.Drawing.Point(1453, 608);
             this.lblSelectedActive.Name = "lblSelectedActive";
             this.lblSelectedActive.Size = new System.Drawing.Size(27, 32);
             this.lblSelectedActive.TabIndex = 20;
@@ -400,11 +413,125 @@ namespace PresentationForm
             this.BtnSearch.UseVisualStyleBackColor = true;
             this.BtnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label14.Location = new System.Drawing.Point(1213, 790);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(205, 45);
+            this.label14.TabIndex = 26;
+            this.label14.Text = "Update item";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(1255, 922);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(132, 32);
+            this.label12.TabIndex = 27;
+            this.label12.Text = "Confirmed:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(1294, 976);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(93, 32);
+            this.label13.TabIndex = 28;
+            this.label13.Text = "Deaths:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(1255, 1028);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(130, 32);
+            this.label15.TabIndex = 29;
+            this.label15.Text = "Recovered:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(1301, 1090);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(84, 32);
+            this.label16.TabIndex = 30;
+            this.label16.Text = "Active:";
+            // 
+            // TxtConfirmed
+            // 
+            this.TxtConfirmed.Location = new System.Drawing.Point(1421, 922);
+            this.TxtConfirmed.Name = "TxtConfirmed";
+            this.TxtConfirmed.Size = new System.Drawing.Size(157, 39);
+            this.TxtConfirmed.TabIndex = 31;
+            // 
+            // TxtDeaths
+            // 
+            this.TxtDeaths.Location = new System.Drawing.Point(1421, 976);
+            this.TxtDeaths.Name = "TxtDeaths";
+            this.TxtDeaths.Size = new System.Drawing.Size(157, 39);
+            this.TxtDeaths.TabIndex = 32;
+            // 
+            // TxtRecovered
+            // 
+            this.TxtRecovered.Location = new System.Drawing.Point(1421, 1028);
+            this.TxtRecovered.Name = "TxtRecovered";
+            this.TxtRecovered.Size = new System.Drawing.Size(157, 39);
+            this.TxtRecovered.TabIndex = 33;
+            // 
+            // TxtActive
+            // 
+            this.TxtActive.Location = new System.Drawing.Point(1421, 1087);
+            this.TxtActive.Name = "TxtActive";
+            this.TxtActive.Size = new System.Drawing.Size(157, 39);
+            this.TxtActive.TabIndex = 34;
+            // 
+            // BtnUpdateCase
+            // 
+            this.BtnUpdateCase.Location = new System.Drawing.Point(1213, 1162);
+            this.BtnUpdateCase.Name = "BtnUpdateCase";
+            this.BtnUpdateCase.Size = new System.Drawing.Size(195, 46);
+            this.BtnUpdateCase.TabIndex = 35;
+            this.BtnUpdateCase.Text = "Update case";
+            this.BtnUpdateCase.UseVisualStyleBackColor = true;
+            this.BtnUpdateCase.Click += new System.EventHandler(this.BtnUpdateCase_Click);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(1281, 864);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(104, 32);
+            this.label17.TabIndex = 36;
+            this.label17.Text = "Country:";
+            // 
+            // LblCountry
+            // 
+            this.LblCountry.AutoSize = true;
+            this.LblCountry.Location = new System.Drawing.Point(1421, 864);
+            this.LblCountry.Name = "LblCountry";
+            this.LblCountry.Size = new System.Drawing.Size(23, 32);
+            this.LblCountry.TabIndex = 37;
+            this.LblCountry.Text = "/";
+            // 
             // PresentationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1696, 1390);
+            this.Controls.Add(this.LblCountry);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.BtnUpdateCase);
+            this.Controls.Add(this.TxtActive);
+            this.Controls.Add(this.TxtRecovered);
+            this.Controls.Add(this.TxtDeaths);
+            this.Controls.Add(this.TxtConfirmed);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.BtnSearch);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.TxtSearchField);
@@ -476,6 +603,18 @@ namespace PresentationForm
         private System.Windows.Forms.TextBox TxtSearchField;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button BtnSearch;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox TxtConfirmed;
+        private System.Windows.Forms.TextBox TxtDeaths;
+        private System.Windows.Forms.TextBox TxtRecovered;
+        private System.Windows.Forms.TextBox TxtActive;
+        private System.Windows.Forms.Button BtnUpdateCase;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label LblCountry;
     }
 }
 
