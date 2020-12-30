@@ -1,7 +1,7 @@
 ﻿
 namespace Globals
 {
-    public class Case
+    public class Case : ICase
     {
         public string Location { get; set; }
         public int Confirmed { get; set; }

@@ -10,10 +10,10 @@ namespace PresentationForm
 {
     public partial class PresentationForm : Form
     {
-        private readonly ILogic logic;
+        private readonly Logics logic;
         private Dictionary<string, int> caseTotal;
 
-        public PresentationForm(ILogic logicCovid)
+        public PresentationForm(Logics logicCovid)
         {
             this.logic = logicCovid;
             InitializeComponent();

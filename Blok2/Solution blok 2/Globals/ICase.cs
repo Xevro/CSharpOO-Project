@@ -1,6 +1,7 @@
 ﻿namespace Globals
 {
-    interface ICase
+    public interface ICase
     {
+
     }
 }

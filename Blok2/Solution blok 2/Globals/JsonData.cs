@@ -2,7 +2,7 @@
 
 namespace Globals
 {
-    public class JsonData : ICase
+    public class JsonData
     {
         public List<Case> Data { get; private set; }
         public string Dt { get; set; }

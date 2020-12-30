@@ -6,9 +6,10 @@ using System.Linq;
 
 namespace Logic
 {
-    public class LogicHandler : ILogic
+    public class LogicHandler : Logics
     {
-        public Func<JsonData, Dictionary<string, int>> DataDelegate { get; set; }
+        public override Func<JsonData, Dictionary<string, int>> DataDelegate { get; set; }
+
         private readonly JsonData jsonData;
 
         public LogicHandler(IData data)
@@ -16,9 +17,9 @@ namespace Logic
             jsonData = data.GetJsonDataFromAPI();
         }
 
-        public JsonData GetJsonData() => jsonData;
+        public override JsonData GetJsonData() => jsonData;
 
-        public Dictionary<string, int> GetTotalsFromData(JsonData data)
+        public override Dictionary<string, int> GetTotalsFromData(JsonData data)
         {
             return new Dictionary<string, int>
             {
@@ -29,19 +30,18 @@ namespace Logic
             };
         }
 
-        public List<Case> GetSearchResults(string searchTerm)
+        public override List<Case> GetSearchResults(string searchTerm)
         {
             return jsonData.Data.FindAll(c => c.Location.ToLower().Contains(searchTerm.ToLower()));
         }
 
-        public void UpdateItem(Case caseInfo)
+        public override void UpdateItem(Case caseInfo)
         {
             jsonData.Data.OrderBy(c => c.Confirmed).Where(c => c.Location == caseInfo.Location).Select(item =>
             {
                 item.Confirmed = caseInfo.Confirmed; item.Deaths = caseInfo.Deaths;
                 item.Recovered = caseInfo.Recovered; item.Active = caseInfo.Active; return item;
             }).ToList();
-
         }
     }
 }
