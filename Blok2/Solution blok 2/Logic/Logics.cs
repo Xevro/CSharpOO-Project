@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace Logic
 {
+    [Serializable]
     public abstract class Logics
     {
         public abstract JsonData GetJsonData();
