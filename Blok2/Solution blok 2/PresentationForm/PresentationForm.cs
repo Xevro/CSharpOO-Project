@@ -118,7 +118,7 @@ namespace PresentationForm
             if (int.TryParse(TxtConfirmed.Text, out _) && int.TryParse(TxtConfirmed.Text, out _) &&
                         int.TryParse(TxtConfirmed.Text, out _) && int.TryParse(TxtConfirmed.Text, out _))
             {
-                Case selectedCase = new Case(LblCountry.Text, int.Parse(TxtConfirmed.Text), int.Parse(TxtDeaths.Text), int.Parse(TxtRecovered.Text), int.Parse(TxtActive.Text));
+                var selectedCase = new Case(LblCountry.Text, int.Parse(TxtConfirmed.Text), int.Parse(TxtDeaths.Text), int.Parse(TxtRecovered.Text), int.Parse(TxtActive.Text));
                 logic.UpdateItem(selectedCase);
                 LoadCaseData();
             }
