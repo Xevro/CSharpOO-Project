@@ -55,7 +55,7 @@
 
 - [x] *Full property (with private backing field)*
 - [x] *Auto-implemented property*
-- [ ] *Access-modifiers voor Getters en Setters*
+- [x] *Access-modifiers voor Getters en Setters*
 
 
 #### Interpolated strings
@@ -107,12 +107,10 @@
 
 - [x] *Klasse declaratie - constructoren*
 - [x] *constructor overloading*
-- [ ] *Klasse-hiërarchie*
+- [x] *Klasse-hiërarchie*
 
-* Vermijd 'code clones' bij je constructor overloading
-* Je hebt nog geen klassehiërarchie
-
-
+* Je hebt een abstracte klasse maar daarin zijn alle members abstract: dan zou je daarvoor beter een interface gebruiken. 
+* Je hebt niet 'echt' een klasse-hiërarchie: er is slechts één concrete implementatie van de abstracte klasse 'logic' en in de hudige structuur van je code lijkt het niet logisch te verwachten dat er meerdere implementaties zouden komen. Op die manier heeft die 'hiërarchie' geen meerwaarde voor je toepassing en maakt ze die juist complexer dan toen je met een interface werkte.
 
 #### Structs
 
@@ -120,17 +118,14 @@
 
 ##### Extension methods
 
---> Nog niet beoordeeld
-
-- [ ] *Extension method schrijven*
-- [ ] *Functioneel gebruik van extension methods*
+- [x] *Extension method schrijven*
+- [x] *Functioneel gebruik van extension methods*
 
 #### Delegates
 
 - [x] *Delegates*
 
-* Je declareert al een delegate type, maar je gebruikt dat nergens.
-* Je maakt (nog) geen gebruik van predefined delagets (Action, Func).
+* Je 'DataDelegate' in 'LogicHandler' krijgt steeds (enkel) de waarde 'GetTotalsFromData' en heeft zo slechts een beperkt nut.
 
 #### Lambda expressions
 
@@ -140,11 +135,9 @@
 
 #### Language Integrated Query (Linq)
 
---> Nog niet beoordeeld
-
 - [ ] *Linq standard query operator syntax*
-- [ ] *Linq method syntax*
-- [ ] *Basismethodes voor Linq*
+- [x] *Linq method syntax*
+- [x] *Basismethodes voor Linq*
 
 #### Events
 
@@ -193,7 +186,6 @@
 
 - [x] *Statische klassen, methoden, velden*
 
-* De meerwaarde van de statische 'Message' klasse is heel erg beperkt.
 
 #### Code Reviews
 
