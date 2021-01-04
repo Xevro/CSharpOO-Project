@@ -10,14 +10,14 @@ namespace PresentationForm
 {
     public partial class PresentationForm : Form
     {
-        private readonly Logics logic;
+        private readonly ILogics logic;
         private Dictionary<string, int> caseTotal;
-
-        public PresentationForm(Logics logicCovid)
+        private readonly JsonData data;
+        public PresentationForm(ILogics logicCovid)
         {
             this.logic = logicCovid;
             InitializeComponent();
-            var data = logic.GetJsonData();
+            data = logic.GetJsonData();
             ShowData(data);
         }
 
@@ -54,8 +54,7 @@ namespace PresentationForm
             if (datagridCases.SelectedCells.Count > 0)
             {
                 var selectedRow = datagridCases.Rows[datagridCases.SelectedCells[0].RowIndex];
-
-                foreach (var caseData in logic.GetJsonData().Data)
+                foreach (var caseData in data.Data)
                 {
                     if (caseData.Location == (string)selectedRow.Cells[0].Value)
                     {
@@ -119,13 +118,18 @@ namespace PresentationForm
                         int.TryParse(TxtConfirmed.Text, out _) && int.TryParse(TxtConfirmed.Text, out _))
             {
                 var selectedCase = new Case(LblCountry.Text, int.Parse(TxtConfirmed.Text), int.Parse(TxtDeaths.Text), int.Parse(TxtRecovered.Text), int.Parse(TxtActive.Text));
-                logic.UpdateItem(selectedCase);
+                logic.UpdateCase(selectedCase);
                 LoadCaseData();
             }
             else
             {
                 ShowError(new InputNotANumberExeption(Messages.ErrorMessage(" Please type in a valid number")));
             }
+        }
+
+        private void BtnReloadData_Click(object sender, EventArgs e)
+        {
+            LoadCaseData();
         }
     }
 }

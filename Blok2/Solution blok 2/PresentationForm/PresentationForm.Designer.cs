@@ -76,6 +76,8 @@ namespace PresentationForm
             this.BtnUpdateCase = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.LblCountry = new System.Windows.Forms.Label();
+            this.BtnDeleteCase = new System.Windows.Forms.Button();
+            this.BtnReloadData = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.datagridCases)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridSearchResults)).BeginInit();
             this.SuspendLayout();
@@ -389,7 +391,7 @@ namespace PresentationForm
             // 
             // TxtSearchField
             // 
-            this.TxtSearchField.Location = new System.Drawing.Point(319, 606);
+            this.TxtSearchField.Location = new System.Drawing.Point(317, 659);
             this.TxtSearchField.Name = "TxtSearchField";
             this.TxtSearchField.Size = new System.Drawing.Size(230, 39);
             this.TxtSearchField.TabIndex = 22;
@@ -397,7 +399,7 @@ namespace PresentationForm
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(45, 606);
+            this.label11.Location = new System.Drawing.Point(45, 662);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(253, 32);
             this.label11.TabIndex = 23;
@@ -405,7 +407,7 @@ namespace PresentationForm
             // 
             // BtnSearch
             // 
-            this.BtnSearch.Location = new System.Drawing.Point(45, 674);
+            this.BtnSearch.Location = new System.Drawing.Point(45, 728);
             this.BtnSearch.Name = "BtnSearch";
             this.BtnSearch.Size = new System.Drawing.Size(150, 46);
             this.BtnSearch.TabIndex = 24;
@@ -515,11 +517,23 @@ namespace PresentationForm
             this.LblCountry.TabIndex = 37;
             this.LblCountry.Text = "/";
             // 
+            // BtnReloadData
+            // 
+            this.BtnReloadData.Location = new System.Drawing.Point(45, 552);
+            this.BtnReloadData.Name = "BtnReloadData";
+            this.BtnReloadData.Size = new System.Drawing.Size(150, 46);
+            this.BtnReloadData.TabIndex = 39;
+            this.BtnReloadData.Text = "Reload data";
+            this.BtnReloadData.UseVisualStyleBackColor = true;
+            this.BtnReloadData.Click += new System.EventHandler(this.BtnReloadData_Click);
+            // 
             // PresentationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1696, 1390);
+            this.Controls.Add(this.BtnReloadData);
+            this.Controls.Add(this.BtnDeleteCase);
             this.Controls.Add(this.LblCountry);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.BtnUpdateCase);
@@ -615,6 +629,8 @@ namespace PresentationForm
         private System.Windows.Forms.Button BtnUpdateCase;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label LblCountry;
+        private System.Windows.Forms.Button BtnDeleteCase;
+        private System.Windows.Forms.Button BtnReloadData;
     }
 }
 
