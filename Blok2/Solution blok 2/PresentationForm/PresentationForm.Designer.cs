@@ -76,10 +76,19 @@ namespace PresentationForm
             this.BtnUpdateCase = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.LblCountry = new System.Windows.Forms.Label();
-            this.BtnDeleteCase = new System.Windows.Forms.Button();
             this.BtnReloadData = new System.Windows.Forms.Button();
+            this.dataGridCountryCases = new System.Windows.Forms.DataGridView();
+            this.dataGridCountryCaseDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LblTitleCaseInfo = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.datagridCases)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridSearchResults)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridCountryCases)).BeginInit();
             this.SuspendLayout();
             // 
             // datagridCases
@@ -94,14 +103,14 @@ namespace PresentationForm
             this.CaseDeaths,
             this.CaseRecovered,
             this.CaseActive});
-            this.datagridCases.Location = new System.Drawing.Point(45, 64);
+            this.datagridCases.Location = new System.Drawing.Point(45, 134);
             this.datagridCases.MultiSelect = false;
             this.datagridCases.Name = "datagridCases";
             this.datagridCases.ReadOnly = true;
             this.datagridCases.RowHeadersWidth = 82;
             this.datagridCases.RowTemplate.Height = 41;
             this.datagridCases.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datagridCases.Size = new System.Drawing.Size(1104, 436);
+            this.datagridCases.Size = new System.Drawing.Size(1122, 436);
             this.datagridCases.TabIndex = 0;
             this.datagridCases.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGrid_CellMouseClick);
             // 
@@ -148,7 +157,7 @@ namespace PresentationForm
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1239, 82);
+            this.label1.Location = new System.Drawing.Point(1681, 726);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(186, 32);
             this.label1.TabIndex = 1;
@@ -157,7 +166,7 @@ namespace PresentationForm
             // lblTotalconfirmed
             // 
             this.lblTotalconfirmed.AutoSize = true;
-            this.lblTotalconfirmed.Location = new System.Drawing.Point(1453, 82);
+            this.lblTotalconfirmed.Location = new System.Drawing.Point(1895, 726);
             this.lblTotalconfirmed.Name = "lblTotalconfirmed";
             this.lblTotalconfirmed.Size = new System.Drawing.Size(78, 32);
             this.lblTotalconfirmed.TabIndex = 2;
@@ -166,7 +175,7 @@ namespace PresentationForm
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1277, 134);
+            this.label2.Location = new System.Drawing.Point(1719, 778);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(148, 32);
             this.label2.TabIndex = 3;
@@ -175,7 +184,7 @@ namespace PresentationForm
             // lblTotalDeaths
             // 
             this.lblTotalDeaths.AutoSize = true;
-            this.lblTotalDeaths.Location = new System.Drawing.Point(1453, 134);
+            this.lblTotalDeaths.Location = new System.Drawing.Point(1895, 778);
             this.lblTotalDeaths.Name = "lblTotalDeaths";
             this.lblTotalDeaths.Size = new System.Drawing.Size(78, 32);
             this.lblTotalDeaths.TabIndex = 4;
@@ -184,7 +193,7 @@ namespace PresentationForm
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1242, 190);
+            this.label3.Location = new System.Drawing.Point(1684, 834);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(183, 32);
             this.label3.TabIndex = 5;
@@ -193,7 +202,7 @@ namespace PresentationForm
             // lblTotalRecovered
             // 
             this.lblTotalRecovered.AutoSize = true;
-            this.lblTotalRecovered.Location = new System.Drawing.Point(1453, 190);
+            this.lblTotalRecovered.Location = new System.Drawing.Point(1895, 834);
             this.lblTotalRecovered.Name = "lblTotalRecovered";
             this.lblTotalRecovered.Size = new System.Drawing.Size(78, 32);
             this.lblTotalRecovered.TabIndex = 6;
@@ -202,7 +211,7 @@ namespace PresentationForm
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1223, 246);
+            this.label4.Location = new System.Drawing.Point(1665, 890);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(202, 32);
             this.label4.TabIndex = 7;
@@ -211,7 +220,7 @@ namespace PresentationForm
             // lblTotalActive
             // 
             this.lblTotalActive.AutoSize = true;
-            this.lblTotalActive.Location = new System.Drawing.Point(1453, 246);
+            this.lblTotalActive.Location = new System.Drawing.Point(1895, 890);
             this.lblTotalActive.Name = "lblTotalActive";
             this.lblTotalActive.Size = new System.Drawing.Size(78, 32);
             this.lblTotalActive.TabIndex = 8;
@@ -219,7 +228,7 @@ namespace PresentationForm
             // 
             // BtnShowDetailsCase
             // 
-            this.BtnShowDetailsCase.Location = new System.Drawing.Point(1213, 674);
+            this.BtnShowDetailsCase.Location = new System.Drawing.Point(2050, 996);
             this.BtnShowDetailsCase.Name = "BtnShowDetailsCase";
             this.BtnShowDetailsCase.Size = new System.Drawing.Size(263, 46);
             this.BtnShowDetailsCase.TabIndex = 9;
@@ -231,7 +240,7 @@ namespace PresentationForm
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(1213, 326);
+            this.label5.Location = new System.Drawing.Point(2015, 640);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(333, 45);
             this.label5.TabIndex = 10;
@@ -240,7 +249,7 @@ namespace PresentationForm
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(1236, 452);
+            this.label6.Location = new System.Drawing.Point(2073, 774);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(186, 32);
             this.label6.TabIndex = 11;
@@ -249,7 +258,7 @@ namespace PresentationForm
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1274, 502);
+            this.label7.Location = new System.Drawing.Point(2111, 824);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(148, 32);
             this.label7.TabIndex = 12;
@@ -258,7 +267,7 @@ namespace PresentationForm
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(1242, 552);
+            this.label8.Location = new System.Drawing.Point(2079, 874);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(183, 32);
             this.label8.TabIndex = 13;
@@ -267,7 +276,7 @@ namespace PresentationForm
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(1213, 608);
+            this.label9.Location = new System.Drawing.Point(2050, 930);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(209, 32);
             this.label9.TabIndex = 14;
@@ -276,7 +285,7 @@ namespace PresentationForm
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(1318, 402);
+            this.label10.Location = new System.Drawing.Point(2155, 724);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(104, 32);
             this.label10.TabIndex = 15;
@@ -285,7 +294,7 @@ namespace PresentationForm
             // lblSelectedLocation
             // 
             this.lblSelectedLocation.AutoSize = true;
-            this.lblSelectedLocation.Location = new System.Drawing.Point(1453, 402);
+            this.lblSelectedLocation.Location = new System.Drawing.Point(2290, 724);
             this.lblSelectedLocation.Name = "lblSelectedLocation";
             this.lblSelectedLocation.Size = new System.Drawing.Size(23, 32);
             this.lblSelectedLocation.TabIndex = 16;
@@ -294,7 +303,7 @@ namespace PresentationForm
             // lblSelectedConfirmed
             // 
             this.lblSelectedConfirmed.AutoSize = true;
-            this.lblSelectedConfirmed.Location = new System.Drawing.Point(1453, 452);
+            this.lblSelectedConfirmed.Location = new System.Drawing.Point(2290, 774);
             this.lblSelectedConfirmed.Name = "lblSelectedConfirmed";
             this.lblSelectedConfirmed.Size = new System.Drawing.Size(27, 32);
             this.lblSelectedConfirmed.TabIndex = 17;
@@ -303,7 +312,7 @@ namespace PresentationForm
             // lblSelectedDeaths
             // 
             this.lblSelectedDeaths.AutoSize = true;
-            this.lblSelectedDeaths.Location = new System.Drawing.Point(1453, 502);
+            this.lblSelectedDeaths.Location = new System.Drawing.Point(2290, 824);
             this.lblSelectedDeaths.Name = "lblSelectedDeaths";
             this.lblSelectedDeaths.Size = new System.Drawing.Size(27, 32);
             this.lblSelectedDeaths.TabIndex = 18;
@@ -312,7 +321,7 @@ namespace PresentationForm
             // lblSelectedRecovered
             // 
             this.lblSelectedRecovered.AutoSize = true;
-            this.lblSelectedRecovered.Location = new System.Drawing.Point(1453, 552);
+            this.lblSelectedRecovered.Location = new System.Drawing.Point(2290, 874);
             this.lblSelectedRecovered.Name = "lblSelectedRecovered";
             this.lblSelectedRecovered.Size = new System.Drawing.Size(27, 32);
             this.lblSelectedRecovered.TabIndex = 19;
@@ -321,7 +330,7 @@ namespace PresentationForm
             // lblSelectedActive
             // 
             this.lblSelectedActive.AutoSize = true;
-            this.lblSelectedActive.Location = new System.Drawing.Point(1453, 608);
+            this.lblSelectedActive.Location = new System.Drawing.Point(2290, 930);
             this.lblSelectedActive.Name = "lblSelectedActive";
             this.lblSelectedActive.Size = new System.Drawing.Size(27, 32);
             this.lblSelectedActive.TabIndex = 20;
@@ -391,7 +400,7 @@ namespace PresentationForm
             // 
             // TxtSearchField
             // 
-            this.TxtSearchField.Location = new System.Drawing.Point(317, 659);
+            this.TxtSearchField.Location = new System.Drawing.Point(317, 730);
             this.TxtSearchField.Name = "TxtSearchField";
             this.TxtSearchField.Size = new System.Drawing.Size(230, 39);
             this.TxtSearchField.TabIndex = 22;
@@ -399,7 +408,7 @@ namespace PresentationForm
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(45, 662);
+            this.label11.Location = new System.Drawing.Point(45, 733);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(253, 32);
             this.label11.TabIndex = 23;
@@ -407,7 +416,7 @@ namespace PresentationForm
             // 
             // BtnSearch
             // 
-            this.BtnSearch.Location = new System.Drawing.Point(45, 728);
+            this.BtnSearch.Location = new System.Drawing.Point(593, 726);
             this.BtnSearch.Name = "BtnSearch";
             this.BtnSearch.Size = new System.Drawing.Size(150, 46);
             this.BtnSearch.TabIndex = 24;
@@ -419,7 +428,7 @@ namespace PresentationForm
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(1213, 790);
+            this.label14.Location = new System.Drawing.Point(1251, 633);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(205, 45);
             this.label14.TabIndex = 26;
@@ -428,7 +437,7 @@ namespace PresentationForm
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(1255, 922);
+            this.label12.Location = new System.Drawing.Point(1293, 765);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(132, 32);
             this.label12.TabIndex = 27;
@@ -437,7 +446,7 @@ namespace PresentationForm
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(1294, 976);
+            this.label13.Location = new System.Drawing.Point(1332, 819);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(93, 32);
             this.label13.TabIndex = 28;
@@ -446,7 +455,7 @@ namespace PresentationForm
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(1255, 1028);
+            this.label15.Location = new System.Drawing.Point(1293, 871);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(130, 32);
             this.label15.TabIndex = 29;
@@ -455,7 +464,7 @@ namespace PresentationForm
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(1301, 1090);
+            this.label16.Location = new System.Drawing.Point(1339, 933);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(84, 32);
             this.label16.TabIndex = 30;
@@ -463,35 +472,35 @@ namespace PresentationForm
             // 
             // TxtConfirmed
             // 
-            this.TxtConfirmed.Location = new System.Drawing.Point(1421, 922);
+            this.TxtConfirmed.Location = new System.Drawing.Point(1459, 765);
             this.TxtConfirmed.Name = "TxtConfirmed";
             this.TxtConfirmed.Size = new System.Drawing.Size(157, 39);
             this.TxtConfirmed.TabIndex = 31;
             // 
             // TxtDeaths
             // 
-            this.TxtDeaths.Location = new System.Drawing.Point(1421, 976);
+            this.TxtDeaths.Location = new System.Drawing.Point(1459, 819);
             this.TxtDeaths.Name = "TxtDeaths";
             this.TxtDeaths.Size = new System.Drawing.Size(157, 39);
             this.TxtDeaths.TabIndex = 32;
             // 
             // TxtRecovered
             // 
-            this.TxtRecovered.Location = new System.Drawing.Point(1421, 1028);
+            this.TxtRecovered.Location = new System.Drawing.Point(1459, 871);
             this.TxtRecovered.Name = "TxtRecovered";
             this.TxtRecovered.Size = new System.Drawing.Size(157, 39);
             this.TxtRecovered.TabIndex = 33;
             // 
             // TxtActive
             // 
-            this.TxtActive.Location = new System.Drawing.Point(1421, 1087);
+            this.TxtActive.Location = new System.Drawing.Point(1459, 930);
             this.TxtActive.Name = "TxtActive";
             this.TxtActive.Size = new System.Drawing.Size(157, 39);
             this.TxtActive.TabIndex = 34;
             // 
             // BtnUpdateCase
             // 
-            this.BtnUpdateCase.Location = new System.Drawing.Point(1213, 1162);
+            this.BtnUpdateCase.Location = new System.Drawing.Point(1251, 1005);
             this.BtnUpdateCase.Name = "BtnUpdateCase";
             this.BtnUpdateCase.Size = new System.Drawing.Size(195, 46);
             this.BtnUpdateCase.TabIndex = 35;
@@ -502,7 +511,7 @@ namespace PresentationForm
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(1281, 864);
+            this.label17.Location = new System.Drawing.Point(1319, 707);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(104, 32);
             this.label17.TabIndex = 36;
@@ -511,7 +520,7 @@ namespace PresentationForm
             // LblCountry
             // 
             this.LblCountry.AutoSize = true;
-            this.LblCountry.Location = new System.Drawing.Point(1421, 864);
+            this.LblCountry.Location = new System.Drawing.Point(1459, 707);
             this.LblCountry.Name = "LblCountry";
             this.LblCountry.Size = new System.Drawing.Size(23, 32);
             this.LblCountry.TabIndex = 37;
@@ -519,7 +528,7 @@ namespace PresentationForm
             // 
             // BtnReloadData
             // 
-            this.BtnReloadData.Location = new System.Drawing.Point(45, 552);
+            this.BtnReloadData.Location = new System.Drawing.Point(45, 598);
             this.BtnReloadData.Name = "BtnReloadData";
             this.BtnReloadData.Size = new System.Drawing.Size(150, 46);
             this.BtnReloadData.TabIndex = 39;
@@ -527,13 +536,108 @@ namespace PresentationForm
             this.BtnReloadData.UseVisualStyleBackColor = true;
             this.BtnReloadData.Click += new System.EventHandler(this.BtnReloadData_Click);
             // 
+            // dataGridCountryCases
+            // 
+            this.dataGridCountryCases.AllowUserToAddRows = false;
+            this.dataGridCountryCases.AllowUserToDeleteRows = false;
+            this.dataGridCountryCases.AllowUserToOrderColumns = true;
+            this.dataGridCountryCases.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridCountryCases.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridCountryCaseDate,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn10});
+            this.dataGridCountryCases.Location = new System.Drawing.Point(1255, 134);
+            this.dataGridCountryCases.MultiSelect = false;
+            this.dataGridCountryCases.Name = "dataGridCountryCases";
+            this.dataGridCountryCases.ReadOnly = true;
+            this.dataGridCountryCases.RowHeadersWidth = 82;
+            this.dataGridCountryCases.RowTemplate.Height = 41;
+            this.dataGridCountryCases.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridCountryCases.Size = new System.Drawing.Size(1126, 436);
+            this.dataGridCountryCases.TabIndex = 41;
+            // 
+            // dataGridCountryCaseDate
+            // 
+            this.dataGridCountryCaseDate.HeaderText = "Date";
+            this.dataGridCountryCaseDate.MinimumWidth = 10;
+            this.dataGridCountryCaseDate.Name = "dataGridCountryCaseDate";
+            this.dataGridCountryCaseDate.ReadOnly = true;
+            this.dataGridCountryCaseDate.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "Confirmed";
+            this.dataGridViewTextBoxColumn7.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.HeaderText = "Deaths";
+            this.dataGridViewTextBoxColumn8.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.dataGridViewTextBoxColumn8.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.HeaderText = "Recovered";
+            this.dataGridViewTextBoxColumn9.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            this.dataGridViewTextBoxColumn9.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.HeaderText = "Active";
+            this.dataGridViewTextBoxColumn10.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            this.dataGridViewTextBoxColumn10.Width = 200;
+            // 
+            // LblTitleCaseInfo
+            // 
+            this.LblTitleCaseInfo.AutoSize = true;
+            this.LblTitleCaseInfo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.LblTitleCaseInfo.Location = new System.Drawing.Point(1255, 52);
+            this.LblTitleCaseInfo.Name = "LblTitleCaseInfo";
+            this.LblTitleCaseInfo.Size = new System.Drawing.Size(442, 45);
+            this.LblTitleCaseInfo.TabIndex = 42;
+            this.LblTitleCaseInfo.Text = "All info sinds begin about ...";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label18.Location = new System.Drawing.Point(45, 52);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(544, 45);
+            this.label18.TabIndex = 43;
+            this.label18.Text = "Covid 19 worldwide data for today";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label19.Location = new System.Drawing.Point(1665, 633);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(196, 45);
+            this.label19.TabIndex = 44;
+            this.label19.Text = "Total values";
+            // 
             // PresentationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1696, 1390);
+            this.ClientSize = new System.Drawing.Size(2424, 1390);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.LblTitleCaseInfo);
+            this.Controls.Add(this.dataGridCountryCases);
             this.Controls.Add(this.BtnReloadData);
-            this.Controls.Add(this.BtnDeleteCase);
             this.Controls.Add(this.LblCountry);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.BtnUpdateCase);
@@ -573,8 +677,10 @@ namespace PresentationForm
             this.Controls.Add(this.datagridCases);
             this.Name = "PresentationForm";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.PresentationForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.datagridCases)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridSearchResults)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridCountryCases)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -629,8 +735,16 @@ namespace PresentationForm
         private System.Windows.Forms.Button BtnUpdateCase;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label LblCountry;
-        private System.Windows.Forms.Button BtnDeleteCase;
         private System.Windows.Forms.Button BtnReloadData;
+        private System.Windows.Forms.DataGridView dataGridCountryCases;
+        private System.Windows.Forms.Label LblTitleCaseInfo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridCountryCaseDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
     }
 }
 

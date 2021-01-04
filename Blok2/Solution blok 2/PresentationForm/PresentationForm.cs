@@ -4,6 +4,7 @@ using Globals.Exceptions;
 using Logic;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace PresentationForm
@@ -59,6 +60,7 @@ namespace PresentationForm
                     if (caseData.Location == (string)selectedRow.Cells[0].Value)
                     {
                         ShowDetails(caseData);
+                        ShowDetailsOfCountry(caseData.Location);
                     }
                 }
             }
@@ -75,6 +77,16 @@ namespace PresentationForm
             lblSelectedDeaths.Text = caseData.Deaths.RemoveDecimalPoint();
             lblSelectedRecovered.Text = caseData.Recovered.RemoveDecimalPoint();
             lblSelectedActive.Text = caseData.Active.RemoveDecimalPoint();
+        }
+
+        private void ShowDetailsOfCountry(string country)
+        {
+            var countryData = logic.GetDataByCountry(country.Replace(" ", "-"));
+            this.LblTitleCaseInfo.Text = "All info sinds begin about " + country;
+            foreach (var caseData in countryData)
+            {
+                dataGridCountryCases.Rows.Insert(0, caseData.Date, caseData.Confirmed, caseData.Deaths, caseData.Recovered, caseData.Active);
+            }
         }
 
         private void BtnSearch_Click(object sender, EventArgs e)
@@ -130,6 +142,11 @@ namespace PresentationForm
         private void BtnReloadData_Click(object sender, EventArgs e)
         {
             LoadCaseData();
+        }
+
+        private void PresentationForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

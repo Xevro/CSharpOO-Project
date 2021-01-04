@@ -17,5 +17,7 @@ namespace Globals
             Recovered = recovered;
             Active = active;
         }
+
+       
     }
 }

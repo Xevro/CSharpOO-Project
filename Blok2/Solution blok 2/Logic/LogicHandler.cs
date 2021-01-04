@@ -11,10 +11,17 @@ namespace Logic
         public Func<JsonData, Dictionary<string, int>> DataDelegate { get; set; }
 
         private readonly JsonData jsonData;
+        private readonly IData dataProvider;
 
         public LogicHandler(IData data)
         {
             jsonData = data.GetJsonDataFromAPI();
+            dataProvider = data;
+        }
+
+        public List<CountryData> GetDataByCountry(string country)
+        {
+            return dataProvider.GetDataByCountryFromAPI(country);
         }
 
         public JsonData GetJsonData() => jsonData;
