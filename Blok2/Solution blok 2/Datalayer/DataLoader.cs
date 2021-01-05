@@ -1,5 +1,4 @@
 ﻿using Globals;
-using Globals.Exceptions;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net;
@@ -13,9 +12,16 @@ namespace Datalayer
 
         public JsonData GetJsonDataFromAPI()
         {
-            var result = new WebClient().DownloadString(url);
-            var data = JsonConvert.DeserializeObject<JsonData>(result);
-            return data;
+            try
+            {
+                var result = new WebClient().DownloadString(url);
+                var data = JsonConvert.DeserializeObject<JsonData>(result);
+                return data;
+            }
+            catch (WebException)
+            {
+                throw new WebException();
+            }
         }
 
         public List<CountryData> GetDataByCountryFromAPI(string country)
