@@ -4,7 +4,7 @@ using Globals.Exceptions;
 using Logic;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+using System.Net;
 using System.Windows.Forms;
 
 namespace PresentationForm
@@ -14,6 +14,7 @@ namespace PresentationForm
         private readonly ILogics logic;
         private Dictionary<string, int> caseTotal;
         private readonly JsonData data;
+
         public PresentationForm(ILogics logicCovid)
         {
             this.logic = logicCovid;
@@ -81,11 +82,18 @@ namespace PresentationForm
 
         private void ShowDetailsOfCountry(string country)
         {
-            var countryData = logic.GetDataByCountry(country.Replace(" ", "-"));
-            this.LblTitleCaseInfo.Text = "All info sinds begin about " + country;
-            foreach (var caseData in countryData)
+            try
             {
-                dataGridCountryCases.Rows.Insert(0, caseData.Date, caseData.Confirmed, caseData.Deaths, caseData.Recovered, caseData.Active);
+                this.LblTitleCaseInfo.Text = "All info sinds begin about " + country;
+                var countryData = logic.GetDataByCountry(country.Replace(" ", "-"));
+                foreach (var caseData in countryData)
+                {
+                    dataGridCountryCases.Rows.Insert(0, caseData.Date, caseData.Confirmed, caseData.Deaths, caseData.Recovered, caseData.Active);
+                }
+            }
+            catch (WebException)
+            {
+                ShowError(new CanNotLoadDataFromAPIException(Messages.CanNotLoadDataForCountryError));
             }
         }
 

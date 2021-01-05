@@ -632,7 +632,7 @@ namespace PresentationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2424, 1390);
+            this.ClientSize = new System.Drawing.Size(2530, 1390);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.LblTitleCaseInfo);
