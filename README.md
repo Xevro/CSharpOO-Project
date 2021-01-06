@@ -109,8 +109,7 @@
 - [x] *constructor overloading*
 - [x] *Klasse-hiërarchie*
 
-* Je hebt een abstracte klasse maar daarin zijn alle members abstract: dan zou je daarvoor beter een interface gebruiken. 
-* Je hebt niet 'echt' een klasse-hiërarchie: er is slechts één concrete implementatie van de abstracte klasse 'logic' en in de hudige structuur van je code lijkt het niet logisch te verwachten dat er meerdere implementaties zouden komen. Op die manier heeft die 'hiërarchie' geen meerwaarde voor je toepassing en maakt ze die juist complexer dan toen je met een interface werkte.
+* Je hebt nog steeds een erg beperkte klasse-hiërarchie: er is slechts één subklasse van basisklasse 'Case', er worden geen virtuele methodes of overrides gebruikt en die subklasse wordt eigenlijk enkel gebruikt voor het deserialiseren van je JSonData.
 
 #### Structs
 
