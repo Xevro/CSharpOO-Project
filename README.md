@@ -26,21 +26,15 @@
 
 #### Debugging
 
---> Nog niet beoordeeld (kan enkel interactief gebeuren)
-
-- [ ] *Code stap voor stap uitvoeren*
-- [ ] *Breakpoints*
-- [ ] *De waarde van variabelen bekijken tijdens de uitvoering van je programma*
+- [x] *Code stap voor stap uitvoeren*
+- [x] *Breakpoints*
+- [x] *De waarde van variabelen bekijken tijdens de uitvoering van je programma*
 
 #### Programmeerstijl
 
 - [x] *Huisregels voor programmeerstijl volgen*
 
-* Gebruik de 'this'-qualifier enkel waar nodig om verwarring te vermijden.
-* Gebruik type inference ('var') volgens de conventie uit de stijlregels.
-* Gebruik betekenisvolle namen voor je variabelen. Het is niet duidelijk waarvoor 'del' in PresentationForm (Corona Viewer) gebruikt zal worden.
 
- 
 #### Exceptions
 
 - [x] *try..catch..finally*
@@ -75,11 +69,9 @@
 
 #### Interfaces
 
---> Nog niet beoordeeld
-
-- [ ] *Interface declaratie*
-- [ ] *Interface implementatie*
-- [ ] *Interface gebruiken als type*
+- [x] *Interface declaratie*
+- [x] *Interface implementatie*
+- [x] *Interface gebruiken als type*
 
 #### Architectuur van een toepassing - Meerlagenmodel
 
