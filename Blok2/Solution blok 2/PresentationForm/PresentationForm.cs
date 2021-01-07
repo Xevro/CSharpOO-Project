@@ -61,7 +61,7 @@ namespace PresentationForm
                     if (caseData.Location == (string)selectedRow.Cells[0].Value)
                     {
                         ShowDetails(caseData);
-                        ShowDetailsOfCountry(caseData.Location);
+                        ShowDetailsOfCountryAsync(caseData.Location);
                     }
                 }
             }
@@ -80,13 +80,13 @@ namespace PresentationForm
             lblSelectedActive.Text = caseData.Active.RemoveDecimalPoint();
         }
 
-        private void ShowDetailsOfCountry(string country)
+        private async void ShowDetailsOfCountryAsync(string country)
         {
             try
             {
                 LblTitleCaseInfo.Text = "All info sinds begin about " + country;
-                var countryData = logic.GetDataByCountry(country.Replace(" ", "-"));
-                foreach (var caseData in countryData)
+                var returnedTaskTResult = await logic.GetDataByCountry(country.Replace(" ", "-"));
+                foreach (var caseData in returnedTaskTResult)
                 {
                     dataGridCountryCases.Rows.Insert(0, caseData.Date, caseData.Confirmed, caseData.Deaths, caseData.Recovered, caseData.Active);
                 }

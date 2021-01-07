@@ -3,6 +3,7 @@ using Globals;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Logic
 {
@@ -19,9 +20,9 @@ namespace Logic
             dataProvider = data;
         }
 
-        public List<CountryData> GetDataByCountry(string country)
+        public async Task<List<CountryData>> GetDataByCountry(string country)
         {
-            return dataProvider.GetDataByCountryFromAPI(country);
+            return await dataProvider.GetDataByCountryFromAPIAsync(country);
         }
 
         public JsonData GetJsonData() => jsonData;
