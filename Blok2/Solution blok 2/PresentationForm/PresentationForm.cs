@@ -17,7 +17,7 @@ namespace PresentationForm
 
         public PresentationForm(ILogics logicCovid)
         {
-            this.logic = logicCovid;
+            logic = logicCovid;
             InitializeComponent();
             data = logic.GetJsonData();
             ShowData(data);
@@ -84,7 +84,7 @@ namespace PresentationForm
         {
             try
             {
-                this.LblTitleCaseInfo.Text = "All info sinds begin about " + country;
+                LblTitleCaseInfo.Text = "All info sinds begin about " + country;
                 var countryData = logic.GetDataByCountry(country.Replace(" ", "-"));
                 foreach (var caseData in countryData)
                 {
@@ -100,7 +100,7 @@ namespace PresentationForm
         private void BtnSearch_Click(object sender, EventArgs e)
         {
             dataGridSearchResults.Rows.Clear();
-            var results = logic.GetSearchResults(this.TxtSearchField.Text);
+            var results = logic.GetSearchResults(TxtSearchField.Text);
             foreach (var item in results)
             {
                 dataGridSearchResults.Rows.Insert(0, item.Location, item.Confirmed, item.Deaths, item.Recovered, item.Active);
@@ -111,7 +111,7 @@ namespace PresentationForm
         {
             if (e.RowIndex >= 0)
             {
-                var row = this.datagridCases.Rows[e.RowIndex];
+                var row = datagridCases.Rows[e.RowIndex];
                 LblCountry.Text = row.Cells[0].Value.ToString();
                 TxtConfirmed.Text = row.Cells[1].Value.ToString();
                 TxtDeaths.Text = row.Cells[2].Value.ToString();
