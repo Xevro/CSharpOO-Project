@@ -26,21 +26,15 @@
 
 #### Debugging
 
---> Nog niet beoordeeld (kan enkel interactief gebeuren)
-
-- [ ] *Code stap voor stap uitvoeren*
-- [ ] *Breakpoints*
-- [ ] *De waarde van variabelen bekijken tijdens de uitvoering van je programma*
+- [x] *Code stap voor stap uitvoeren*
+- [x] *Breakpoints*
+- [x] *De waarde van variabelen bekijken tijdens de uitvoering van je programma*
 
 #### Programmeerstijl
 
 - [x] *Huisregels voor programmeerstijl volgen*
 
-* Gebruik de 'this'-qualifier enkel waar nodig om verwarring te vermijden.
-* Gebruik type inference ('var') volgens de conventie uit de stijlregels.
-* Gebruik betekenisvolle namen voor je variabelen. Het is niet duidelijk waarvoor 'del' in PresentationForm (Corona Viewer) gebruikt zal worden.
 
- 
 #### Exceptions
 
 - [x] *try..catch..finally*
@@ -75,11 +69,9 @@
 
 #### Interfaces
 
---> Nog niet beoordeeld
-
-- [ ] *Interface declaratie*
-- [ ] *Interface implementatie*
-- [ ] *Interface gebruiken als type*
+- [x] *Interface declaratie*
+- [x] *Interface implementatie*
+- [x] *Interface gebruiken als type*
 
 #### Architectuur van een toepassing - Meerlagenmodel
 
@@ -109,8 +101,7 @@
 - [x] *constructor overloading*
 - [x] *Klasse-hiërarchie*
 
-* Je hebt een abstracte klasse maar daarin zijn alle members abstract: dan zou je daarvoor beter een interface gebruiken. 
-* Je hebt niet 'echt' een klasse-hiërarchie: er is slechts één concrete implementatie van de abstracte klasse 'logic' en in de hudige structuur van je code lijkt het niet logisch te verwachten dat er meerdere implementaties zouden komen. Op die manier heeft die 'hiërarchie' geen meerwaarde voor je toepassing en maakt ze die juist complexer dan toen je met een interface werkte.
+* Je hebt nog steeds een erg beperkte klasse-hiërarchie: er is slechts één subklasse van basisklasse 'Case', er worden geen virtuele methodes of overrides gebruikt en die subklasse wordt eigenlijk enkel gebruikt voor het deserialiseren van je JSonData.
 
 #### Structs
 
