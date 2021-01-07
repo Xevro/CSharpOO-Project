@@ -37,9 +37,24 @@ namespace Logic
             };
         }
 
+        //Add other delegate
+        /* public Dictionary<string, int> get...(JsonData data)
+        {
+            return new Dictionary<string, int>
+            {
+                { "totalConfirmed", data.Data.Sum(c => c.Confirmed) },
+                { "totalDeaths", data.Data.Sum(c => c.Deaths) },
+                { "totalRecovered", data.Data.Sum(c => c.Recovered) },
+                { "totalActive", data.Data.Sum(c => c.Active) }
+            };
+        }*/
+
         public List<Case> GetSearchResults(string searchTerm)
         {
-            return jsonData.Data.FindAll(c => c.Location.ToLower().Contains(searchTerm.ToLower()));
+            return (from c in jsonData.Data
+                    where c.Location.ToLower().Contains(searchTerm.ToLower())
+                    select c).ToList();
+            //return jsonData.Data.FindAll(c => c.Location.ToLower().Contains(searchTerm.ToLower()));
         }
 
         public void UpdateCase(Case caseInfo)
