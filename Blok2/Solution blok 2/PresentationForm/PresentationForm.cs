@@ -4,7 +4,6 @@ using Globals.Exceptions;
 using Logic;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
@@ -32,8 +31,6 @@ namespace PresentationForm
         {
             context.Post((data) =>
             {
-                Debug.WriteLine("data from post");
-                Debug.WriteLine(data);
                 BtnReloadData.Enabled = true;
                 jsonData = result;
                 ShowData(result);

@@ -3,7 +3,6 @@ using Globals;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Logic
@@ -35,7 +34,6 @@ namespace Logic
         {
             return await dataProvider.GetDataByCountryFromAPIAsync(country);
         }
-
 
         public Dictionary<string, int> GetTotalsFromData(JsonData data)
         {
