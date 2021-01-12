@@ -46,18 +46,6 @@ namespace Logic
             };
         }
 
-        //Add other delegate
-        /* public Dictionary<string, int> get...(JsonData data)
-        {
-            return new Dictionary<string, int>
-            {
-                { "totalConfirmed", data.Data.Sum(c => c.Confirmed) },
-                { "totalDeaths", data.Data.Sum(c => c.Deaths) },
-                { "totalRecovered", data.Data.Sum(c => c.Recovered) },
-                { "totalActive", data.Data.Sum(c => c.Active) }
-            };
-        }*/
-
         public List<Case> GetSearchResults(string searchTerm)
         {
             return (from c in jsonData.Data
