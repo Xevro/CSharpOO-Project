@@ -37,7 +37,7 @@ namespace Datalayer
                 var client = new HttpClient();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("summary/json"));
 
-                var task = await client.GetAsync(countryUrl + country).ConfigureAwait(false);
+                var task = await client.GetAsync(countryUrl + country);
                 var result = await task.Content.ReadAsStringAsync();
                 return JsonConvert.DeserializeObject<List<CountryData>>(result);
             }
