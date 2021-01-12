@@ -19,15 +19,15 @@ namespace Logic
             dataProvider = data;
         }
 
-        public async void GetJsonData()
+        public void GetJsonData()
         {
-            await Task.Run(() =>
-            {
-                //use Thread.Sleep to see the result of the task async in action (useable interface). 
+            Task.Run(async () =>
+             {
+                //use Thread.Sleep to see the result of the task async in action (useable interface while sleeping). 
                 //Thread.Sleep(3000);
-                jsonData = dataProvider.GetJsonDataFromAPI();
-                DataEvent?.Invoke(jsonData);
-            });
+                jsonData = await dataProvider.GetJsonDataFromAPIAsync();
+                 DataEvent?.Invoke(jsonData);
+             });
         }
 
         public async Task<List<CountryData>> GetDataByCountry(string country)

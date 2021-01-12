@@ -6,7 +6,7 @@ namespace Datalayer
 {
     public interface IData
     {
-        public JsonData GetJsonDataFromAPI();
+        public Task<JsonData> GetJsonDataFromAPIAsync();
         public Task<List<CountryData>> GetDataByCountryFromAPIAsync(string country);
     }
 }

@@ -13,13 +13,16 @@ namespace Datalayer
         private readonly string url = "https://covid2019-api.herokuapp.com/v2/current";
         private readonly string countryUrl = "https://api.covid19api.com/dayone/country/";
 
-        public JsonData GetJsonDataFromAPI()
+        public async Task<JsonData> GetJsonDataFromAPIAsync()
         {
             try
             {
-                var result = new WebClient().DownloadString(url);
-                var data = JsonConvert.DeserializeObject<JsonData>(result);
-                return data;
+                var client = new HttpClient();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("summary/json"));
+
+                var task = await client.GetAsync(url);
+                var result = await task.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<JsonData>(result);
             }
             catch (WebException)
             {
