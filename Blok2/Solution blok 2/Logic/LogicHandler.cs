@@ -3,6 +3,7 @@ using Globals;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Logic
@@ -10,14 +11,24 @@ namespace Logic
     public class LogicHandler : ILogics
     {
         public Func<JsonData, Dictionary<string, int>> DataDelegate { get; set; }
-
-        private readonly JsonData jsonData;
+        public event Action<JsonData> DataEvent;
         private readonly IData dataProvider;
+        private JsonData jsonData;
 
         public LogicHandler(IData data)
         {
-            jsonData = data.GetJsonDataFromAPI();
             dataProvider = data;
+        }
+
+        public async void GetJsonData()
+        {
+            await Task.Run(() =>
+            {
+                //use Thread.Sleep to see the result of the task async in action (useable interface). 
+                //Thread.Sleep(3000);
+                jsonData = dataProvider.GetJsonDataFromAPI();
+                DataEvent?.Invoke(jsonData);
+            });
         }
 
         public async Task<List<CountryData>> GetDataByCountry(string country)
@@ -25,7 +36,6 @@ namespace Logic
             return await dataProvider.GetDataByCountryFromAPIAsync(country);
         }
 
-        public JsonData GetJsonData() => jsonData;
 
         public Dictionary<string, int> GetTotalsFromData(JsonData data)
         {

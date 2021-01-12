@@ -4,7 +4,10 @@ using Globals.Exceptions;
 using Logic;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PresentationForm
@@ -13,14 +16,28 @@ namespace PresentationForm
     {
         private readonly ILogics logic;
         private Dictionary<string, int> caseTotal;
-        private readonly JsonData data;
+        private JsonData jsonData;
+        private readonly SynchronizationContext context;
 
         public PresentationForm(ILogics logicCovid)
         {
-            logic = logicCovid;
             InitializeComponent();
-            data = logic.GetJsonData();
-            ShowData(data);
+            logic = logicCovid;
+            context = SynchronizationContext.Current;
+            logic.DataEvent += OnWorkerGetApiData;
+            logic.GetJsonData();
+        }
+
+        private void OnWorkerGetApiData(JsonData result)
+        {
+            context.Post((data) =>
+            {
+                Debug.WriteLine("data from post");
+                Debug.WriteLine(data);
+                BtnReloadData.Enabled = true;
+                jsonData = result;
+                ShowData(result);
+            }, result);
         }
 
         private void ShowData(JsonData data)
@@ -40,7 +57,7 @@ namespace PresentationForm
         private void LoadCaseData()
         {
             datagridCases.Rows.Clear();
-            foreach (var caseData in logic.GetJsonData().Data)
+            foreach (var caseData in jsonData.Data)
             {
                 datagridCases.Rows.Insert(0, caseData.Location, caseData.Confirmed, caseData.Deaths, caseData.Recovered, caseData.Active);
             }
@@ -51,17 +68,17 @@ namespace PresentationForm
             MessageBox.Show(ex.Message);
         }
 
-        private void BtnShowCaseDetails_Click(object sender, System.EventArgs e)
+        private async void BtnShowCaseDetails_ClickAsync(object sender, System.EventArgs e)
         {
             if (datagridCases.SelectedCells.Count > 0)
             {
                 var selectedRow = datagridCases.Rows[datagridCases.SelectedCells[0].RowIndex];
-                foreach (var caseData in data.Data)
+                foreach (var caseData in jsonData.Data)
                 {
                     if (caseData.Location == (string)selectedRow.Cells[0].Value)
                     {
                         ShowDetails(caseData);
-                        ShowDetailsOfCountryAsync(caseData.Location);
+                        await ShowDetailsOfCountryAsync(caseData.Location);
                     }
                 }
             }
@@ -80,10 +97,11 @@ namespace PresentationForm
             lblSelectedActive.Text = caseData.Active.RemoveDecimalPoint();
         }
 
-        private async void ShowDetailsOfCountryAsync(string country)
+        private async Task ShowDetailsOfCountryAsync(string country)
         {
             try
             {
+                dataGridCountryCases.Rows.Clear();
                 LblTitleCaseInfo.Text = "All info sinds begin about " + country;
                 var returnedTaskTResult = await logic.GetDataByCountry(country.Replace(" ", "-"));
                 foreach (var caseData in returnedTaskTResult)
@@ -149,12 +167,9 @@ namespace PresentationForm
 
         private void BtnReloadData_Click(object sender, EventArgs e)
         {
+            BtnReloadData.Enabled = false;
+            logic.GetJsonData();
             LoadCaseData();
-        }
-
-        private void PresentationForm_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

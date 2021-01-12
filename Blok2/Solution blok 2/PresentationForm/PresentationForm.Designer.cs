@@ -86,6 +86,7 @@ namespace PresentationForm
             this.LblTitleCaseInfo = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.datagridCases)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridSearchResults)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCountryCases)).BeginInit();
@@ -234,7 +235,7 @@ namespace PresentationForm
             this.BtnShowDetailsCase.TabIndex = 9;
             this.BtnShowDetailsCase.Text = "Show selected info";
             this.BtnShowDetailsCase.UseVisualStyleBackColor = true;
-            this.BtnShowDetailsCase.Click += new System.EventHandler(this.BtnShowCaseDetails_Click);
+            this.BtnShowDetailsCase.Click += new System.EventHandler(this.BtnShowCaseDetails_ClickAsync);
             // 
             // label5
             // 
@@ -628,11 +629,19 @@ namespace PresentationForm
             this.label19.TabIndex = 44;
             this.label19.Text = "Total values";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 47;
+            // 
             // PresentationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2530, 1390);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.LblTitleCaseInfo);
@@ -676,8 +685,7 @@ namespace PresentationForm
             this.Controls.Add(this.label1);
             this.Controls.Add(this.datagridCases);
             this.Name = "PresentationForm";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.PresentationForm_Load);
+            this.Text = "Corona viewer";
             ((System.ComponentModel.ISupportInitialize)(this.datagridCases)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridSearchResults)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCountryCases)).EndInit();
@@ -745,6 +753,7 @@ namespace PresentationForm
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Button button1;
     }
 }
 
