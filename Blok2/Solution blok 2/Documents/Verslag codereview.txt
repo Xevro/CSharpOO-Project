@@ -1,0 +1,70 @@
+C# OO - verslag codereview
+==========================
+
+Naam reviewer:	Timon De Bruyne
+Datum review:  12 januari 2021
+
+Beoordeelde code
+----------------
+
+Auteur: Louis D'Hont
+Titel: Corona Viewer application
+Datum code: 8 januari 2021
+
+
+Programmeerstijl
+----------------
+
+<
+Volgt de code de huisregels (minstens voor volgende aspecten):
+
+- naamgeving variabelen (conventies & zinvolle namen)
+- naamgeving methodes (conventies & zinvolle namen)
+- layout (gebruik accolades en inspringen)
+- geen publieke velden (properties waar nodig)
+- korte methodes (< 25 lijnen), 'single responisbility rule'
+>
+
+commentaar:
+
+- De variabelen en methodes hebben allemaal zeer zinvolle namen en geven een idee van wat ze inhoudelijk uitvoeren. Ook de conventies zijn correct.
+- De layout is ook perfect. Er wordt goed ingesprongen waar nodig en alle haakjes en accolades staan op hun plaats.
+- De velden zijn private waar ze private moeten zijn.
+- De methodes zijn zeer kort en effici‘nt gemaakt. Allemaal zitten ze onder de 25 regel rule.
+
+Moest er iets fout lopen kan je dankzij de duidelijke naamgeving en effici‘nte methodes snel zien waar je fout zou zitten.
+
+
+Structuur
+---------
+
+<Is de structuur van de code logisch, en goed te begrijpen?>
+
+commentaar:
+
+De structuur is zeer goed. Alles is duidelijk opgesplitst waar nodig. Er zijn aparte klassen voor aparte functionaliteiten. Je kan snel iets specifiek opzoeken aan de hand van de klassenverdeling. Ook is dit een zeer goede basis voor moest je zaken willen toevoegen en je project later nog zou willen uitbreiden.
+
+
+Userinterface
+-------------
+
+De interface is een winform opgedeeld in verschillende delen met verschillende functionaliteiten. Je hebt een overzicht en verder kan je filteren op bepaalde zaken. Een beetje extra opmaak voor effici‘ntie kan altijd maar dit is dan meer subjectief. Het is ook zeer goed dat er een datagrid ge•mplementeerd zit zodat je zaken kan selecteren en zo is het ook zeer overzichtelijk welke data bij welk land bv hoort.
+
+
+Analyse methode1 & methode 2
+----------------------------
+
+<Kies 2 methodes uit verschillende delen van de code en beoordeel de juistheid  en efficiëntie ervan >
+
+methode 1:  LogicHandler, public Dictionary<string, int> GetTotalsFromData(JsonData data)
+
+commentaar: Dit is een zeer duidelijke methode waar er data uit de API wordt gehaald, deze data wordt in een dictionary gestoken en zo 	worden de totale cijfers van de bijhorende onderwerpen getoond. Je zal eerst de titel zien van welk totaal het precies is gevolgd door het totale cijfer.
+
+methode 2:  Datalayer,  public JsonData GetJsonDataFromAPI()
+
+commentaar: In deze methode zien we hoe de data van de api wordt gedeserialiseerd wordt. De data wordt opgehaald van de api via een WebClient en vervolgens wordt deze data geconverteerd naar een variabele. Deze methode zit ook in een try catch wat de gebruiker duidelijk zal laten weten indien er iets mis is met de api of met de data die wordt opgehaald. 
+
+
+
+
+
