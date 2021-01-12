@@ -23,9 +23,9 @@ namespace Logic
         {
             Task.Run(async () =>
              {
-                //use Thread.Sleep to see the result of the task async in action (useable interface while sleeping). 
-                //Thread.Sleep(3000);
-                jsonData = await dataProvider.GetJsonDataFromAPIAsync();
+                 //use Thread.Sleep to see the result of the task async in action (useable interface while sleeping). 
+                 //Thread.Sleep(3000);
+                 jsonData = await dataProvider.GetJsonDataFromAPIAsync();
                  DataEvent?.Invoke(jsonData);
              });
         }
