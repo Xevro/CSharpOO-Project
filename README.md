@@ -56,16 +56,14 @@
 
 - [x] *Interpolated strings*
 
- 
-
-#### Generic collections
+ #### Generic collections
 
 
 - [x] *List<T>*
 - [x] *Dictionary<T,T>*
 - [ ] *Overzicht andere generic collections*
 
-* Je gebruikt een dictioanry correct maar op een zeer beperkte manier.
+* Je gebruikt een dictionary correct maar op een zeer beperkte manier.
 
 #### Interfaces
 
@@ -155,9 +153,7 @@
 
 #### Asynchronous programming: async .. await
 
---> Nog niet beoordeeld
-
-- [ ] *async .. await*
+- [x] *async .. await*
 
 #### (Recursie)
 
