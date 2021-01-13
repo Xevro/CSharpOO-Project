@@ -19,9 +19,10 @@ namespace Datalayer
             {
                 var client = new HttpClient();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("summary/json"));
-
                 var task = await client.GetAsync(url);
                 var result = await task.Content.ReadAsStringAsync();
+                if (result.Contains("Not Found"))
+                    throw new WebException();
                 return JsonConvert.DeserializeObject<JsonData>(result);
             }
             catch (WebException)
@@ -36,9 +37,10 @@ namespace Datalayer
             {
                 var client = new HttpClient();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("summary/json"));
-
                 var task = await client.GetAsync(countryUrl + country);
                 var result = await task.Content.ReadAsStringAsync();
+                if (result.Contains("Not Found"))
+                    throw new WebException();
                 return JsonConvert.DeserializeObject<List<CountryData>>(result);
             }
             catch (WebException)
