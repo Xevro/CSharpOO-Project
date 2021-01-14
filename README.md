@@ -118,9 +118,7 @@
 
 #### Lambda expressions
 
---> Nog niet beoordeeld
-
-- [ ] *Lambda expressions*
+- [x] *Lambda expressions*
 
 #### Language Integrated Query (Linq)
 
@@ -130,20 +128,18 @@
 
 #### Events
 
---> Nog niet beoordeeld
-
-- [ ] *Event 'Publisher'*
-- [ ] *Event 'Consumer'*
+- [x] *Event 'Publisher'*
+- [x] *Event 'Consumer'*
 
 #### Concurrent programmatie: Tasks
 
---> Nog niet beoordeeld
-
-- [ ] *Tasks*
-- [ ] *Cross-thread' interactie vanuit een Task met de userinterface*
+- [x] *Tasks*
+- [x] *Cross-thread' interactie vanuit een Task met de userinterface*
 - [ ] *Exceptions in Tasks*
 - [ ] *Parallel loops*
  
+* Je gebruikt nog geen task cancellation
+
 #### Concurrent programming: Task synchronisation
 
 --> Nog niet beoordeeld
