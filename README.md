@@ -1,15 +1,8 @@
-## Nog toe te voegen aan applicatie:
+# C# OO programming
 
-- Importeren van .csv bestand met gegevens
-- Controleren van input voor het toevoegen aan lijst
-- Exporteren van data naar .csv bestand
-- Kunnen wijzigen van gegevens in lijst
-- Filteren van gegevens in nieuw frame
-- Zoekfunctie in console en frame
-
+Second year of Elektronics & ICT at Odisee Ghent.
 
 ## Feedback C# OO Programming
-
 
 #### Kennismaking Visual Studio 2019
 
@@ -33,7 +26,6 @@
 #### Programmeerstijl
 
 - [x] *Huisregels voor programmeerstijl volgen*
-
 
 #### Exceptions
 
